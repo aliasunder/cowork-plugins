@@ -37,4 +37,4 @@ See any existing plugin directory for a working example.
 
 ## License
 
-MIT
+[MIT](LICENSE)
