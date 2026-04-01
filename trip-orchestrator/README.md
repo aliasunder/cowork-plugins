@@ -6,7 +6,7 @@ A Cowork skill that acts as an end-to-end trip planning project manager. It guid
 
 Planning a multi-week international trip across 15+ Cowork sessions requires consistent structure: where does booking info go, when should restaurants be researched vs activities, how do you hand off context between sessions, and how do you make sure completed tasks actually get tracked. Without a skill, every session starts from scratch and the agent reinvents the wheel on file structure, task management, and research methodology.
 
-This skill replaces 4 separate trip-planner plugin skills (trip-setup, research-workflow, itinerary-planning, session-management) with a single orchestrator that loads specialized reference files on demand.
+Rather than splitting this across multiple independent skills, it uses a single orchestrator that loads specialized reference files on demand — keeping the full workflow context available in every session.
 
 ## Structure
 
@@ -46,9 +46,25 @@ Each session follows a rhythm: **orient** (read CLAUDE.md, TASKS.md, last sessio
 
 The skill keeps SKILL.md lean (~320 lines) by deferring detailed methodology to `references/` files that get loaded on demand — only when the agent enters a research task, creates a deliverable, or updates the budget.
 
-## Key design decisions
+## Why a single orchestrator, not multiple skills
 
-- **Single skill, not four.** Skills can't invoke other skills at runtime in Cowork, so a multi-skill approach would lose context between phases. One skill with reference files gives the same modularity without the handoff problem.
+Most Cowork plugins use a **toolkit pattern** — a collection of independent skills where each handles one task (review code, run incident response, research hotels). That works well when skills are genuinely independent.
+
+Trip planning is different. It's a **sequential, phase-dependent workflow** that runs across many sessions: you can't research restaurants before choosing cities, can't build an itinerary before booking hotels, and every session needs to pick up exactly where the last one left off. A multi-skill approach (separate skills for setup, research, itinerary building, session management) breaks down because:
+
+- **Skills can't invoke each other at runtime.** When the agent activates a research skill, it doesn't see the session management skill's rules for how to close a session.
+- **The agent has to guess which skill to use.** A user saying "let's pick up where we left off and research restaurants" needs both session management and research, but only one skill loads.
+- **Cross-skill consistency relies on file contracts.** Multi-skill plugins coordinate through shared files (CLAUDE.md, TASKS.md, memory/), which works if every skill respects the same conventions — but the agent only sees one skill's instructions at a time.
+
+The orchestrator pattern solves this by putting the full workflow context — phases, dependencies, session protocol, file boundary rules — in a single skill, and deferring detailed methodology to reference files loaded on demand. This gives the same modularity as separate skills without the handoff problem.
+
+**When to use which pattern:**
+
+- **Toolkit (multiple skills):** Independent capabilities that don't depend on each other. Good for: engineering plugins (code-review, incident-response), productivity tools.
+- **Orchestrator (single skill + references):** Sequential workflows with phase dependencies and multi-session state. Good for: project management, trip planning, any multi-week planning process.
+
+## Other key design decisions
+
 - **File boundary rules.** CLAUDE.md is a lean index (~200-300 lines), not a knowledge base. People details live in `memory/people/`, booking details in `memory/projects/`, methodology in the skill. This prevents the common failure mode where CLAUDE.md becomes a 500-line dump of everything.
 - **Research → Guide pipeline.** Research files are broad comparisons. Guides are curated picks created *after* the user approves recommendations. This prevents premature commitment and gives the user a decision point.
 - **Booking philosophy gathered early.** Flexibility vs cost, hotel star preference, refundability appetite — gathered in Phase 1 because it shapes every downstream booking decision.

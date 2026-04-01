@@ -1,12 +1,12 @@
 # cowork-plugins
 
-A collection of [Cowork](https://claude.ai) plugins — installable via **Settings > Plugins > Add marketplace** using `aliasunder/cowork-plugins`.
+Plugins for [Claude Cowork](https://claude.ai) — the desktop tool for task and file management. Installable via **Settings > Plugins > Add marketplace** using `aliasunder/cowork-plugins`.
 
 ## Plugins
 
 | Plugin | Description |
 |--------|-------------|
-| [trip-orchestrator](trip-orchestrator/) | End-to-end trip planning project manager. 8 planning phases, session protocols, research methodology, budget tracking, and material production across unlimited Cowork sessions. |
+| [trip-orchestrator](trip-orchestrator/) | End-to-end trip planning project manager. Opinionated orchestrator-style skill — encodes a complete workflow (8 planning phases, session protocols, file conventions) rather than a set of independent tools. See its README for the design rationale. |
 
 ## Installing
 
