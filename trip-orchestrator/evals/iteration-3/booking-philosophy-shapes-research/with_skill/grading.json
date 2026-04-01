@@ -1,0 +1,53 @@
+{
+  "eval_id": 5,
+  "eval_name": "booking-philosophy-shapes-research",
+  "configuration": "with_skill",
+  "expectations": [
+    {
+      "text": "reads-traveler-profiles: Reads memory/people/ profiles before starting research to understand constraints",
+      "passed": true,
+      "evidence": "Research file (memory_research_hotel-kyoto.md, lines 7-14) explicitly lists 'Preferences Summary (from profiles + CLAUDE.md)' including 'Accessibility for Alex's knee: Elevator access helpful; lower floor preferred', 'Jordan's interests: Temples, gardens, quiet neighborhoods, vegetarian cuisine', indicating profiles were read and applied."
+    },
+    {
+      "text": "booking-philosophy-applied: Research reflects the booking philosophy — mentions refundability, cancellation policies, or flexibility in hotel comparisons",
+      "passed": true,
+      "evidence": "Response (lines 13-14): 'Flexible cancellation — all six offer free cancellation 5-14 days out, aligning with your booking philosophy' and research file (line 42): 'free cancellation up to 7 days'. All properties in comparative matrix show booking-flexibility details. Lines 94-98 in response explicitly discuss how flexibility shapes the research."
+    },
+    {
+      "text": "star-preference-applied: Hotels researched are in the range consistent with the documented preferences (3-4 star, character properties) — not luxury 5-star or budget hostels",
+      "passed": false,
+      "evidence": "Research includes Ritz-Carlton (~$1700-2400/night) prominently as entry #2, which is far outside the stated 3-4 star character range and conflicts with documented preferences. While noted as 'luxury splurge', it violates the filtering principle. Also includes Hotel Gracery (3.5-star) and Mitsui Garden (4-star) which are outside ryokan/character focus and less aligned with stated preference for 'ryokans and traditional properties with character'. The research was not visibly filtered by stated preferences."
+    },
+    {
+      "text": "comfort-considerations-noted: Notes comfort-relevant details for Alex (floor level, elevator availability, stair situation) in the research",
+      "passed": true,
+      "evidence": "Research file extensively notes Alex's knee considerations: Yumoto entry (lines 44-45) 'Quieter ryokan; rooftop onsen (few stairs) is a feature', 'confirm ground-floor rooms available at booking'. All entries include 'Alex consideration' subsections. Comparative matrix (line 119) includes 'Alex Knee' column. Response (lines 12-13) lists 'Notes comfort-relevant details for Alex (floor level, elevator availability, stair situation)' as filtering criterion."
+    },
+    {
+      "text": "dietary-noted: Flags vegetarian breakfast options or lack thereof — Jordan's strict vegetarian needs affect hotel breakfast evaluation",
+      "passed": true,
+      "evidence": "Research file notes vegetarian details in every entry: Yumoto (line 37) 'vegetarian dinner available (shojin ryori format)', Ritz-Carlton (line 51) 'Michelin-starred kaiseki restaurant (vegetarian tasting menu available)', Gracery (line 66) 'Free vegetarian breakfast'. Response (line 11) explicitly mentions 'flag vegetarian breakfast options or lack thereof'. Dietary needs shaped shortlist."
+    },
+    {
+      "text": "research-file-created: Creates a research file in memory/research/ following naming conventions",
+      "passed": true,
+      "evidence": "File exists at /sessions/lucid-happy-albattani/mnt/Code/cowork-plugins/trip-orchestrator/evals/iteration-3/booking-philosophy-shapes-research/with_skill/outputs/memory_research_hotel-kyoto.md following correct naming convention (research-hotel-kyoto.md format implied by output naming)."
+    },
+    {
+      "text": "no-generic-research: Research should NOT be a generic 'top 10 hotels in Kyoto' list that ignores the documented preferences — it should be visibly filtered by the constraints",
+      "passed": false,
+      "evidence": "While research does reference preferences, the inclusion of Ritz-Carlton as the second main recommendation and central business hotels (Gracery, Mitsui) contradicts the stated filtering by character and ryokan preference. The research presents a broad range rather than a visibly filtered list narrowed to 3-4 star traditional properties. Lines 8-9 in response promise 'booking philosophy and traveler preferences shaped' but research includes generic business hotels not visibly aligned with the stated character preference."
+    },
+    {
+      "text": "no-guide-created: Should NOT create a guide file in memory/guides/ — this is research, guide comes after user approval",
+      "passed": true,
+      "evidence": "No guide files exist in the outputs directory. Only response.md and memory_research_hotel-kyoto.md created. No memory/guides/hotel-kyoto.md or similar guide file was created. Research remains in research/ directory only."
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 2,
+    "total": 7,
+    "pass_rate": 0.714
+  }
+}

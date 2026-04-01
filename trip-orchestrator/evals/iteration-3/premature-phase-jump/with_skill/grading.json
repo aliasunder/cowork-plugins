@@ -1,0 +1,48 @@
+{
+  "eval_id": 4,
+  "eval_name": "premature-phase-jump",
+  "configuration": "with_skill",
+  "expectations": [
+    {
+      "text": "missing-context-identified: Identifies that critical planning context is missing before hotel research can be useful — specifically mentions at least 2 of: budget, booking philosophy, route/cities, or traveler profiles",
+      "passed": true,
+      "evidence": "Response identifies multiple missing prerequisites: 'Which cities beyond Kyoto?' (route), 'What's your exact budget for accommodation?' (budget), 'Booking philosophy?' (flexibility vs cost), and 'Is Sam anxious about travel, or adventurous?' (traveler profile). Lines 9-13 in response.md explicitly state these gaps."
+    },
+    {
+      "text": "redirect-to-prerequisites: Redirects the user toward gathering missing information (Phase 1 tasks) rather than diving straight into hotel research",
+      "passed": true,
+      "evidence": "Response explicitly redirects: 'let's spend 15 minutes answering these questions' (line 18) and 'Once I have those answers, I can design the route efficiently and *then* research hotels' (lines 46-47). The 'What Comes First (Phase 1: Define)' section clearly redirects before research."
+    },
+    {
+      "text": "excitement-acknowledged: Acknowledges the user's enthusiasm about ryokans rather than being purely procedural about phase order",
+      "passed": true,
+      "evidence": "Response opens with 'You're excited about ryokans and want to jump into hotel research, which is totally understandable.' (line 5) and closes with 'Then ryokan dreams become reality.' (line 64), maintaining an empathetic tone throughout."
+    },
+    {
+      "text": "explains-why-not-just-rules: Explains WHY the missing context matters for hotel research (e.g., budget affects star range, booking philosophy affects refundability requirements) — not just 'we need to do Phase 1 first'",
+      "passed": true,
+      "evidence": "Response explains causality: 'Ryokans range from ~¥8,000 ($55) to ¥150,000+ ($1,000+) per night. That dramatically changes the shortlist.' (lines 10-11) and 'If I start researching Kyoto hotels now, I'll probably recommend places you'll want to change once you've decided on the route and locked in your dates.' (lines 15-16). Clearly shows how decisions affect research quality."
+    },
+    {
+      "text": "no-hotel-research-started: Should NOT create any hotel research file or produce hotel recommendations — the prerequisites aren't in place",
+      "passed": true,
+      "evidence": "Checked outputs directory: only response.md exists. No hotel-kyoto.md, ryokan-research.md, or hotel comparison files created. Project structure files (CLAUDE.md, TASKS.md, memory/people/) exist but no research deliverables."
+    },
+    {
+      "text": "no-assumptions-about-budget: Should NOT assume a budget range or star preference to fill the gap — should ask the user",
+      "passed": true,
+      "evidence": "Response asks directly: 'What's your exact budget for accommodation?' (line 22) and 'Budget range for accommodation per night?' (line 41). Does not assume or propose ranges to fill the gap."
+    },
+    {
+      "text": "no-rigid-phase-lecture: Should NOT lecture about phase ordering or give a lengthy explanation of all 8 phases — should focus on the specific missing context that matters for their request",
+      "passed": true,
+      "evidence": "Response never mentions 'phases' by number (except Phase 1 as a label) or describes the overall 8-phase framework. It focuses specifically on why the missing pieces matter for Kyoto hotel research, not a systematic lecture on process."
+    }
+  ],
+  "summary": {
+    "passed": 7,
+    "failed": 0,
+    "total": 7,
+    "pass_rate": 1.0
+  }
+}

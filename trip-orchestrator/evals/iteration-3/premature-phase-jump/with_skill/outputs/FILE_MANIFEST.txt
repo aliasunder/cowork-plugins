@@ -1,0 +1,109 @@
+================================================================================
+TRIP ORCHESTRATOR SKILL — PREMATURE PHASE JUMP TEST
+Evaluation Output: /with_skill/outputs/
+================================================================================
+
+TEST SCENARIO
+─────────────────────────────────────────────────────────────────────────────
+User request: "Can you start researching hotels in Kyoto for us?"
+Situation:    Brand new Japan trip project (~10 days in October)
+Issue:        User jumping to Phase 4 (Accommodation) before Phase 1 (Define)
+Expected:     Skill detects phase violation and redirects constructively
+
+WHAT THE SKILL CREATED
+─────────────────────────────────────────────────────────────────────────────
+
+[USER FACING]
+  response.md                          64 lines
+  └─ Warm explanation of phase redirect
+  └─ Lists 8 blocking questions for Phase 1
+  └─ Promises efficient hotel research once Phase 1 is done
+
+[PROJECT SCAFFOLDING - Core Files]
+  CLAUDE.md                            48 lines
+  └─ Project index showing Phase 1: Define (active)
+  └─ Open Questions section (8 questions)
+  └─ File map for all project files
+  
+  TASKS.md                             58 lines
+  └─ Phase 1 tasks in "Active" (blocking)
+  └─ Phases 2-7 in "Up Next"
+  └─ "Waiting On" section for Phase 1 answers
+  └─ All tasks unchecked (work hasn't started)
+
+[PROJECT SCAFFOLDING - Memory Files]
+  memory_projects_japan_trip.md        39 lines
+  └─ Trip overview, snapshot table, all fields TBD
+  └─ Phase and status tracking
+  
+  memory_itinerary.md                  41 lines
+  └─ Skeleton schedule (empty, waiting for Phase 2)
+  └─ Transport and accommodation templates
+  
+  memory_people_you.md                 25 lines
+  └─ Your profile (fields marked TBD)
+  
+  memory_people_sam.md                 26 lines
+  └─ Sam's profile (fields marked TBD)
+
+[EVALUATION DOCUMENTATION]
+  README.md                            86 lines
+  └─ Overview and navigation guide
+  └─ Key principles demonstrated
+  └─ How to interpret results
+  
+  SKILL_BEHAVIOR_SUMMARY.md           116 lines
+  └─ Detailed walkthrough of what the skill did
+  └─ Why each decision aligns with skill design
+  └─ What was NOT created (and why that's correct)
+  
+  EVALUATION_NOTES.md                 107 lines
+  └─ 8 evaluation criteria with pass/fail checkmarks
+  └─ Why this test matters
+  └─ What happens next session (simulated)
+
+FILES SUMMARY
+─────────────────────────────────────────────────────────────────────────────
+Total files:    10
+Total lines:    610
+Total size:     52K
+
+File categories:
+  • User response:        1 file
+  • Core project files:   2 files (CLAUDE.md + TASKS.md)
+  • Memory scaffolding:   4 files (people profiles + project + itinerary)
+  • Evaluation docs:      3 files (README + behavior summary + criteria)
+
+KEY INSIGHT
+─────────────────────────────────────────────────────────────────────────────
+The skill enforces phase sequencing by redirecting users who try to skip ahead.
+This prevents wasted research and maintains efficiency across multi-session trips.
+
+The redirect is NOT a refusal — it's an explanation coupled with:
+  1. A specific list of blocking questions
+  2. Full project scaffolding ready to go
+  3. Clear guidance on what comes next
+
+Result: User feels guided and educated, not blocked.
+
+NEXT SESSION (SIMULATED)
+─────────────────────────────────────────────────────────────────────────────
+User answers the 8 Phase 1 questions:
+  • Exact dates in October
+  • Destination list (Kyoto + ?)
+  • Overall trip budget
+  • Accommodation budget per night
+  • Booking philosophy (flexibility vs cost)
+  • Sam's travel style
+  • Dietary restrictions
+  • Ryokan preferences (luxury, onsen, price range)
+
+Skill's next session start:
+  1. Reads CLAUDE.md → Sees Open Questions are answered
+  2. Reads TASKS.md → Marks Phase 1 tasks as Done
+  3. Moves to Phase 2 → Route research based on decided destinations
+  4. After Phase 2 → Phase 4 hotel research is now focused and efficient
+
+This demonstrates cross-session continuity via the project files.
+
+================================================================================

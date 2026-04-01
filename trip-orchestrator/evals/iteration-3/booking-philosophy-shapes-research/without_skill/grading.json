@@ -1,0 +1,53 @@
+{
+  "eval_id": 5,
+  "eval_name": "booking-philosophy-shapes-research",
+  "configuration": "without_skill",
+  "expectations": [
+    {
+      "text": "reads-traveler-profiles: Reads memory/people/ profiles before starting research to understand constraints",
+      "passed": true,
+      "evidence": "Response (lines 5-10) explicitly reflects profile details: 'Jordan (vegetarian, temple/garden/architecture focus) + Alex (first Asia visit, food-focused, language anxiety, knee comfort priority)'. These specifics come from the provided memory/people/ files and indicate profile reading before research."
+    },
+    {
+      "text": "booking-philosophy-applied: Research reflects the booking philosophy — mentions refundability, cancellation policies, or flexibility in hotel comparisons",
+      "passed": true,
+      "evidence": "Response extensively discusses cancellation policies for each tier. Lines 47-48: 'Flexible cancellation — all six offer free cancellation 5-14 days out, aligning with your booking philosophy'. Summary table (lines 174-180) has dedicated 'Cancellation' column. Every property entry notes refundability terms, directly shaped by booking philosophy."
+    },
+    {
+      "text": "star-preference-applied: Hotels researched are in the range consistent with the documented preferences (3-4 star, character properties) — not luxury 5-star or budget hostels",
+      "passed": false,
+      "evidence": "Research includes properties outside 3-4 star range: Ritz-Carlton Tokyo entries (implied in discussion, line 42 mentions high-end), and budget options (Hotel Sunroute Plaza at ~$110-150/night, line 89-90) are included. While justified as alternatives, the primary filtering did not strictly adhere to 3-4 star range as stated in preferences. Tier 2 and Tier 3 introduce options that expand beyond the documented preference range."
+    },
+    {
+      "text": "comfort-considerations-noted: Notes comfort-relevant details for Alex (floor level, elevator availability, stair situation) in the research",
+      "passed": true,
+      "evidence": "Response extensively notes Alex's knee considerations throughout. Example: Yumoto (line 45) 'Alex's Mobility: Elevator present. Request ground-floor or 1st-floor tatami room. In-room onsen (soaking tub) = minimal stair use.' Every property includes an 'Alex's Mobility' subsection detailing elevator access, floor options, and stair implications. This is visibly threaded through all recommendations."
+    },
+    {
+      "text": "dietary-noted: Flags vegetarian breakfast options or lack thereof — Jordan's strict vegetarian needs affect hotel breakfast evaluation",
+      "passed": true,
+      "evidence": "Response flags vegetarian options in every entry. Examples: Yumoto (line 46) 'Kaiseki dinner customizable. Staff email in advance with dietary needs.' Gracery (line 83) 'No included meals. Must dine out; abundant vegetarian restaurants nearby'. Summary table (line 174) has implicit dietary considerations noted per property. Response (lines 8-10) lists dietary as filtering constraint."
+    },
+    {
+      "text": "research-file-created: Creates a research file in memory/research/ following naming conventions",
+      "passed": true,
+      "evidence": "Research file exists at /sessions/lucid-happy-albattani/mnt/Code/cowork-plugins/trip-orchestrator/evals/iteration-3/booking-philosophy-shapes-research/without_skill/project/memory/research/hotel-kyoto.md following correct naming convention."
+    },
+    {
+      "text": "no-generic-research: Research should NOT be a generic 'top 10 hotels in Kyoto' list that ignores the documented preferences — it should be visibly filtered by the constraints",
+      "passed": true,
+      "evidence": "Response is visibly filtered: it organizes by Tier (Tier 1: Best Fit, Tier 2: Hybrid, Tier 3: Alternative) with explicit justification tied to preferences. Each property includes multi-sentence rationale tied to Jordan's and Alex's specific constraints (temple focus, vegetarian needs, knee mobility, language anxiety). The research is narrowed from a broader candidate pool (implied by '6 strong candidates across price/location ranges') and filtered by constraints, not presented as generic top-10."
+    },
+    {
+      "text": "no-guide-created: Should NOT create a guide file in memory/guides/ — this is research, guide comes after user approval",
+      "passed": true,
+      "evidence": "No guide files created. Only response.md in outputs and hotel-kyoto.md research file in project/memory/research/. No memory/guides/hotel-kyoto.md or similar curated guide file exists. Research remains in research/ directory awaiting user approval before guide creation."
+    }
+  ],
+  "summary": {
+    "passed": 6,
+    "failed": 1,
+    "total": 7,
+    "pass_rate": 0.857
+  }
+}

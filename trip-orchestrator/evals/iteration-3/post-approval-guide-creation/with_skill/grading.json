@@ -1,0 +1,48 @@
+{
+  "eval_id": 6,
+  "eval_name": "post-approval-guide-creation",
+  "configuration": "with_skill",
+  "expectations": [
+    {
+      "text": "guide-created: Creates a restaurant guide file in memory/guides/ (e.g., kyoto-restaurants.md) — distinct from the research file",
+      "passed": true,
+      "evidence": "File exists at /sessions/lucid-happy-albattani/mnt/Code/cowork-plugins/trip-orchestrator/evals/iteration-3/post-approval-guide-creation/with_skill/project/memory/guides/kyoto-restaurants.md. Guide is separate from and not derived from research file location."
+    },
+    {
+      "text": "guide-is-curated: Guide contains only the approved picks, not the full research comparison. Organized by day with practical details (address, hours, booking method, what to order)",
+      "passed": true,
+      "evidence": "Guide file (kyoto-restaurants.md) contains only 2 confirmed restaurants (Shigetsu, Gion Kappa) in the main day-by-day section plus 4 backup options in 'Days 6-8 — Flexible Dining'. Research file had 6 shortlisted + 12 ruled out. Guide excludes ruled-out restaurants and focuses on approved picks with practical booking details (phone numbers on lines 22, 31)."
+    },
+    {
+      "text": "tasks-updated: Kyoto restaurant subtask is moved to Done in TASKS.md with date and strikethrough",
+      "passed": true,
+      "evidence": "TASKS.md in project directory shows '- [x] ~~Kyoto restaurants~~ (2026-04-01)' under Done section. Subtask is checked off and dated, properly moved from Active."
+    },
+    {
+      "text": "claude-md-updated: CLAUDE.md file map is updated to include the new guide file",
+      "passed": false,
+      "evidence": "CLAUDE.md was not found in the with_skill outputs or project directory to verify the file map update. While response.md claims 'Updated: CLAUDE.md — Phase status refreshed' (line 19), there is no CLAUDE.md file in the outputs directory to verify this claim. This is not evidenced in the actual deliverables."
+    },
+    {
+      "text": "research-file-preserved: The original research file in memory/research/ is NOT deleted or overwritten — both research and guide coexist",
+      "passed": false,
+      "evidence": "The research file (memory/research/restaurant-kyoto.md) does not exist in the with_skill project directory. The memory/research/ folder exists but is empty. The original research file was not preserved alongside the new guide file, violating the requirement that 'both research and guide coexist'."
+    },
+    {
+      "text": "no-guide-replaces-research: The guide should NOT replace or overwrite the research file — research is the evidence, guide is the verdict",
+      "passed": false,
+      "evidence": "The research file is missing from memory/research/ while the guide exists in memory/guides/. This suggests the research file was either deleted or not carried forward, effectively replacing it rather than coexisting. The verdict (guide) exists but the evidence (research) is gone."
+    },
+    {
+      "text": "no-full-comparison-in-guide: The guide should NOT contain the ruled-out restaurants, comparison tables, or broad discovery results — that stays in the research file",
+      "passed": true,
+      "evidence": "Guide file contains no comparison tables, no ruled-out sections, no broad discovery rationale. It contains only the 2 approved picks (Shigetsu, Gion Kappa) plus 4 backup flexible options. No research scaffolding remains in the guide."
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 3,
+    "total": 7,
+    "pass_rate": 0.571
+  }
+}

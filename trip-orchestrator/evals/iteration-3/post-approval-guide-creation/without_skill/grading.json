@@ -1,0 +1,48 @@
+{
+  "eval_id": 6,
+  "eval_name": "post-approval-guide-creation",
+  "configuration": "without_skill",
+  "expectations": [
+    {
+      "text": "guide-created: Creates a restaurant guide file in memory/guides/ (e.g., kyoto-restaurants.md) — distinct from the research file",
+      "passed": false,
+      "evidence": "No output files were created. The outputs/ directory is empty (verified: /sessions/lucid-happy-albattani/mnt/Code/cowork-plugins/trip-orchestrator/evals/iteration-3/post-approval-guide-creation/without_skill/outputs/ contains only directories, no files). No guide file was generated."
+    },
+    {
+      "text": "guide-is-curated: Guide contains only the approved picks, not the full research comparison. Organized by day with practical details (address, hours, booking method, what to order)",
+      "passed": false,
+      "evidence": "No guide file exists to evaluate. Without_skill agent did not create any guide despite user approval being provided in the prompt."
+    },
+    {
+      "text": "tasks-updated: Kyoto restaurant subtask is moved to Done in TASKS.md with date and strikethrough",
+      "passed": false,
+      "evidence": "No TASKS.md update was created in the outputs directory. Without_skill agent did not produce any project file modifications."
+    },
+    {
+      "text": "claude-md-updated: CLAUDE.md file map is updated to include the new guide file",
+      "passed": false,
+      "evidence": "No CLAUDE.md file was created or updated in outputs directory. Without_skill agent did not update project index files."
+    },
+    {
+      "text": "research-file-preserved: The original research file in memory/research/ is NOT deleted or overwritten — both research and guide coexist",
+      "passed": true,
+      "evidence": "The original research file from the eval context (memory/research/restaurant-kyoto.md) was not touched or deleted. Since no new files were created, no deletion occurred. Research file preservation is satisfied by inaction."
+    },
+    {
+      "text": "no-guide-replaces-research: The guide should NOT replace or overwrite the research file — research is the evidence, guide is the verdict",
+      "passed": true,
+      "evidence": "No guide was created, so no replacement occurred. The research file remains untouched and separate from any guide work (because no guide work was performed)."
+    },
+    {
+      "text": "no-full-comparison-in-guide: The guide should NOT contain the ruled-out restaurants, comparison tables, or broad discovery results — that stays in the research file",
+      "passed": true,
+      "evidence": "No guide file was created, so no comparisons or ruled-out data appears anywhere. This negative assertion passes by absence of any guide file that could violate it."
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 4,
+    "total": 7,
+    "pass_rate": 0.429
+  }
+}

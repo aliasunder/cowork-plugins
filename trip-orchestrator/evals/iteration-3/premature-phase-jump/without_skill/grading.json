@@ -1,0 +1,48 @@
+{
+  "eval_id": 4,
+  "eval_name": "premature-phase-jump",
+  "configuration": "without_skill",
+  "expectations": [
+    {
+      "text": "missing-context-identified: Identifies that critical planning context is missing before hotel research can be useful — specifically mentions at least 2 of: budget, booking philosophy, route/cities, or traveler profiles",
+      "passed": true,
+      "evidence": "Response identifies missing prerequisites in six numbered questions: 'Exact dates in October?' (dates), 'Other cities beyond Kyoto?' (route), 'Ryokan intensity' (booking philosophy), 'Budget per night for accommodation?' (budget), 'Special interests?' (preferences), 'Sam's preferences?' (traveler profile). Lines 10-16 in response.md."
+    },
+    {
+      "text": "redirect-to-prerequisites: Redirects the user toward gathering missing information (Phase 1 tasks) rather than diving straight into hotel research",
+      "passed": true,
+      "evidence": "Response provides 'Core questions to nail down first' (line 10) before offering research: 'With those answered, I'll build a structured research plan for ryokans' (line 20). Explicitly pauses research pending clarification (line 8)."
+    },
+    {
+      "text": "excitement-acknowledged: Acknowledges the user's enthusiasm about ryokans rather than being purely procedural about phase order",
+      "passed": true,
+      "evidence": "Response opens with 'You and Sam are excited about experiencing ryokans in Japan' (line 4) and 'That's a great starting point — ryokans are incredible' (line 4). Maintains positive framing of interest throughout."
+    },
+    {
+      "text": "explains-why-not-just-rules: Explains WHY the missing context matters for hotel research (e.g., budget affects star range, booking philosophy affects refundability requirements) — not just 'we need to do Phase 1 first'",
+      "passed": true,
+      "evidence": "Response explains consequences: 'This affects ryokan availability, peak seasons, and weather' (line 12 re: dates), 'Ryokans are *amazing* but can get pricey; many trips do 2–3 nights ryokan + rest in city hotels' (line 13), 'Ryokans range from ~$80/person (basic) to $800+/person (luxury kaiseki experiences)' (line 14). Shows how context shapes research quality."
+    },
+    {
+      "text": "no-hotel-research-started: Should NOT create any hotel research file or produce hotel recommendations — the prerequisites aren't in place",
+      "passed": true,
+      "evidence": "Outputs directory contains only response.md. No hotel research files, ryokan comparisons, or property recommendations created. Project files (CLAUDE.md, TASKS.md) exist but no hotel research deliverables."
+    },
+    {
+      "text": "no-assumptions-about-budget: Should NOT assume a budget range or star preference to fill the gap — should ask the user",
+      "passed": true,
+      "evidence": "Response asks directly: 'Budget per night for accommodation?' (line 14). Does not propose assumed ranges or default star categories."
+    },
+    {
+      "text": "no-rigid-phase-lecture: Should NOT lecture about phase ordering or give a lengthy explanation of all 8 phases — should focus on the specific missing context that matters for their request",
+      "passed": true,
+      "evidence": "Response never references phases, frameworks, or systematic methodology. It focuses entirely on the six specific questions needed before Kyoto hotel research can proceed. No meta-discussion of project workflow."
+    }
+  ],
+  "summary": {
+    "passed": 7,
+    "failed": 0,
+    "total": 7,
+    "pass_rate": 1.0
+  }
+}

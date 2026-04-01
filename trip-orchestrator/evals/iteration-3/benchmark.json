@@ -1,0 +1,101 @@
+{
+  "skill_name": "trip-orchestrator",
+  "iteration": 3,
+  "evals": {
+    "with_skill": [
+      {
+        "eval_name": "premature-phase-jump",
+        "pass_rate": 1.0,
+        "passed": 7,
+        "failed": 0,
+        "total": 7,
+        "tokens": 76583,
+        "duration_s": 215.6
+      },
+      {
+        "eval_name": "booking-philosophy-shapes-research",
+        "pass_rate": 0.714,
+        "passed": 5,
+        "failed": 2,
+        "total": 7,
+        "tokens": 68427,
+        "duration_s": 178.3
+      },
+      {
+        "eval_name": "post-approval-guide-creation",
+        "pass_rate": 0.571,
+        "passed": 4,
+        "failed": 3,
+        "total": 7,
+        "tokens": 57970,
+        "duration_s": 51.3
+      }
+    ],
+    "without_skill": [
+      {
+        "eval_name": "premature-phase-jump",
+        "pass_rate": 1.0,
+        "passed": 7,
+        "failed": 0,
+        "total": 7,
+        "tokens": 44840,
+        "duration_s": 30.2
+      },
+      {
+        "eval_name": "booking-philosophy-shapes-research",
+        "pass_rate": 0.857,
+        "passed": 6,
+        "failed": 1,
+        "total": 7,
+        "tokens": 60788,
+        "duration_s": 162.4
+      },
+      {
+        "eval_name": "post-approval-guide-creation",
+        "pass_rate": 0.429,
+        "passed": 3,
+        "failed": 4,
+        "total": 7,
+        "tokens": 42154,
+        "duration_s": 4.9
+      }
+    ]
+  },
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 0.76,
+        "per_eval": {
+          "premature-phase-jump": 1.0,
+          "booking-philosophy-shapes-research": 0.714,
+          "post-approval-guide-creation": 0.571
+        }
+      },
+      "tokens": {
+        "mean": 67660
+      },
+      "duration_s": {
+        "mean": 148.4
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.76,
+        "per_eval": {
+          "premature-phase-jump": 1.0,
+          "booking-philosophy-shapes-research": 0.857,
+          "post-approval-guide-creation": 0.429
+        }
+      },
+      "tokens": {
+        "mean": 49261
+      },
+      "duration_s": {
+        "mean": 65.8
+      }
+    },
+    "delta": {
+      "pass_rate": "-0.00"
+    }
+  }
+}

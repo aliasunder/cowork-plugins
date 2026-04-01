@@ -20,6 +20,7 @@ Before searching, define what you're looking for:
 - **Hard filters**: Non-negotiable requirements that eliminate options immediately. Pull these from traveler profiles in `memory/people/`.
 - **Nice-to-haves**: Preferences that differentiate between qualifying options.
 - **Budget range**: If the user has provided one. Don't use budget as a hard filter during research — present the full range and let the user decide.
+- **Star/quality preference**: If stated (e.g., "3-4 star"), use as the primary filter but don't rigidly exclude properties above that range when they're price-competitive with options in range. A 5-star property at a 4-star price point is worth including — flag it with a note like "Above stated range but price-competitive at $X/night." Most people won't turn down something better than what they asked for at the same price.
 
 On hard filters: be careful about what you treat as non-negotiable vs. what's a preference. "Must have vegetarian options" for a vegetarian traveler is a hard filter. "Has an elevator" for a traveler with back pain might be a strong preference but not a hard filter — check the traveler profile for specifics about their situation.
 

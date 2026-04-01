@@ -200,6 +200,17 @@ If browser tools are available (Claude in Chrome):
 
 Don't force browser use when simpler tools (web search, AI search) would suffice. Offer it when the task genuinely benefits from interactive navigation.
 
+### Travel Research MCPs
+
+If travel-specific MCP tools are available, use them for structured research that's faster and more reliable than web browsing:
+
+- **Trivago** (trivago-accommodation-search, trivago-accommodation-radius-search) — Hotel discovery and comparison. Best for finding properties near a location, filtering by amenities and ratings, and getting consistent pricing data. Use as the primary discovery tool for hotel research.
+- **DirectBooker** (hotel-search, hotel-details) — Direct booking rates from hotel engines. Use alongside Trivago to compare OTA vs direct pricing — direct rates are often cheaper and the skill's research methodology requires checking both.
+- **lastminute.com** (search_only_hotel, search_flights) — Independent aggregator for cross-validation. Catches properties other tools miss and provides alternative pricing. Use as a verification layer after Trivago/DirectBooker discovery.
+- **Kiwi** (search_flights, resolve_destination_id) — Flight search and comparison. Especially useful for validating whether flight alternatives exist for specific routes (e.g., proving a train is better than flying for a particular leg).
+
+These tools don't require authentication or API keys. When multiple are available, use them in combination: Trivago for broad discovery → DirectBooker for direct rates → lastminute.com for verification. This three-source approach builds confidence in recommendations and catches pricing discrepancies.
+
 ### Subagents for Parallel Work
 
 For tasks that can be parallelized, consider spawning subagents:
@@ -261,9 +272,9 @@ If no CLAUDE.md exists:
 
 These are lessons from real multi-session trip planning:
 
-**On research:** Always cross-validate across multiple sources. Don't trust a single source for ratings, hours, or accessibility claims. Don't filter out options by cost alone during research — present the full range and let the user decide. Read `references/research-methodology.md` for the full process.
+**On research:** Always cross-validate across multiple sources. Don't trust a single source for ratings, hours, or accessibility claims. Don't filter out options by cost alone during research — present the full range and let the user decide. When the user has a star preference (e.g., 3-4 star), use it as the primary filter but don't rigidly exclude properties above that range if they're price-competitive. A 5-star hotel at a 4-star price is a win — include it in the research with a note explaining why it's there despite being above the stated range. The goal is to filter *for* the user's budget and taste, not to gatekeep options they'd obviously want to see. Read `references/research-methodology.md` for the full process.
 
-**On the research → guide pipeline:** Research files are broad and comparative — all options considered, rated, and organized. Guides are curated verdicts created *after* the user has reviewed recommendations and made decisions. The flow is: create research file → present recommendations to the user inline (in day-by-day context for restaurants/activities) → get feedback and decisions → then create the curated guide. Never create a guide before the user has weighed in on the research.
+**On the research → guide pipeline:** Research files are broad and comparative — all options considered, rated, and organized. Guides are curated verdicts created *after* the user has reviewed recommendations and made decisions. The flow is: create research file → present recommendations to the user inline (in day-by-day context for restaurants/activities) → get feedback and decisions → then create the curated guide. Never create a guide before the user has weighed in on the research. **Research files and guide files always coexist** — the research is the evidence, the guide is the verdict. When creating a guide after user approval, never delete, overwrite, or replace the research file. Both stay in their respective directories (`memory/research/` and `memory/guides/`).
 
 **On budget:** Track everything — booked and estimated, cash and points, with payment method and charge status. Read `references/budget-tracking.md` for conventions.
 

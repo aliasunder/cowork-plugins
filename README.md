@@ -1,6 +1,8 @@
 # cowork-plugins
 
-Plugins for [Claude Cowork](https://claude.ai) — the desktop tool for task and file management. Installable via **Settings > Plugins > Add marketplace** using `aliasunder/cowork-plugins`.
+Plugins for **Claude Cowork** — [Cowork](https://support.anthropic.com/en/articles/11145-using-cowork-mode) is a mode in the Claude desktop app that gives Claude access to your files and a sandboxed shell for running code, building documents, and managing tasks. Plugins extend what Cowork can do by adding skills (specialized capabilities) and commands (slash-command workflows).
+
+Install this marketplace via **Settings > Plugins > Add marketplace** using `aliasunder/cowork-plugins`.
 
 ## Plugins
 

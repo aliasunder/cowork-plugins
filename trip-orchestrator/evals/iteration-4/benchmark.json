@@ -1,0 +1,64 @@
+{
+  "iteration": 4,
+  "date": "2026-04-01",
+  "description": "Re-run evals 5+6 with SKILL.md updates (star-preference nuance, research file preservation, MCP tools section). New eval 7 (mid-planning PDF material creation).",
+  "skill_changes": [
+    "Added star-preference nuance: include higher-tier properties when price-competitive, with a note",
+    "Added research file preservation: research and guide files always coexist, never delete research when creating guide",
+    "Added Travel Research MCPs section listing Trivago, DirectBooker, lastminute.com, Kiwi",
+    "Updated references/research-methodology.md with star/quality preference guidance"
+  ],
+  "results": {
+    "eval_5_booking_philosophy": {
+      "with_skill": {
+        "score": "8/8",
+        "positive_passed": 6,
+        "positive_total": 6,
+        "negative_passed": 2,
+        "negative_total": 2,
+        "notes": "Perfect score. Star preference nuance applied correctly — 3-4 star primary filter with luxury options included when price-competitive. Booking philosophy (refundable, comfort premium) shaped every comparison column. Traveler profiles drove hard filters (elevator, English staff, vegetarian breakfast). Research file created, no guide."
+      },
+      "without_skill": "Not re-run — iteration 3 baseline still valid",
+      "delta": "Improvement from iteration 3 where star preference was too rigid. Now includes above-range properties with explicit notes."
+    },
+    "eval_6_post_approval_guide": {
+      "with_skill": {
+        "score": "7/7",
+        "positive_passed": 5,
+        "positive_total": 5,
+        "negative_passed": 2,
+        "negative_total": 2,
+        "notes": "Perfect score. Curated guide created in memory/guides/, distinct from research. Research file preserved (coexistence principle). Tasks updated with strikethrough + date. CLAUDE.md file map updated. Session log written. Guide contains only approved picks organized by day."
+      },
+      "without_skill": "Not re-run — iteration 3 baseline still valid (agent produced no files, asked for clarification instead of acting)",
+      "delta": "Major improvement from iteration 3 where with-skill agent also struggled. Research file preservation language in SKILL.md made the coexistence principle explicit."
+    },
+    "eval_7_mid_planning_pdf": {
+      "with_skill": {
+        "score": "7/8",
+        "positive_passed": 5,
+        "positive_total": 6,
+        "negative_passed": 2,
+        "negative_total": 2,
+        "notes": "Co-review happened (agent proposed full content outline with questions before building). reads-materials-guide failed — agent applied ReportLab best practices but from skill context memory rather than actually reading the reference file. PDF generated with real trip data, warm tone, saved to outputs/. No separate PDF skill invoked.",
+        "corrections": "Grading agent scored co-review-or-outline as FAIL because it only checked output files, not the conversation flow. The agent DID propose a content outline before generation. Corrected to PASS."
+      },
+      "without_skill": {
+        "score": "6/8",
+        "positive_passed": 4,
+        "positive_total": 6,
+        "negative_passed": 2,
+        "negative_total": 2,
+        "notes": "reads-materials-guide expected FAIL (no skill = no reference files). co-review-or-outline FAIL (went straight to generation). PDF generated successfully with real trip data, warm tone, saved to outputs/. Surprisingly competent without the skill.",
+        "corrections": "Grading agent arithmetic error — listed 2 positive failures but reported 7/8. Corrected to 6/8 (4/6 positive + 2/2 negative)."
+      },
+      "delta": "+1 point with skill (7/8 vs 6/8). Skill advantage: co-review workflow (materials-guide says 'co-review content before wrapping in formatting code'). Both variants produced functional PDFs with real data. Skill didn't add as much value here as in research-heavy evals — PDF generation is more about execution than methodology."
+    }
+  },
+  "summary": {
+    "with_skill_avg": "7.6/8 across 3 evals (22/23 total assertions passed)",
+    "iteration_3_comparison": "Evals 5+6 both improved to perfect scores after SKILL.md updates. Star preference nuance and research file preservation fixes validated.",
+    "eval_7_insight": "Skill provides moderate advantage for PDF creation (+1 point). Main value is the co-review workflow. The without-skill agent was surprisingly competent at PDF generation from project files alone. Skill's biggest value remains in research methodology and file management, not material production.",
+    "remaining_gap": "reads-materials-guide assertion failed even with skill — agent knew the pitfalls from SKILL.md context but didn't explicitly read the reference file. Consider whether the skill should more strongly prompt reading references before material creation."
+  }
+}
