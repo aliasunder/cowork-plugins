@@ -1,10 +1,19 @@
 {
   "name": "aliasunder-plugins",
   "description": "Cowork plugins by aliasunder — task-specific skills for Claude Cowork sessions.",
+  "owner": {
+    "name": "aliasunder"
+  },
+  "metadata": {
+    "version": "0.2.0"
+  },
   "plugins": [
     {
-      "id": "trip-orchestrator",
-      "path": "trip-orchestrator"
+      "name": "trip-orchestrator",
+      "source": "./trip-orchestrator",
+      "description": "End-to-end trip planning project manager. Guides multi-session travel planning from first idea to departure day with 8 planning phases, session protocols, research methodology, budget tracking, and material production.",
+      "version": "0.2.0",
+      "keywords": ["travel", "trip-planning", "project-management", "multi-session"]
     }
   ]
 }
