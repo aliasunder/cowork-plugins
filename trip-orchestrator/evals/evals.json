@@ -255,6 +255,56 @@
           "content": "# Session Log — Apr 1A\n\n## Summary\nCompleted Osaka activity planning. All three cities now have full activity schedules with rain alternatives. Ready to start restaurant research phase.\n\n## Changes Made\n- Created memory/guides/osaka-activities.md\n- Updated TASKS.md — all activity tasks closed\n- Updated CLAUDE.md phase to 'between 5 and 6'\n\n## Key Decisions\n- Osaka Castle morning (weekday = less crowded), Shinsekai afternoon\n- Dotonbori for arrival evening — immersive first Osaka experience\n- Skipped Umeda: too far from hotel, more modern/commercial than our vibe\n\n## Next Session\n- Start restaurant research (Tokyo or Kyoto first)\n- Jordan mentioned wanting to share a trip overview with Alex before picking restaurants together"
         }
       ]
+    },
+    {
+      "id": 8,
+      "name": "materials-guide-read-before-build",
+      "prompt": "We're all set on planning — everything is booked and decided. Can you make printed daily cards for the trip? One page per day, black and white, something we can stick in a bag. Should have the schedule, transport details, restaurant picks, and emergency info on each card.",
+      "expected_output": "Should read references/materials-guide.md BEFORE starting any generation work — the guide has the daily card specification (structure, format, tone, what each card includes). Should then co-review the content structure with the user before writing a generation script. Should use real trip data from project files. Should apply ReportLab pitfalls from the materials guide (Paragraph wrapping, KeepTogether). Should save to outputs/. The key test is sequencing: reference file read → content co-review → generation. Not: jump straight to writing a Python script.",
+      "assertions": {
+        "positive": [
+          "reads-materials-guide-before-building: Reads references/materials-guide.md BEFORE writing any generation code or producing any output file. The read must happen first, not after the agent has already started building.",
+          "follows-daily-card-spec: The daily card structure matches the materials guide specification — each card has: date/day/city, schedule table, transport details (if traveling), restaurant picks, emergency info (phone numbers + local emergency number), and rain/low-energy alternative",
+          "co-review-before-generation: Proposes content structure or a plain-text draft of at least one day's card for user review BEFORE writing the full generation script. Does not skip straight to code.",
+          "uses-real-trip-data: Cards contain actual trip data from mock files — real hotel names, activity schedules, restaurant picks, train references — not placeholder content",
+          "applies-reportlab-pitfalls: Generation script wraps table cell content in Paragraph objects (not plain strings) and uses KeepTogether for self-contained sections — pitfalls documented in the materials guide",
+          "saves-to-outputs: Final PDF saved to the outputs/ directory"
+        ],
+        "negative": [
+          "no-build-before-read: Should NOT write a Python script or create any output file before reading references/materials-guide.md. The reference read must come first.",
+          "no-skip-co-review: Should NOT go directly from reading the materials guide to writing a full generation script. The materials guide explicitly says to co-review content before wrapping in formatting code."
+        ]
+      },
+      "files": [
+        {
+          "path": "CLAUDE.md",
+          "content": "# Memory\n\n## Me\nJordan — planning a trip with partner Alex to Japan.\n\n## People\n| Who | Role |\n|-----|------|\n| **Jordan** | Planner. Phone: +1-555-0101 |\n| **Alex** | Partner, travel companion. Phone: +1-555-0202 |\n→ Full profiles: memory/people/\n\n## Projects\n| Name | What |\n|------|------|\n| **Japan Trip** | 10-day Japan trip, Oct 15–24, 2026. Phase: Pre-Trip Prep (Phase 7). All bookings complete. Budget: $8000 USD + 85K United miles. ~$6,100 booked. |\n\n## Trip Planning Status\n- **Last session:** memory/sessions/session-log-apr05-a.md\n- **Phase:** Pre-Trip Prep (Phase 7) — producing traveler materials\n- **Route:** Tokyo (3N) → Kyoto (4N) → Osaka (2N)\n\n## Preferences\n- Jordan is vegetarian (strict — no fish sauce, no dashi with bonito)\n- Alex eats everything\n- USD for costs, Celsius for temps\n\n## File Map\n| Path | What |\n|------|------|\n| memory/itinerary.md | Day-by-day schedule with all bookings |\n| memory/guides/tokyo-activities.md | Tokyo activities |\n| memory/guides/kyoto-activities.md | Kyoto activities |\n| memory/guides/osaka-activities.md | Osaka activities |\n| memory/guides/tokyo-restaurants.md | Tokyo restaurant picks |\n| memory/guides/kyoto-restaurants.md | Kyoto restaurant picks |\n| memory/guides/osaka-restaurants.md | Osaka restaurant picks |"
+        },
+        {
+          "path": "TASKS.md",
+          "content": "# Tasks\n\n## Active\n- [ ] **Pre-trip materials**\n  - [ ] Daily cards (printed)\n  - [ ] Packing lists\n  - [ ] Language cheat sheet\n\n## Up Next\n- [ ] **Final check (Phase 8)**\n\n## Done\n- [x] ~~**All planning phases (1-6)**~~ (2026-04-01)"
+        },
+        {
+          "path": "memory/itinerary.md",
+          "content": "# Japan Trip Itinerary — Oct 15–24, 2026\n\n## Overview\n| City | Nights | Dates | Hotel |\n|------|--------|-------|-------|\n| Tokyo | 3 | Oct 15–18 | Hotel Niwa Tokyo |\n| Kyoto | 4 | Oct 18–22 | Ryokan Kinoe |\n| Osaka | 2 | Oct 22–24 | Hotel Kanra Osaka |\n\n## Day-by-Day\n\n### Day 1 — Oct 15 (Wed): Arrive Tokyo\n- Arrive NRT 15:30 (United UA 837)\n- Narita Express to Tokyo Station (¥3,250/pp)\n- Check in Hotel Niwa Tokyo (1-1-16 Misaki-cho, Chiyoda-ku)\n- Evening: Explore Jimbocho neighborhood\n- Dinner: Afuri Ramen Jimbocho (Alex) / Soranoiro veggie ramen (Jordan), 18:30\n\n### Day 2 — Oct 16 (Thu): Tokyo — Temples & Gardens\n- Morning: Meiji Shrine + Yoyogi Park\n- Lunch: Harajuku Gyoza Lou, 12:00\n- Afternoon: Harajuku backstreets, Omotesando\n- Dinner: Ain Soph Journey (vegetarian), 19:00. Reservation confirmed.\n\n### Day 3 — Oct 17 (Fri): Tokyo — Traditional Side\n- Morning: Senso-ji Temple (arrive 7:30)\n- Lunch: Sometaro (okonomiyaki), Asakusa, 12:30\n- Afternoon: Ueno Park, Yanaka neighborhood\n- Dinner: Ichiran Ramen Ueno (Alex) / T's TanTan veggie (Jordan), 19:00\n\n### Day 4 — Oct 18 (Sat): Tokyo → Kyoto\n- Check out Hotel Niwa by 10:00\n- Shinkansen Nozomi, Tokyo 11:33 → Kyoto 13:48. Car 8, Seats 3A+3B. Ref: JR-7742.\n- Check in Ryokan Kinoe (15-2 Higashimae-cho, Higashiyama-ku)\n- Evening: Gion evening stroll\n- Dinner: Gion Kappa (izakaya), 18:30. Reservation confirmed.\n\n### Day 5 — Oct 19 (Sun): Kyoto — Arashiyama\n- Morning: Bamboo Grove (early) + Tenryu-ji Temple gardens\n- Lunch: Shigetsu (shojin ryori at Tenryu-ji), 11:30\n- Afternoon: Togetsukyo Bridge area\n- Dinner: Gion Kappa, 19:00\n\n### Day 6 — Oct 20 (Mon): Kyoto — Fushimi Inari + Higashiyama\n- Morning: Fushimi Inari (7am start, partial climb)\n- Lunch: Nishiki Warai (okonomiyaki), 12:00\n- Afternoon: Higashiyama — Kiyomizu area, Ninenzaka, Sannenzaka\n- Dinner: Kikunoi Roan (kaiseki), 18:00. Reservation essential — confirmed.\n\n### Day 7 — Oct 21 (Tue): Kyoto — Philosopher's Path\n- Morning: Nanzen-ji Temple\n- Lunch: Omen Nippon (udon), 12:00\n- Afternoon: Philosopher's Path → Ginkaku-ji\n- Dinner: Explore near ryokan — flexible\n\n### Day 8 — Oct 22 (Wed): Kyoto → Osaka\n- Morning: Last Kyoto morning, ryokan breakfast included\n- Lunch: Mumokuteki Cafe (vegetarian), 11:30\n- JR Special Rapid, Kyoto 13:15 → Osaka 13:45. No reservation needed.\n- Check in Hotel Kanra Osaka (3-12-8 Namba, Chuo-ku)\n- Evening: Dotonbori exploration\n- Dinner: Kushikatsu Daruma (Alex) / street food mix (Jordan), ~18:00\n\n### Day 9 — Oct 23 (Thu): Osaka\n- Morning: Osaka Castle (weekday, less crowded)\n- Lunch: Shinsekai street food, ~12:30\n- Afternoon: Shinsekai neighborhood\n- Dinner: Mizuno (okonomiyaki), 19:00. Farewell dinner. Reservation confirmed.\n\n### Day 10 — Oct 24 (Fri): Depart\n- Morning: Last breakfast at Hotel Kanra area cafe\n- Haruka Express, Tennoji 11:45 → KIX 12:20. Ref: HR-9981.\n- Depart KIX 14:30 (United UA 838)"
+        },
+        {
+          "path": "memory/guides/tokyo-activities.md",
+          "content": "# Tokyo Activities\n\n## Day 2 — Oct 16 (Thursday)\n**Main:** Meiji Shrine + Yoyogi Park — peaceful start, massive torii gate, forested paths\n**Afternoon:** Harajuku backstreets (Ura-Hara), Omotesando architecture walk\n**Rain alt:** TeamLab Borderless (book in advance)\n\n## Day 3 — Oct 17 (Friday)\n**Main:** Senso-ji Temple (arrive by 7:30 for quiet photos) + Nakamise-dori\n**Afternoon:** Ueno Park → Yanaka — Tokyo's most traditional neighborhood\n**Rain alt:** Tokyo National Museum (Ueno)"
+        },
+        {
+          "path": "memory/guides/kyoto-activities.md",
+          "content": "# Kyoto Activities\n\n## Day 5 — Oct 19 (Sunday)\n**Main:** Arashiyama — Bamboo Grove (early) + Tenryu-ji Temple gardens\n**Afternoon:** Togetsukyo Bridge area\n**Rain alt:** Nishiki Market covered shopping arcade\n\n## Day 6 — Oct 20 (Monday)\n**Main:** Fushimi Inari (7:00 AM start)\n**Afternoon:** Higashiyama — Kiyomizu area, Ninenzaka, Sannenzaka\n**Rain alt:** Tea ceremony experience (indoor, seated)\n\n## Day 7 — Oct 21 (Tuesday)\n**Main:** Nanzen-ji Temple + Philosopher's Path\n**Afternoon:** Free / rest / explore Gion\n**Rain alt:** Kyoto National Museum\n\n## Day 8 — Oct 22 (Wednesday)\n**Morning:** Last Kyoto morning\n**Afternoon:** Travel to Osaka"
+        },
+        {
+          "path": "memory/guides/osaka-activities.md",
+          "content": "# Osaka Activities\n\n## Day 8 — Oct 22 (Wednesday, afternoon)\n**Arrive from Kyoto.** Dotonbori evening.\n\n## Day 9 — Oct 23 (Thursday)\n**Main:** Osaka Castle morning, Shinsekai afternoon\n**Rain alt:** Umeda Sky Building\n\n## Day 10 — Oct 24 (Friday)\n**Morning:** Last breakfast, souvenirs\n**To airport:** Haruka Express to KIX"
+        },
+        {
+          "path": "memory/sessions/session-log-apr05-a.md",
+          "content": "# Session Log — Apr 5A\n\n## Summary\nAll restaurant guides finalized. All bookings complete. Entering Phase 7 — pre-trip materials.\n\n## Next Session\n- Start producing traveler materials: daily cards, packing lists, language cheat sheet"
+        }
+      ]
     }
   ]
 }

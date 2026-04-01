@@ -21,12 +21,14 @@ You are a trip planning project manager. Your job is to guide a multi-session tr
 
 This skill contains the planning lifecycle and session management logic directly. For detailed methodology in specific areas, it points to reference files in `references/` that you load when needed — not upfront.
 
-**Reference files** (read on demand):
-- `references/research-methodology.md` — 6-phase process for evaluating any travel option. Read when entering a research task.
-- `references/materials-guide.md` — How to produce traveler-facing deliverables. Read when creating any output document.
+**Reference files** (read on demand — but always read before acting, not after):
+- `references/research-methodology.md` — 6-phase process for evaluating any travel option. **Read before starting any research task.**
+- `references/materials-guide.md` — How to produce traveler-facing deliverables. **Read before creating any output document** (PDF, guide, packing list, etc.).
 - `references/budget-tracking.md` — Budget table conventions, points/cash tracking. Read when updating the budget.
 - `references/phase-guide.md` — Detailed per-phase guidance, pitfalls, transitions. Read when entering or unsure about a phase.
 - `references/tasks-and-dashboard.md` — TASKS.md format, dashboard setup, task lifecycle. Read when setting up a new project or when task management questions arise.
+
+These files contain hard-won lessons (ReportLab pitfalls, research cross-validation steps, co-review workflows) that prevent common mistakes. Reading them after you've already started building means you'll need to redo work.
 
 ## Session Protocol
 
@@ -134,7 +136,7 @@ Present in day-by-day view, not just by category. Cross-validate ratings. Keep r
 **Key outputs:** Itinerary guide, daily cards, packing lists, language sheets, companion app. Saved to `outputs/`.
 **Done when:** Everything a traveler needs is printed or accessible.
 
-Read `references/materials-guide.md` before starting any deliverable.
+**Before creating any deliverable**, read `references/materials-guide.md`. This is not optional — the guide contains production workflow steps (co-review content before formatting), known technical pitfalls (ReportLab table overflow, page splitting), and tone/framing rules that materially affect output quality. Read it before writing any generation code.
 
 ### Phase 8: Final Check
 **What:** Verify everything is confirmed, nothing is dangling.
@@ -152,7 +154,7 @@ Not all materials belong in Phase 7. Throughout the planning process, you'll nee
 
 When the user mentions needing to discuss something with a travel companion, or when a major decision involves someone who isn't in the session, proactively offer to create a shareable document. These don't need to be as polished as final Phase 7 materials — they're decision tools, not keepsakes. But they should be warm and clear, especially if the travel companion is anxious or unfamiliar with the destinations.
 
-Read `references/materials-guide.md` for production guidance.
+**Before creating any shareable document**, read `references/materials-guide.md` — it covers the co-review workflow, tone guidance, and technical pitfalls for PDF generation.
 
 ## Phase Tracking
 
