@@ -1,0 +1,68 @@
+{
+  "eval_id": 1,
+  "eval_name": "new-trip-scaffolding",
+  "configuration": "with_skill",
+  "expectations": [
+    {
+      "text": "project-structure-created",
+      "passed": true,
+      "evidence": "Full structure created: CLAUDE.md, TASKS.md, dashboard.html, memory/people/ (2 profiles), memory/projects/japan-trip.md, memory/itinerary.md, memory/glossary.md, memory/sessions/session-log-mar31-a.md."
+    },
+    {
+      "text": "traveler-profiles-created",
+      "passed": true,
+      "evidence": "memory/people/me.md and memory/people/alex.md created as separate profile files with health, dietary, interests, and anxiety details."
+    },
+    {
+      "text": "conventions-gathered",
+      "passed": true,
+      "evidence": "CLAUDE.md Open Questions explicitly flags: 'Temperature units: Celsius or Fahrenheit?', 'Currency display: USD, CAD, JPY, or mixed?'. Preferences section shows 'Currency: TBD', 'Temperature units: TBD'. Not assumed."
+    },
+    {
+      "text": "phase-2-suggested",
+      "passed": true,
+      "evidence": "TASKS.md Up Next section: '1. Phase 2: Route — Compare routes, decide cities, order, and night allocation'. Session log also recommends Phase 2 as next step."
+    },
+    {
+      "text": "knee-framed-as-comfort",
+      "passed": true,
+      "evidence": "CLAUDE.md line 29: 'Alex (omnivore, bad knee from old injury)' — factual, not medicalized. Project file: 'cumulative pain on long days and with stairs. Details being clarified. Will shape hotel location, activity pacing, and daily structure.' Framed as comfort consideration."
+    },
+    {
+      "text": "booking-philosophy-flagged",
+      "passed": true,
+      "evidence": "Flagged in THREE places: (1) CLAUDE.md Open Questions line 38: 'Booking philosophy: Flexibility vs cost vs comfort balance? Hotel star preference?', (2) TASKS.md line 9: 'Decide booking philosophy — Flexibility vs cost vs comfort?', (3) Project file lines 31-35: full 'Hotel Philosophy' section with star levels, refundability, amenity questions."
+    },
+    {
+      "text": "no-methodology-in-claude-md",
+      "passed": true,
+      "evidence": "CLAUDE.md is 78 lines. Contains no session protocol steps, no phase descriptions, no research methodology, no planning principles. Purely project state: Me, People, Terms, Projects, Status, Open Questions, Preferences, File Map."
+    },
+    {
+      "text": "no-inline-traveler-details",
+      "passed": true,
+      "evidence": "CLAUDE.md People table (lines 7-11): '| **Me** | Traveler, planner |' and '| **Alex** | Partner, travel companion |' with '→ Full profiles: memory/people/'. No health, dietary, anxiety, or interest details inline. Matches the skill's correct example exactly."
+    },
+    {
+      "text": "no-meta-files",
+      "passed": false,
+      "evidence": "SCAFFOLDING_COMPLETE.txt and VERIFICATION.md were created — these are meta files about the scaffolding process, not part of the defined project structure."
+    },
+    {
+      "text": "no-hardcoded-assumptions",
+      "passed": true,
+      "evidence": "Currency: 'TBD'. Temperature: 'TBD'. Both flagged as open questions. No silent assumptions made."
+    },
+    {
+      "text": "project-file-not-claude-md-duplicate",
+      "passed": true,
+      "evidence": "Project file (78 lines) has distinct content: Key Constraints section with detailed knee/language/budget analysis, Strategic Decisions section with City Selection and Hotel Philosophy subsections, Flight Strategy with CPP analysis questions, Payment Status table, Loyalty & Points Tracking table, and phased Questions & Follow-ups. CLAUDE.md is a lean index pointing to this file."
+    }
+  ],
+  "summary": {
+    "passed": 10,
+    "failed": 1,
+    "total": 11,
+    "pass_rate": 0.91
+  }
+}

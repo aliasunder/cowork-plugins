@@ -1,0 +1,226 @@
+================================================================================
+                        QUICK REFERENCE CARD
+                    Japan Trip Planning (You & Alex)
+================================================================================
+
+TRIP SNAPSHOT:
+  Destination: Japan (October 2026)     |  Duration: 10 days
+  Travelers: You + Alex                 |  Budget: $8,000 USD
+  Frequent Flyer: 85,000 United miles   |  Style: Deep, 2-3 cities
+
+================================================================================
+YOUR CRITICAL CONSTRAINTS
+================================================================================
+
+YOU ARE VEGETARIAN
+  ├─ Research strategy: Show veg & omni options equally
+  ├─ Focus: Shojin ryori (Buddhist temple cuisine), ramen, sushi, markets
+  └─ Framing: "Here's a temple cuisine option" NOT "vegetarian meal"
+
+ALEX HAS A BAD KNEE (STAIRS PAINFUL AFTER LONG DAYS)
+  ├─ Activity design: 1 main per day, mid-day breaks (1-2pm rest)
+  ├─ Hotel: Elevator or low-stair entry preferred
+  ├─ Transport: Taxis for tired evenings (no forcing metro)
+  └─ Framing: Don't over-medicalize. Alex walks fine, manage comfort.
+
+LANGUAGE ANXIETY (BOTH)
+  ├─ Phrasebook: Restaurant, hotel, transit, emergencies
+  ├─ Tech: Translation app (Google Translate), offline maps
+  ├─ Confidence: Consider Day 1 guided tour
+  └─ Remember: Hotel staff speak English in 3-4 star hotels
+
+$8K BUDGET IS TIGHT (BUT 85K MILES IS KEY)
+  ├─ Flights: $0-2K (85K miles may cover fully)
+  ├─ Hotels: $2-2.5K (9 nights @ $220-280)
+  ├─ Meals: $2.5-3K ($80-100 per person per day)
+  ├─ Activities: $400-600
+  ├─ Transport: $300-500 (JR Pass decision TBD)
+  └─ Contingency: $600-1K
+
+================================================================================
+DECISIONS YOU NEED TO MAKE NOW
+================================================================================
+
+1. WHICH WEEK IN OCTOBER?
+   [ ] Oct 12-22        [ ] Oct 19-29       [ ] Oct 26-Nov 5      [ ] Other: ___
+
+2. WHICH CITIES? (PICK ONE)
+   [ ] A: Kyoto (5N) + Tokyo (4N)        ← RECOMMENDED: Deep temples/gardens + food
+   [ ] B: Kyoto + Osaka + Tokyo (3N ea)  ← BUSIER: More variety, less time per city
+   [ ] C: Kyoto (5N) + Kobe (4N)         ← SLOWEST: Comfort-focused, onsen
+
+================================================================================
+FILES TO READ IMMEDIATELY (IN ORDER)
+================================================================================
+
+1. START_HERE.txt (this folder)        ← You're here. Keep reading.
+2. PROJECT_SUMMARY.md (14 KB)          ← Comprehensive overview
+3. README.md (11 KB)                   ← How to use this project
+4. TASKS.md                            ← Track progress each session
+
+================================================================================
+CORE REFERENCE FILES (WHEN YOU NEED THEM)
+================================================================================
+
+Understanding the Trip:
+  → memory/projects/japan-trip.md (strategy, philosophy, budget)
+  → memory/itinerary.md (master day-by-day template)
+
+Understanding Alex & You:
+  → memory/people/alex.md (knee, language, needs)
+  → memory/people/you.md (vegetarian, interests)
+
+Understanding Japan:
+  → memory/guides/destination-guide.md (weather, money, customs, do's/don'ts)
+  → memory/glossary.md (Japanese terms, airport codes, currency)
+
+Choosing Cities:
+  → memory/research/city-selection.md (4 cities analyzed, 3 scenarios)
+
+Choosing Flights:
+  → memory/research/flight-research.md (85K miles strategy, CPP analysis)
+
+================================================================================
+TIMELINE
+================================================================================
+
+NOW (March 31):
+  □ Decide: Which October week?
+  □ Decide: Which cities? (A/B/C)
+  □ Read: PROJECT_SUMMARY.md + README.md
+
+APRIL 5-15 (Session 1: Research & Discovery):
+  □ Research flights (check United award calendar)
+  □ Research hotels (shortlists per city)
+  □ Research activities (temples, gardens)
+  □ Research restaurants (veg + omni picks)
+  □ Research transport (JR Pass yes/no)
+  □ Output: Shortlists, budget validated, booking ready
+
+MID-APRIL (Session 2: Booking & Logistics):
+  □ Book flights
+  □ Book hotels
+  □ Book activities (if limited inventory)
+  □ Build language phrasebook PDF
+
+LATE APRIL-EARLY MAY (Session 3: Finalization):
+  □ Write itinerary PDF
+  □ Build packing lists (you & Alex)
+  □ Finalize restaurant reservations
+  □ Last-minute confirmations
+
+================================================================================
+SESSION WORKFLOW (EVERY SESSION)
+================================================================================
+
+START:
+  1. Read TASKS.md (see what's active)
+  2. Check CLAUDE.md for "Last session" pointer
+  3. Read the latest memory/sessions/session-log-{date}.md
+
+DO YOUR WORK:
+  4. Research, decide, book
+  5. Update files as you go
+  6. Ask questions, iterate
+
+END:
+  7. Update TASKS.md (mark completed)
+  8. Update CLAUDE.md ("Last session" pointer)
+  9. Create memory/sessions/session-log-{date}.md:
+     - What you did
+     - Decisions made
+     - Files created/updated
+     - Next steps
+
+================================================================================
+WHEN STUCK: QUICK ANSWERS
+================================================================================
+
+"Which cities should we pick?"
+  → Read memory/research/city-selection.md (full analysis)
+  → A (Kyoto+Tokyo) = RECOMMENDED. Best balance of temples + food + pace.
+
+"What about the 85K miles?"
+  → Read memory/research/flight-research.md (scenarios, CPP analysis)
+  → Strategy: Check United award calendar April 2026, calculate value, decide
+
+"How much does this cost?"
+  → memory/projects/japan-trip.md "Budget Breakdown" section
+  → memory/itinerary.md "Budget Summary" section
+  → Base: ~$8K allocated fairly: flights ($0-2K), hotels ($2-2.5K), meals ($2.5-3K)
+
+"What about vegetarian food?"
+  → memory/guides/destination-guide.md "Dining Basics" section
+  → Key: Shojin ryori (Buddhist cuisine), vegetable ramen, sushi, markets
+
+"What about Alex's knee?"
+  → memory/people/alex.md (full profile + mitigation)
+  → memory/guides/destination-guide.md "Accessibility" section
+  → Key: 1 activity/day, mid-day breaks, elevators, taxis when tired
+
+"Is the language barrier a problem?"
+  → Not if you prepare. Phrasebook, translation app, first-day tour (optional)
+  → Hotel staff speak English in 3-4 star hotels
+  → Japanese people generally patient with tourists
+  → Pointing at photos/translations works well
+
+================================================================================
+GOLDEN RULES (DON'T FORGET THESE)
+================================================================================
+
+1. Read session logs for continuity (not OpenMemory)
+2. Update TASKS.md at end of each session
+3. Close tasks when done (don't leave dangling)
+4. Save everything to disk (don't say "I'll remember")
+5. Validate research (cross-check multiple sources)
+6. Show full range of options (don't pre-filter by cost)
+7. Avoid tourist traps (flag mediocre restaurants)
+8. Frame day-by-day (slot options into schedule)
+9. Don't over-medicalize (Alex is fine, just managing comfort)
+10. Have fun planning (this is going to be an amazing trip)
+
+================================================================================
+CONTACT POINT (IF LOST)
+================================================================================
+
+If you're confused about ANYTHING:
+  1. Check TABLE OF CONTENTS below
+  2. Read the recommended file
+  3. If still confused, check README.md "Questions? Start With These Files"
+
+TABLE OF CONTENTS:
+  STARTHERE.txt ..................... How to get started (2 min read)
+  PROJECT_SUMMARY.md ............... Full overview + decision matrix
+  README.md ........................ How to use this project system
+  TASKS.md ......................... Current active tasks
+  CLAUDE.md ........................ Agent memory + session pointers
+  memory/projects/japan-trip.md ... Trip philosophy, strategy, budget
+  memory/people/{you,alex}.md ..... Your profiles + needs
+  memory/glossary.md ............... Japanese terms, currency, airports
+  memory/itinerary.md .............. Master schedule template
+  memory/guides/destination-guide.md ... Japan basics (weather, money, customs)
+  memory/research/city-selection.md ... Why Kyoto, Tokyo, Osaka, or Kobe
+  memory/research/flight-research.md .. 85K miles strategy, CPP analysis
+
+================================================================================
+                             YOU'VE GOT THIS
+================================================================================
+
+The scaffold is complete. Everything you need is in place.
+
+Your job now:
+  1. Discuss dates & cities with Alex (this week)
+  2. Move to Session 1 research (April 5-15)
+  3. Book early May (8-10 weeks before departure = optimal pricing)
+  4. Finalize late April/early May
+  5. Depart October 2026, have an amazing trip
+
+Questions? Read PROJECT_SUMMARY.md next.
+
+Ready? Let's go!
+
+================================================================================
+                           March 31, 2026
+                       Session 0 Complete - Scaffold
+                    Session 1 Ready - Research & Discovery
+================================================================================

@@ -1,0 +1,43 @@
+{
+  "eval_id": 2,
+  "eval_name": "mid-project-session-start-and-research",
+  "configuration": "with_skill",
+  "expectations": [
+    {
+      "text": "session-start-protocol",
+      "passed": true,
+      "evidence": "Session report (lines 19-35) explicitly documents session start: 'Started session by executing Trip Orchestrator skill's session-start protocol: reviewed CLAUDE.md, TASKS.md, and last session log (Mar 28A).' Lists project status (Phase 5 complete, Phase 6 active), travelers, budget, and current phase context before proceeding."
+    },
+    {
+      "text": "status-summary",
+      "passed": true,
+      "evidence": "Context at Session Start section (lines 19-35) provides: Phase status (Phase 5 Activities locked, Phase 6 Restaurants active), active tasks (restaurant research for 3 cities), blockers (ryokan waiting since Mar 25), and TASKS.md items listed. Concisely summarizes current state before work begins."
+    },
+    {
+      "text": "research-file-created",
+      "passed": true,
+      "evidence": "Session report (lines 108-118) documents creation of memory/research/restaurant-research-kyoto.md (1,200+ words) as primary deliverable. This is explicitly a research file in memory/research/, not a guide. Sections include: scope, comparison table (18 restaurants), ruled-out rationale, day-by-day recommendations."
+    },
+    {
+      "text": "no-premature-guide",
+      "passed": true,
+      "evidence": "Session report (lines 159-171) includes 'Verification Checklist (Next Session)' with explicit statement: 'Before creating guide file and sending reservation emails: ... Once verified, proceed to: 1. Create Kyoto restaurant guide file (post-user-approval recommendations)'. Guide creation explicitly deferred pending user approval."
+    },
+    {
+      "text": "day-by-day-presentation",
+      "passed": true,
+      "evidence": "Day-by-day meal slot strategy table (session report lines 94-101) presents recommendations slotted into Oct 18-21 Kyoto schedule: arrival dinner, Oct 19 dinner, lunch/dinner combos, Oct 21 dinner. Meals are integrated into the activity schedule context, not presented as category list. kyoto-restaurant-recommendations.md includes 'Proposed 4-Night Schedule' (lines 98-106)."
+    },
+    {
+      "text": "cross-validation",
+      "passed": true,
+      "evidence": "Methodology section (lines 41-72) documents Phase 3 'Cross-Validation': 'Checked ratings across 2\u20133 sources for consistency. Verified vegetarian accommodation specifics for each option. Reviewed recent reviews (past 6\u201312 months).' research-sources.md file (referenced in outputs) documents 20+ sources consulted including Michelin Guide, Tabelog, TripAdvisor, Google Maps, multiple vegan/vegetarian travel guides."
+    }
+  ],
+  "summary": {
+    "passed": 6,
+    "failed": 0,
+    "total": 6,
+    "pass_rate": 1.0
+  }
+}

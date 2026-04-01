@@ -1,0 +1,58 @@
+{
+  "eval_id": 3,
+  "eval_name": "session-end-task-reconciliation",
+  "configuration": "with_skill",
+  "expectations": [
+    {
+      "text": "session-log-written",
+      "passed": true,
+      "evidence": "session-log-mar30-a.md exists with all required sections: Summary (lines 1-4), Changes Made (lines 6-10), Key Decisions (lines 12-15), Open Items (lines 17-19), Next Session (lines 21-23)"
+    },
+    {
+      "text": "tasks-moved-to-done",
+      "passed": true,
+      "evidence": "TASKS.md lines 5-6: Tokyo and Kyoto restaurant subtasks shown as '[x] ~~**Tokyo restaurants**~~ (2026-03-30)' and '[x] ~~**Kyoto restaurants**~~ (2026-03-30)' with strikethrough and completion dates, physically located in Done section (line 16)"
+    },
+    {
+      "text": "parent-task-not-closed",
+      "passed": true,
+      "evidence": "TASKS.md lines 4-7: Parent task '**Restaurant research — all cities**' remains in Active section with unchecked box '[ ]'. Only 2 of 3 subtasks complete; Osaka restaurants still pending at line 7: '[ ] Osaka restaurants'"
+    },
+    {
+      "text": "ryokan-resolved",
+      "passed": true,
+      "evidence": "TASKS.md line 20 shows ryokan moved to Done section: '[x] ~~**Ryokan confirmation for Kyoto**~~ (2026-03-30) — Confirmed Oct 18–21, ref KYO-8842'. Also captured in CLAUDE.md line 14 project summary: 'Ryokan confirmed: Oct 18–21 (ref KYO-8842)'"
+    },
+    {
+      "text": "claude-md-updated",
+      "passed": true,
+      "evidence": "CLAUDE.md line 17 updated last session pointer to 'memory/sessions/session-log-mar30-a.md'. File Map entries added at lines 33-34 for both restaurant guides. Trip Planning Status at line 18 updated to 'Tokyo and Kyoto restaurant guides complete, Osaka pending'"
+    },
+    {
+      "text": "guide-files-created",
+      "passed": true,
+      "evidence": "kyoto-restaurants.md (56 lines) created with day-by-day picks Oct 18-21, including Shigetsu (dinner), Nishiki Market (lunch), Oka (dinner), Gion Tanto (dinner), Vermillion Café (brunch). tokyo-restaurants.md (47 lines) created with day-by-day picks Oct 15-17, including Ichiran Ramen, Omoide Yokocho, Kanda sushi, Fuglen Coffee. Both include vegetarian + omnivore options per spec"
+    },
+    {
+      "text": "no-checked-tasks-in-active",
+      "passed": true,
+      "evidence": "TASKS.md Active section (lines 3-7): Parent task shows unchecked '[ ]', Osaka subtask shows unchecked '[ ]'. No checked '[x]' items remain in Active section. All completed subtasks have been physically moved to Done section (line 16 onward)"
+    },
+    {
+      "text": "no-dangling-waiting-items",
+      "passed": true,
+      "evidence": "TASKS.md line 14 shows '## Waiting On' section header with no items listed below it (empty). Ryokan confirmation has been moved from Waiting On to Done section (line 20) with reference number KYO-8842 included"
+    },
+    {
+      "text": "no-stale-open-questions",
+      "passed": true,
+      "evidence": "CLAUDE.md has no 'Open Questions' section. Ryokan confirmation is captured in the Projects section (line 14: 'Ryokan confirmed: Oct 18–21 (ref KYO-8842)') and marked Done in TASKS.md with full details. No pending/unresolved reference to ryokan confirmation"
+    }
+  ],
+  "summary": {
+    "passed": 9,
+    "failed": 0,
+    "total": 9,
+    "pass_rate": 1.0
+  }
+}

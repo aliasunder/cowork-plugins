@@ -1,0 +1,62 @@
+{
+  "eval_id": 3,
+  "eval_name": "session-end-task-reconciliation",
+  "configuration": "without_skill",
+  "expectations": [
+    {
+      "text": "session-log-written",
+      "passed": false,
+      "evidence": "Session log 'session-log-mar31-a.md' exists in outputs/ but should be written to memory/sessions/ subdirectory per CLAUDE.md line 17 reference. File is at root of outputs, not in a memory/sessions/ subdirectory structure."
+    },
+    {
+      "text": "tasks-moved-to-done",
+      "passed": false,
+      "evidence": "TASKS.md lines 5-6 show Tokyo and Kyoto restaurant subtasks are marked complete ([x] ~~text~~) with dates, but they remain under the 'Active' section (line 3-8). They should be physically moved to the 'Done' section (line 17+). Currently strikethrough with dates but wrong section."
+    },
+    {
+      "text": "parent-task-not-closed",
+      "passed": true,
+      "evidence": "TASKS.md line 4: Parent task '**Restaurant research — all cities**' remains unchecked under Active section. Osaka restaurants still pending (line 7). Parent is correctly NOT in Done section."
+    },
+    {
+      "text": "ryokan-resolved",
+      "passed": true,
+      "evidence": "TASKS.md line 21: Ryokan confirmation captured with full details '(2026-03-31) — confirmed Oct 18-21, ref KYO-8842'. Session log lines 21-26 provide structured details (dates, reference, status). CLAUDE.md line 14 includes reference in project summary."
+    },
+    {
+      "text": "claude-md-updated",
+      "passed": true,
+      "evidence": "CLAUDE.md line 17 updated: '**Last session:** memory/sessions/session-log-mar31-a.md'. File map entries added at lines 32-33: Tokyo and Kyoto restaurant guides marked as completed with ✅ checkmark."
+    },
+    {
+      "text": "guide-files-created",
+      "passed": true,
+      "evidence": "tokyo-restaurants.md (3093 bytes) and kyoto-restaurants.md (2916 bytes) both created with day-by-day restaurant picks, vegetarian considerations, and reservation details. Properly structured guides aligned with user approval."
+    },
+    {
+      "text": "no-checked-tasks-in-active",
+      "passed": false,
+      "evidence": "TASKS.md lines 5-6: Completed Tokyo and Kyoto restaurant tasks ([x] ~~text~~) are PRESENT in the Active section. Assertion requires completed tasks be physically moved to Done section, not remain in Active. This is a FAILURE."
+    },
+    {
+      "text": "no-dangling-waiting-items",
+      "passed": true,
+      "evidence": "TASKS.md lines 14-15: Waiting On section shows '(none)'. Ryokan confirmation correctly moved to Done (line 21) with reference number KYO-8842 included. No dangling items."
+    },
+    {
+      "text": "no-stale-open-questions",
+      "passed": true,
+      "evidence": "CLAUDE.md contains no 'Open Questions' section. Ryokan details are in project summary (line 14: 'Kyoto ryokan: Oct 18-21, ref KYO-8842'). No stale or pending questions about ryokan confirmation."
+    }
+  ],
+  "summary": {
+    "passed": 6,
+    "failed": 3,
+    "total": 9,
+    "pass_rate": 0.67
+  },
+  "notes": {
+    "critical_failure": "ASSERTION 7 (no-checked-tasks-in-active): The completed restaurant research subtasks for Tokyo and Kyoto are marked with [x] and strikethrough but remain in the Active section instead of being moved to the Done section. This violates the session wrap-up requirement that completed tasks must be physically relocated to Done, not just checked off.",
+    "structural_issue": "ASSERTION 1 (session-log-written): While a session log was created, it is not in the expected memory/sessions/ subdirectory. The CLAUDE.md file references 'memory/sessions/session-log-mar31-a.md' but the actual file location in outputs is at the root, suggesting a path/directory structure issue in the implementation."
+  }
+}

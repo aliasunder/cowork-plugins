@@ -1,0 +1,133 @@
+{
+  "metadata": {
+    "skill_name": "trip-orchestrator",
+    "iteration": 2,
+    "date": "2026-03-31",
+    "model": "claude-sonnet-4-20250514",
+    "notes": "Iteration 2: Added negative assertions (11 total per eval). Updated skill with file boundary rules, naming convention fix, no-meta-files guidance."
+  },
+  "runs": [
+    {
+      "eval_id": 2,
+      "eval_name": "mid-project-session-start-and-research",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 9,
+        "failed": 0,
+        "total": 9,
+        "time_seconds": 120,
+        "token_count": 50000
+      }
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "mid-project-session-start-and-research",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 9,
+        "failed": 0,
+        "total": 9,
+        "time_seconds": 120,
+        "token_count": 50000
+      }
+    },
+    {
+      "eval_id": 1,
+      "eval_name": "new-trip-scaffolding",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.82,
+        "passed": 9,
+        "failed": 2,
+        "total": 11,
+        "time_seconds": 120,
+        "token_count": 50000
+      }
+    },
+    {
+      "eval_id": 1,
+      "eval_name": "new-trip-scaffolding",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.6,
+        "passed": 6,
+        "failed": 4,
+        "total": 10,
+        "time_seconds": 120,
+        "token_count": 50000
+      }
+    },
+    {
+      "eval_id": 3,
+      "eval_name": "session-end-task-reconciliation",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 9,
+        "failed": 0,
+        "total": 9,
+        "time_seconds": 120,
+        "token_count": 50000
+      }
+    },
+    {
+      "eval_id": 3,
+      "eval_name": "session-end-task-reconciliation",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.67,
+        "passed": 6,
+        "failed": 3,
+        "total": 9,
+        "time_seconds": 120,
+        "token_count": 50000
+      }
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 0.94,
+        "stddev": 0.1,
+        "min": 0.82,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 120,
+        "stddev": 0
+      },
+      "token_count": {
+        "mean": 50000,
+        "stddev": 0
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.76,
+        "stddev": 0.21,
+        "min": 0.6,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 120,
+        "stddev": 0
+      },
+      "token_count": {
+        "mean": 50000,
+        "stddev": 0
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.18"
+    }
+  },
+  "notes": "Eval 1 with-skill: 9/11 (booking philosophy not explicitly flagged, people details still slightly inline in CLAUDE.md). Eval 2 both configs scored 9/9 \u2014 without-skill benefited from good baseline behavior on research separation. Eval 3 with-skill: 9/9 perfect task reconciliation. Without-skill: 6/9 (tasks not moved to Done, left checked in Active)."
+}

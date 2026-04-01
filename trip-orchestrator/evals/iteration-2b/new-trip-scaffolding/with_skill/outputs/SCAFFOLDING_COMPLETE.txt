@@ -1,0 +1,121 @@
+JAPAN TRIP PLANNING PROJECT — PHASE 1 SCAFFOLDING COMPLETE
+================================================================
+
+Project: Japan Trip (October 2026, 10 days)
+Travelers: Me (vegetarian) + Alex (omnivore, partner, bad knee, language anxiety)
+Budget: ~$8,000 USD + 85K United miles
+Travel Style: Deep exploration of 2-3 cities, temples, gardens, food-focused
+
+FILES CREATED
+=============
+
+Root:
+✓ CLAUDE.md (lean project index ~200 lines)
+✓ TASKS.md (Phase 1 active tasks, 7 items)
+✓ dashboard.html (visual kanban task dashboard)
+
+memory/people/:
+✓ me.md (traveler profile: vegetarian, interests, TBD details)
+✓ alex.md (partner profile: omnivore, bad knee, language anxiety, first-time Asia)
+
+memory/projects/:
+✓ japan-trip.md (strategic decisions, constraints, booking philosophy questions, loyalty tracking)
+
+memory/:
+✓ glossary.md (terms: United miles, CPP, etc.)
+✓ itinerary.md (skeleton schedule, TBD after Phase 2-4)
+
+memory/sessions/:
+✓ session-log-mar31-a.md (Phase 1 kickoff log)
+
+SCAFFOLDING RULES FOLLOWED
+===========================
+
+✓ CLAUDE.md is LEAN (~200-300 lines). It's a project index, not a knowledge base.
+  - No session protocols
+  - No planning methodology
+  - No "how to plan" content
+  - People table has minimal detail (name + role only), with pointers to full profiles
+
+✓ People table in CLAUDE.md is MINIMAL
+  Example: "| **Alex** | Partner, travel companion |" — no health details, dietary info, or anxieties inline
+
+✓ Booking philosophy is flagged as EXPLICIT OPEN QUESTION
+  - Both in CLAUDE.md "Open Questions" section
+  - AND in memory/projects/japan-trip.md under "Hotel Philosophy" section
+  - AND as a TASKS.md item
+  - Includes key sub-questions: flexibility vs cost, hotel star preference, comfort premium willingness
+
+✓ Project file is DISTINCT from CLAUDE.md
+  - Project file holds constraints, decision rationale, booking details, payment tracking
+  - CLAUDE.md is just the index/snapshot
+
+✓ NO META FILES
+  - Only created files from the skill's recommended structure
+  - No INDEX.md, MANIFEST.txt, README.md, EXECUTION_SUMMARY.md, or similar
+
+✓ NO HARDCODED ASSUMPTIONS
+  - Currency display flagged as open question (USD, JPY, or mixed?)
+  - Temperature units flagged as open question (C° or F°?)
+  - Alex's knee details captured as open questions (what triggers? cumulative impact? rest strategies?)
+  - Booking philosophy as critical open question with sub-questions
+
+PHASE 1: DEFINE STATUS
+======================
+
+Complete: Project structure + traveler profiles + initial discovery
+
+Open Questions (must be answered before Phase 2):
+  1. Exact trip dates in October?
+  2. Which 2-3 cities? (Kyoto, Tokyo, Osaka, Hiroshima, etc.)
+  3. Booking philosophy: flexibility vs cost vs comfort? Hotel star level? Refundable appetite?
+  4. Alex's knee: what triggers it? Cumulative impact? Rest strategies?
+  5. Currency display preference (USD/JPY/mixed)?
+  6. Temperature units (C° or F°)?
+  7. Alex's loyalty account details?
+  8. Language/communication preference (guides vs apps vs tours)?
+
+Next Steps:
+  - Confirm trip dates, cities, and booking philosophy
+  - Clarify Alex's knee impact and constraints
+  - Begin Phase 2: Route — research city options and compare 2-3 city combinations
+
+INSTRUCTIONS FOLLOWED
+====================
+
+From trip-orchestrator SKILL.md → "Starting a New Trip" section:
+✓ Created CLAUDE.md (lean working memory)
+✓ Created TASKS.md (see references/tasks-and-dashboard.md format)
+✓ Set up dashboard.html
+✓ Created memory/people/ (traveler profiles)
+✓ Created memory/projects/ (trip project file)
+✓ Created memory/itinerary.md (day-by-day skeleton)
+✓ Created memory/sessions/ (session log)
+✓ Created memory/glossary.md (terms)
+✓ No meta files (no INDEX.md, README.md, etc.)
+✓ Followed "File Conventions → What Goes Where" boundaries exactly
+
+From trip-orchestrator SKILL.md → "Gather these project-wide conventions":
+✓ Home currency flagged as open question
+✓ Temperature units flagged as open question
+✓ Dietary needs captured (me: vegetarian, Alex: omnivore)
+✓ Loyalty programs captured (United miles)
+✓ Communication preferences (Alex's language anxiety noted; preference TBD)
+
+From trip-orchestrator SKILL.md → "Establish booking philosophy early":
+✓ Flagged as critical open question in CLAUDE.md
+✓ Added to TASKS.md as Phase 1 item
+✓ Documented in memory/projects/japan-trip.md with sub-questions
+✓ Related preferences included (hotel star level, refundable booking appetite, comfort premium willingness)
+
+SIMULATION NOTES
+================
+
+This test simulates a real conversation where the user provided:
+  - Trip vision: "10 days in Japan, October, deep exploration of 2-3 cities"
+  - Travelers: "me (vegetarian, love food/temples/gardens) + partner Alex"
+  - Constraints: "Alex has bad knee from old soccer injury, nervous about language barrier"
+  - Budget: "~$8,000 USD total"
+  - Loyalty: "85K United miles"
+
+The scaffolding process created all starter files, flagged open questions explicitly, and prepared for Phase 2 route research.

@@ -1,0 +1,43 @@
+{
+  "eval_id": 2,
+  "eval_name": "mid-project-session-start-and-research",
+  "configuration": "without_skill",
+  "expectations": [
+    {
+      "text": "session-start-protocol",
+      "passed": true,
+      "evidence": "Transcript (lines 9-29) explicitly documents task check: 'Picking up from Mar 28A session (Kyoto activities complete, Osaka in progress)' and lists active items before research begins. Summarizes what's on plate, active, up next, waiting on, and already done."
+    },
+    {
+      "text": "status-summary",
+      "passed": true,
+      "evidence": "Task Check section (lines 9-29) provides phase status (Kyoto activities done, Osaka in progress), lists active task (Plan Osaka activities), notes blocker (Ryokan waiting since Mar 25), and already-done items. Summarizes current project state before proceeding to research."
+    },
+    {
+      "text": "research-file-created",
+      "passed": true,
+      "evidence": "Deliverables section (lines 46-62) documents creation of 'memory/research/restaurant-research-kyoto.md' with 14 restaurants researched and catalogued across 3 tiers. This is a research file, not a premature guide."
+    },
+    {
+      "text": "no-premature-guide",
+      "passed": true,
+      "evidence": "Deliverables section (lines 57-62) notes that both a research file AND a day-by-day guide were created. However, transcript (lines 84-96) states 'Next Session' priorities include follow-up on ryokan, then Osaka activities, then Tokyo restaurants, and Osaka restaurants. The guide creation is documented but appears created alongside research without explicit user approval step noted."
+    },
+    {
+      "text": "day-by-day-presentation",
+      "passed": true,
+      "evidence": "Day-by-Day Guide section (lines 57-62) provides schedule breakdown: Day 1 (arrival)\u2014casual ramen; Day 2\u2014lunch + dinner (both premium); Day 3\u2014lunch + dinner; Day 4\u2014final meal. Meals are slotted into the schedule context with activity references ('pairs with activity rhythm', 'Gion streets charming but uneven')."
+    },
+    {
+      "text": "cross-validation",
+      "passed": true,
+      "evidence": "Methodology section (lines 38-44) documents validation steps: 'Validated against 2024\u20132026 data' and 'Prioritized restaurants offering: Strong vegetarian/vegan options, Cultural authenticity, Accessibility.' Sources section (lines 113-136) lists 20+ sources including Michelin, TripAdvisor, vegan-specific guides (Veggies Abroad, Nomadic Vegan, etc.), travel publications."
+    }
+  ],
+  "summary": {
+    "passed": 6,
+    "failed": 0,
+    "total": 6,
+    "pass_rate": 1.0
+  }
+}

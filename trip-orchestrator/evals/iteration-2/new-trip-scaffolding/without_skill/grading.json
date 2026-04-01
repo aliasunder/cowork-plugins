@@ -1,0 +1,87 @@
+{
+  "eval_id": 1,
+  "eval_name": "new-trip-scaffolding",
+  "configuration": "without_skill",
+  "expectations": [
+    {
+      "text": "project-structure-created",
+      "passed": true,
+      "evidence": "Full directory structure present: CLAUDE.md, TASKS.md, memory/{people, projects, sessions, research, guides}, outputs/. Verified with `find` commands showing all required directories."
+    },
+    {
+      "text": "traveler-profiles-created",
+      "passed": true,
+      "evidence": "Two individual profile files created: memory/people/you.md and memory/people/alex.md. Both contain health/dietary/interests/anxiety details. alex.md includes knee condition (lines 9-16), language anxiety (lines 40-48). you.md includes vegetarian diet (lines 9-11), interests (lines 13-16), accommodation constraints (lines 23-27)."
+    },
+    {
+      "text": "conventions-gathered",
+      "passed": true,
+      "evidence": "Currency, temperature, and loyalty programs documented with open questions flagged. Glossary.md defines Yen (line 17: '~100 ¥ = $0.70 USD (October 2026 rate TBD)'). Destination-guide.md documents temperature in Fahrenheit AND Celsius (lines 13-15). Flight-research.md flags Scenario A/B/C decision pending (lines 76-89). No assumptions made without flagging 'TBD' or 'pending confirmation'."
+    },
+    {
+      "text": "phase-2-suggested",
+      "passed": false,
+      "evidence": "Next action is documented as 'Confirm dates and cities (Session 1)' in japan-trip.md line 168, but no explicit 'Phase 2' label or 'Route planning' framing. The work is described as 'Session 1 (research)' with specific tasks, but not explicitly branded as a distinct 'Phase 2' milestone with route-focused narrative."
+    },
+    {
+      "text": "knee-framed-as-comfort",
+      "passed": true,
+      "evidence": "Alex's knee is consistently framed as comfort/cumulative-impact, not disability or dealbreaker. alex.md line 10: 'stairs become painful after long days of activity. Not a complete blocker, but a real constraint.' Line 15: 'Note stairs in guides, but don't over-medicalize (Alex isn't disabled, just managing comfort).' CLAUDE.md line 44: 'Don't over-medicalize — Alex walks fine, just manage stairs and standing.'"
+    },
+    {
+      "text": "booking-philosophy-flagged",
+      "passed": false,
+      "evidence": "Booking philosophy is NOT explicitly flagged as an open question. Flight research presents Scenarios A/B/C (all-miles, hybrid, cash) with pros/cons and decision pending (lines 76-89), but does NOT flag 'booking philosophy' (flexibility vs. cost vs. balance) as a conversation topic to establish with traveler. The decision tree assumes cost/CPP analysis, not values discussion."
+    },
+    {
+      "text": "no-methodology-in-claude-md",
+      "passed": false,
+      "evidence": "CLAUDE.md contains 'Agent Workflow Notes' (line 46-64) with session protocol steps: 'Always check TASKS.md first' (line 49), 'Read the Last session log' (line 50), 'Document everything on disk' (line 52). Also includes 'Known Patterns' with research validation methodology (line 59: 'Research validation: Use Web Search to cross-check Perplexity results'). This violates the assertion that CLAUDE.md should NOT contain session protocol or methodology."
+    },
+    {
+      "text": "no-inline-traveler-details",
+      "passed": false,
+      "evidence": "CLAUDE.md People section (lines 6-12) contains inline health + dietary details, not just pointers. Line 10 includes: 'Alex — Planning partner, eats everything. Bad left knee from old soccer injury — walks fine but stairs become painful after long days of activity. Nervous about language barrier.' This should only point to memory/people/ files, not include specific health/anxiety details inline."
+    },
+    {
+      "text": "no-meta-files",
+      "passed": false,
+      "evidence": "README.md and PROJECT_SUMMARY.md were created in outputs/ root. These are meta files explaining project structure and status, not in the defined project structure (CLAUDE.md, TASKS.md, memory/, outputs/shareable-artifacts). Assertion says should NOT have created README.md, MANIFEST.txt, EXECUTION_SUMMARY.md. Both README.md and PROJECT_SUMMARY.md present and are explanatory/meta in nature."
+    },
+    {
+      "text": "no-hardcoded-assumptions",
+      "passed": true,
+      "evidence": "Temperature, currency, and distance all flagged as pending or explicitly noted with both units. destination-guide.md line 13: 'Kyoto | 55–68°F (13–20°C)' — both Fahrenheit and Celsius provided. glossary.md line 17: '~100 ¥ = $0.70 USD (October 2026 rate TBD)' — rate flagged as TBD. flight-research.md line 46: 'October 2026 outlook: Probably moderate award inventory' — labeled 'Probably,' not asserted. No silent assumptions detected."
+    },
+    {
+      "text": "project-file-not-claude-md-duplicate",
+      "passed": true,
+      "evidence": "japan-trip.md and CLAUDE.md contain distinct content. japan-trip.md focuses on strategic decisions, budget breakdown (lines 33-44), detailed city analysis (lines 19-30), activity priorities (lines 96-113), transport strategy (lines 114-124). CLAUDE.md is a snapshot summary with pointers to full files. They are not restatements — japan-trip.md is the strategic deep-dive, CLAUDE.md is the working snapshot."
+    }
+  ],
+  "summary": {
+    "passed": 6,
+    "failed": 4,
+    "total": 10,
+    "pass_rate": 0.60
+  },
+  "detailed_notes": {
+    "critical_failures": [
+      "no-methodology-in-claude-md: CLAUDE.md contains 'Agent Workflow Notes' including session protocols and research methodology that should not be present.",
+      "no-inline-traveler-details: CLAUDE.md People section includes specific health/dietary/anxiety details inline instead of just table pointers.",
+      "no-meta-files: README.md and PROJECT_SUMMARY.md created as explanatory meta files outside the defined structure."
+    ],
+    "partial_gaps": [
+      "phase-2-suggested: Session 1 is described but not explicitly framed as 'Phase 2' with route-planning narrative.",
+      "booking-philosophy-flagged: Flight strategy is analyzed (cost/CPP), but traveler's booking philosophy (flexibility vs. cost vs. balance) is not flagged as an open conversation topic."
+    ],
+    "strengths": [
+      "Full directory structure created correctly with all required subdirectories.",
+      "Traveler profiles are comprehensive with health, dietary, interests, and anxiety details in dedicated files.",
+      "Conventions (currency, temperature, loyalty programs) are documented with TBD flags and dual units.",
+      "Alex's knee is consistently framed as comfort/cumulative-impact, not disability.",
+      "Project file (japan-trip.md) is distinct from CLAUDE.md snapshot with strategic depth.",
+      "No hardcoded assumptions about temperature, currency, or distance units."
+    ]
+  }
+}

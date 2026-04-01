@@ -1,0 +1,99 @@
+{
+  "skill_name": "trip-orchestrator",
+  "evals": [
+    {
+      "id": 1,
+      "name": "new-trip-scaffolding",
+      "prompt": "Hey! My partner Alex and I are planning a 10-day trip to Japan this October. We've got about $8000 USD budget total. Alex has a bad knee from an old soccer injury — they can walk fine but stairs are rough after a long day. Neither of us has been to Asia before and Alex is a bit nervous about the language barrier. I'm vegetarian but Alex eats everything. We love food, temples, gardens, and would rather go deep in 2-3 cities than rush around. We have 85,000 United miles we could use. Can you help us start planning?",
+      "expected_output": "Should scaffold a complete project structure, create traveler profiles (capturing Alex's knee situation as cumulative impact not a dealbreaker, the user's vegetarianism with specificity questions, Alex's anxiety about language), gather conventions (USD, Fahrenheit vs Celsius preference, United miles with minimum CPP), establish booking philosophy, and suggest Phase 2 (route research) as next steps. Should NOT hardcode assumptions about currency display, temperature units, or dietary columns.",
+      "assertions": {
+        "positive": [
+          "project-structure-created: Creates the full directory structure (CLAUDE.md, TASKS.md, memory/people/, memory/projects/, memory/sessions/, memory/research/, memory/guides/, outputs/, archive/)",
+          "traveler-profiles-created: Creates individual profile files in memory/people/ for each traveler with health, dietary, interests, anxiety details",
+          "conventions-gathered: Asks about or documents currency, temperature units, loyalty programs, booking philosophy — doesn't silently assume",
+          "phase-2-suggested: Suggests Phase 2 (Route) as the next step",
+          "knee-framed-as-comfort: Alex's knee is described as cumulative impact / comfort consideration, not a disability or dealbreaker",
+          "booking-philosophy-flagged: Flags booking philosophy as something to establish (flexibility vs cost vs balance)"
+        ],
+        "negative": [
+          "no-methodology-in-claude-md: CLAUDE.md should NOT contain session protocol steps, phase descriptions, research pipeline explanation, session log format, or any 'how to plan' content — the skill provides all of that",
+          "no-inline-traveler-details: CLAUDE.md People section should NOT contain full health specifics, dietary strictness details, interest lists, or anxiety details inline — just a summary table row per person with pointers to memory/people/",
+          "no-meta-files: Should NOT create INDEX.md, MANIFEST.txt, README.md, EXECUTION_SUMMARY.md, or any files not in the defined project structure",
+          "no-hardcoded-assumptions: Should NOT silently assume temperature units, distance units, or currency display format without confirming. Should flag as 'confirm with user' or ask directly",
+          "project-file-not-claude-md-duplicate: The project file in memory/projects/ should contain distinct content from CLAUDE.md — it holds booking details, decision rationale, constraints, payment tracking — not a restatement of the same trip snapshot and budget breakdown"
+        ]
+      },
+      "files": []
+    },
+    {
+      "id": 2,
+      "name": "mid-project-session-start-and-research",
+      "prompt": "Hey, picking up where we left off. Can you check what's on my plate and then let's start researching restaurants for Kyoto?",
+      "expected_output": "Should follow session-start protocol (read CLAUDE.md, TASKS.md, last session log), validate phase state, summarize status, then when moving to restaurant research: read research-methodology.md reference, conduct broad discovery, create a research file (not a guide), and present recommendations inline in day-by-day context for user discussion before creating any guide file.",
+      "assertions": {
+        "positive": [
+          "session-start-protocol: Follows session-start protocol — reads CLAUDE.md, TASKS.md, and last session log before starting work",
+          "status-summary: Provides a concise status summary — current phase, active tasks, blockers, suggested focus",
+          "research-file-created: Creates a research file in memory/research/ with broad discovery, comparison table, and ruled-out rationale",
+          "no-premature-guide: Does NOT create a guide file in memory/guides/ — research only, guide comes after user approval",
+          "day-by-day-presentation: Presents restaurant recommendations slotted into the daily schedule context, not just by category",
+          "cross-validation: Cross-validates restaurant information across multiple sources, doesn't trust a single source"
+        ],
+        "negative": [
+          "no-research-prefix-duplication: Research files in memory/research/ should NOT have 'research-' in the filename — the directory already provides that context. Should be restaurant-kyoto.md not research-restaurant-research-kyoto.md",
+          "no-restaurants-in-activity-guides: Should NOT modify or embed restaurant picks into existing activity guide files (memory/guides/kyoto-activities.md). Restaurant research stays in its own files",
+          "no-guide-before-approval: Should NOT create any file in memory/guides/ with 'restaurant' in the name during this session — the user hasn't reviewed and approved recommendations yet"
+        ]
+      },
+      "files": [
+        {
+          "path": "CLAUDE.md",
+          "content": "# Memory\n\n## Me\nJordan — planning a trip with partner Alex to Japan.\n\n## People\n| Who | Role |\n|-----|------|\n| **Alex** | Partner. Bad knee (old soccer injury) — cumulative impact over long days, not a dealbreaker for individual stairs. Nervous about language barrier, first time in Asia. Eats everything. |\n\n## Projects\n| Name | What |\n|------|------|\n| **Japan Trip** | 10-day Japan trip, Oct 15–24, 2026. Phase: Activities. Route: Tokyo (3N) → Kyoto (4N) → Osaka (2N). Budget: $8000 USD + 85K United miles. |\n\n## Trip Planning Status\n- **Last session:** memory/sessions/session-log-mar28-a.md\n- **Phase:** ✅ Activities (Phase 5) — Tokyo and Kyoto activities planned, Osaka in progress\n- **Route:** Tokyo (3N) → Kyoto (4N) → Osaka (2N)\n\n## Preferences\n- Jordan is vegetarian (strict — no fish sauce, no dashi with bonito)\n- USD for costs, Celsius for temps\n- Prefer ryokans with character over business hotels\n- One main activity per day, flexible afternoons\n- Booking philosophy: flexible/refundable when possible, willing to pay a bit more for comfort and cancellation protection\n\n## File Map\n| Path | What |\n|------|------|\n| memory/guides/tokyo-activities.md | Tokyo day-by-day activities |\n| memory/guides/kyoto-activities.md | Kyoto day-by-day activities |\n| memory/research/hotel-research-tokyo.md | Tokyo hotel research |\n| memory/research/hotel-research-kyoto.md | Kyoto hotel research |\n| memory/research/hotel-research-osaka.md | Osaka hotel research |"
+        },
+        {
+          "path": "TASKS.md",
+          "content": "# Tasks\n\n## Active\n- [ ] **Plan Osaka activities** — last city, need day-by-day schedule\n  - Check temple hours for weekday vs weekend\n  - Include Dotonbori evening options\n\n## Up Next\n- [ ] **Restaurant research — all cities**\n  - [ ] Tokyo restaurants\n  - [ ] Kyoto restaurants\n  - [ ] Osaka restaurants\n- [ ] **Create packing lists**\n\n## Waiting On\n- [ ] **Ryokan confirmation for Kyoto** — emailed 3 days ago, no response yet (since 2026-03-25)\n\n## Done\n- [x] ~~**Research Tokyo hotels**~~ (2026-03-20)\n- [x] ~~**Research Kyoto hotels**~~ (2026-03-22)\n- [x] ~~**Research Osaka hotels**~~ (2026-03-24)\n- [x] ~~**Plan Tokyo activities**~~ (2026-03-26)\n- [x] ~~**Plan Kyoto activities**~~ (2026-03-28)"
+        },
+        {
+          "path": "memory/sessions/session-log-mar28-a.md",
+          "content": "# Session Log — Mar 28A\n\n## Summary\nCompleted Kyoto activity planning. 4 days of activities with rain alternatives. Fushimi Inari scheduled for morning (less crowded), bamboo grove for afternoon.\n\n## Changes Made\n- Created memory/guides/kyoto-activities.md\n- Updated CLAUDE.md phase status\n- Updated TASKS.md\n\n## Key Decisions\n- Fushimi Inari in early morning (7am start) to avoid crowds and heat — Alex's knee will be fresh\n- Skipped Kinkaku-ji (too crowded, touristy) in favor of quieter Nanzen-ji\n- Rain alternative: Nishiki Market food tour\n\n## Open Items\n- Still waiting on Kyoto ryokan email confirmation\n- Osaka activities not started\n\n## Next Session\n- Plan Osaka activities\n- Start restaurant research (Kyoto first since activities are done)"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "session-end-task-reconciliation",
+      "prompt": "Ok I think we're done for today. Can you wrap up the session? We finished the Kyoto restaurant research and I approved your picks, and we also finished the Tokyo restaurant research. Oh and the ryokan emailed back — confirmed for Oct 18-21, ref number KYO-8842.",
+      "expected_output": "Should: (1) Write a session log with key decisions and changes. (2) Create the Kyoto restaurant guide (since user approved picks) and Tokyo restaurant guide. (3) Update TASKS.md — move completed restaurant subtasks to Done with dates AND since both Kyoto and Tokyo are done, check if parent task should be closed (it shouldn't — Osaka restaurants still pending). (4) Update CLAUDE.md — move ryokan from open items, update file map with new guide files, update last session pointer. (5) Move ryokan from Waiting On to Done in TASKS.md with confirmation details.",
+      "assertions": {
+        "positive": [
+          "session-log-written: Writes a session log to memory/sessions/ with summary, changes, key decisions, and next session",
+          "tasks-moved-to-done: Completed restaurant subtasks (Kyoto, Tokyo) are in the Done section with completion dates and strikethrough",
+          "parent-task-not-closed: Parent task 'Restaurant research — all cities' should NOT be moved to Done — Osaka restaurants are still pending",
+          "ryokan-resolved: Ryokan confirmation details (ref KYO-8842, Oct 18-21) are captured somewhere in project files",
+          "claude-md-updated: CLAUDE.md is updated with new last session pointer and file map entries for new files",
+          "guide-files-created: Creates restaurant guide files for Kyoto and Tokyo in memory/guides/ (user approved picks)"
+        ],
+        "negative": [
+          "no-checked-tasks-in-active: Completed tasks ([x]) should NOT remain in the Active, Up Next, or Waiting On sections — they must be physically moved to the Done section",
+          "no-dangling-waiting-items: The ryokan was confirmed — it should NOT still appear in Waiting On. Must be moved to Done with the reference number",
+          "no-stale-open-questions: CLAUDE.md Open Questions should NOT still list the ryokan confirmation as a pending/unresolved question — it was resolved this session"
+        ]
+      },
+      "files": [
+        {
+          "path": "CLAUDE.md",
+          "content": "# Memory\n\n## Me\nJordan — planning a trip with partner Alex to Japan.\n\n## People\n| Who | Role |\n|-----|------|\n| **Alex** | Partner. Bad knee — cumulative impact. Nervous about language barrier. Eats everything. |\n\n## Projects\n| Name | What |\n|------|------|\n| **Japan Trip** | 10-day Japan trip, Oct 15–24, 2026. Phase: Restaurants. Route: Tokyo (3N) → Kyoto (4N) → Osaka (2N). Budget: $8000 USD + 85K United miles. |\n\n## Trip Planning Status\n- **Last session:** memory/sessions/session-log-mar29-a.md\n- **Phase:** Restaurants (Phase 6) — researching restaurants per city\n- **Route:** Tokyo (3N) → Kyoto (4N) → Osaka (2N)\n\n### Open Questions\n- **Kyoto ryokan confirmation** — emailed, waiting for response (since Mar 25)\n\n## Preferences\n- Jordan is vegetarian (strict — no fish sauce, no dashi with bonito)\n- USD for costs, Celsius for temps\n- Booking philosophy: flexible/refundable, comfort priority\n\n## File Map\n| Path | What |\n|------|------|\n| memory/guides/tokyo-activities.md | Tokyo activities |\n| memory/guides/kyoto-activities.md | Kyoto activities |\n| memory/guides/osaka-activities.md | Osaka activities |\n| memory/research/restaurant-research-kyoto.md | Kyoto restaurant research |\n| memory/research/restaurant-research-tokyo.md | Tokyo restaurant research |"
+        },
+        {
+          "path": "TASKS.md",
+          "content": "# Tasks\n\n## Active\n- [ ] **Restaurant research — all cities**\n  - [ ] Tokyo restaurants\n  - [ ] Kyoto restaurants\n  - [ ] Osaka restaurants\n\n## Up Next\n- [ ] **Create packing lists**\n- [ ] **Build itinerary guide PDF**\n- [ ] **Create daily cards**\n\n## Waiting On\n- [ ] **Ryokan confirmation for Kyoto** — emailed, no response yet (since 2026-03-25)\n\n## Done\n- [x] ~~**Plan Tokyo activities**~~ (2026-03-26)\n- [x] ~~**Plan Kyoto activities**~~ (2026-03-28)\n- [x] ~~**Plan Osaka activities**~~ (2026-03-29)"
+        },
+        {
+          "path": "memory/sessions/session-log-mar29-a.md",
+          "content": "# Session Log — Mar 29A\n\n## Summary\nCompleted Osaka activity planning. Started Kyoto restaurant research — broad discovery phase done, 18 candidates found.\n\n## Changes Made\n- Created memory/guides/osaka-activities.md\n- Created memory/research/restaurant-research-kyoto.md (in progress)\n\n## Key Decisions\n- Osaka: Dotonbori evening on day 1, Osaka Castle morning on day 2 (less crowded weekday)\n\n## Next Session\n- Finish Kyoto restaurant research (cross-validation + recommendations)\n- Start Tokyo restaurant research"
+        }
+      ]
+    }
+  ]
+}

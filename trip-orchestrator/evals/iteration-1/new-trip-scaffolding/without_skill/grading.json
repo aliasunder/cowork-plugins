@@ -1,0 +1,43 @@
+{
+  "eval_id": 1,
+  "eval_name": "new-trip-scaffolding",
+  "configuration": "without_skill",
+  "expectations": [
+    {
+      "text": "traveler-profiles-created",
+      "passed": true,
+      "evidence": "Separate profile files created: memory_people_you.md and memory_people_alex.md. Alex's knee documented ('Bad knee (soccer injury) \u2014 can walk fine but stairs taxing after long days'). Dietary details captured ('You: Vegetarian', 'Alex: Eats everything'). Language anxiety noted for Alex."
+    },
+    {
+      "text": "conventions-gathered",
+      "passed": true,
+      "evidence": "Conventions established in CLAUDE.md: USD currency, budget allocation, flight strategy with United 85,000 miles. Dietary constraints clearly stated. However, no explicit booking philosophy section\u2014questions for clarification (lines 78-84) address this indirectly but not as systematically as 'with_skill' version."
+    },
+    {
+      "text": "booking-philosophy-addressed",
+      "passed": false,
+      "evidence": "While question #5 asks 'Is $8,000 hard cap, or is there some flexibility for higher priority items?' this doesn't directly address the booking philosophy (flexibility vs. cost vs. balance). No section explicitly states this as a core project convention to be established early."
+    },
+    {
+      "text": "project-structure-complete",
+      "passed": true,
+      "evidence": "All core files created: CLAUDE.md, TASKS.md, traveler profiles (memory_people_you.md, memory_people_alex.md), memory_glossary.md, memory_projects_japan-trip.md. Less elaborate file structure than with_skill version but covers essential scaffolding."
+    },
+    {
+      "text": "knee-not-dealbreaker",
+      "passed": true,
+      "evidence": "CLAUDE.md (lines 22-25) frames knee as a mobility planning consideration: 'Can walk fine but stairs are taxing after long days \u2192 Prefer elevators/ramps, minimize stair climbing, strategic rest days.' Not framed as a disability constraint."
+    },
+    {
+      "text": "next-steps-suggested",
+      "passed": true,
+      "evidence": "Questions for Clarification section (lines 78-84) outlines next steps: confirm cities/dates, gather preferences. TASKS.md lists 'Create trip planning scaffold' as in progress and pending tasks (destination research, flight research, hotel shortlisting) clearly outlined. However, lacks the explicit Phase 2 structure provided by with_skill version."
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 1,
+    "total": 6,
+    "pass_rate": 0.8333333333333334
+  }
+}

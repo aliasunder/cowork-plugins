@@ -1,0 +1,58 @@
+{
+  "eval_id": 2,
+  "eval_name": "mid-project-session-start-and-research",
+  "configuration": "with_skill",
+  "expectations": [
+    {
+      "text": "session-start-protocol",
+      "passed": true,
+      "evidence": "SESSION_SUMMARY.md lines 15-25 show validation of project status, last session check (Mar 28A), and open items review. CLAUDE.md line 17 updated with 'Last session: memory/sessions/session-log-mar31-a.md'. Session log Mar 31A created documenting protocol completion."
+    },
+    {
+      "text": "status-summary",
+      "passed": true,
+      "evidence": "SESSION_SUMMARY.md lines 9-11 provide concise overview. Lines 15-25 document phase alignment (Phase 6: Restaurants), active blockers (ryokan confirmation low-priority), and current work. CLAUDE.md lines 16-19 provide quick project status with phase and route."
+    },
+    {
+      "text": "research-file-created",
+      "passed": true,
+      "evidence": "memory/research/restaurant-kyoto.md created with 296 lines spanning 6 phases: (1) Hard Filters & Criteria (lines 25-38), (2) Broad Discovery table 20+ candidates in 5 categories (lines 41-86), (3) Cross-Validation verification sources (lines 89-124), (4) Ruled-Out Table 8+ candidates (lines 128-138), (5) Day-by-Day Recommendations Oct 18-21 slotted into schedule (lines 142-244), (6) Booking Priority (lines 247-264). README.md line 19 confirms research file created."
+    },
+    {
+      "text": "no-premature-guide",
+      "passed": true,
+      "evidence": "No file named *restaurant* exists in memory/guides/. Only kyoto-activities.md present (558 bytes), untouched. README.md lines 34-35 explicitly state 'No guide file (memory/guides/kyoto-restaurants.md) — research only, guide comes after user approval per methodology'. SESSION_SUMMARY.md lines 121-122 confirm 'No guide file created — awaiting user approval'."
+    },
+    {
+      "text": "day-by-day-presentation",
+      "passed": true,
+      "evidence": "restaurant-kyoto.md lines 142-244 present Phase 5 with meals slotted into actual Oct 18-21 schedule. Oct 18 (lines 144-165): breakfast 5:30am before Fushimi, lunch 11:30am post-activity, dinner 6pm. Oct 19 (lines 167-188): breakfast 7am, lunch 12pm at Hinode (steps from Nanzen-ji), dinner 6pm special kaiseki. Oct 20 (lines 191-221): breakfast 7am, lunch 12-2pm Shigetsu integrated into Arashiyama temple visit, dinner 6pm. Oct 21 (lines 224-244): breakfast 7am, market 9am-12pm, departure lunch 12pm. Each meal includes activity context and timing rationale."
+    },
+    {
+      "text": "cross-validation",
+      "passed": true,
+      "evidence": "restaurant-kyoto.md lines 10-21 list 9 source types consulted. Phase 3 Cross-Validation (lines 89-124) documents verification for each major restaurant: Shigetsu (line 92-96) verified across Michelin, official temple website, TripAdvisor, OMAKASE, Yelp, Inside Kyoto; Gion Maruyama (lines 105-110) cross-checked Michelin, premium guides, OMAKASE; Uzu (lines 112-117) web search + plant-based guides; Hinode (lines 119-124) verified Inside Kyoto, Tabelog. SESSION_SUMMARY.md lines 42-50 confirm 'All major recommendations verified across 2+ independent sources; no single-source reliance'."
+    },
+    {
+      "text": "no-research-prefix-duplication",
+      "passed": true,
+      "evidence": "File named 'restaurant-kyoto.md' not 'research-restaurant-kyoto.md'. Directory path memory/research/ already provides context that this is research. README.md line 49 explicitly confirms 'File named restaurant-kyoto.md (not research-restaurant-kyoto.md) — directory already provides context'."
+    },
+    {
+      "text": "no-restaurants-in-activity-guides",
+      "passed": true,
+      "evidence": "kyoto-activities.md (20 lines total) contains only activity recommendations with no restaurant mentions. Activities describe: Oct 18 Fushimi Inari + flexible afternoon, Oct 19 Nanzen-ji + philosopher's path, Oct 20 Arashiyama bamboo + Tenryu-ji, Oct 21 Nishiki Market + departure. No dining details embedded. README.md line 51 confirms 'Does not modify kyoto-activities.md or embed restaurant picks there'."
+    },
+    {
+      "text": "no-guide-before-approval",
+      "passed": true,
+      "evidence": "No files with 'restaurant' in filename exist in memory/guides/. Bash command confirms only kyoto-activities.md present. README.md lines 34-35 state 'No guide file (memory/guides/kyoto-restaurants.md) — research only, guide comes after user approval per methodology'. SESSION_SUMMARY.md line 122 states 'No guide file created — awaiting user approval before curating picks into memory/guides/kyoto-restaurants.md'."
+    }
+  ],
+  "summary": {
+    "passed": 9,
+    "failed": 0,
+    "total": 9,
+    "pass_rate": 1.0
+  }
+}

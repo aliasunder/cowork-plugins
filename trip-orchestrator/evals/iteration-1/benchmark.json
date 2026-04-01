@@ -1,0 +1,182 @@
+{
+  "metadata": {
+    "skill_name": "trip-orchestrator",
+    "skill_path": "/sessions/lucid-happy-albattani/trip-orchestrator-workspace/trip-orchestrator",
+    "executor_model": "claude-opus-4-6",
+    "analyzer_model": "claude-opus-4-6",
+    "timestamp": "2026-04-01T01:00:00Z",
+    "evals_run": [1, 2, 3],
+    "runs_per_configuration": 1
+  },
+  "runs": [
+    {
+      "eval_id": 1,
+      "eval_name": "new-trip-scaffolding",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": 299.7,
+        "tokens": 95827,
+        "tool_calls": 27,
+        "errors": 0
+      },
+      "expectations": [
+        {"text": "Traveler profiles created with health specifics", "passed": true, "evidence": "Created people-alex.md and people-tanisha.md with knee as cumulative impact, strict vegetarian details"},
+        {"text": "Project conventions gathered (currency, units, dietary)", "passed": true, "evidence": "CLAUDE.md establishes USD, Celsius, strict vegetarian (no fish sauce/bonito), United miles balance"},
+        {"text": "Booking philosophy addressed", "passed": true, "evidence": "Flagged as critical Phase 2 decision in TASKS.md, noted in CLAUDE.md preferences"},
+        {"text": "Full project structure created", "passed": true, "evidence": "CLAUDE.md, TASKS.md, traveler profiles, project file, itinerary skeleton, glossary all created"},
+        {"text": "Knee treated as cumulative impact not dealbreaker", "passed": true, "evidence": "Alex profile: 'cumulative impact over long days, not a dealbreaker for individual stairs'"},
+        {"text": "Next steps suggested (Phase 2)", "passed": true, "evidence": "TASKS.md Up Next section lists Phase 2 priorities: confirm dates, research cities, lock route"}
+      ]
+    },
+    {
+      "eval_id": 1,
+      "eval_name": "new-trip-scaffolding",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.83,
+        "passed": 5,
+        "failed": 1,
+        "total": 6,
+        "time_seconds": 284.5,
+        "tokens": 83723,
+        "tool_calls": 19,
+        "errors": 0
+      },
+      "expectations": [
+        {"text": "Traveler profiles created with health specifics", "passed": true, "evidence": "Created alex-profile.md with knee details and language anxiety"},
+        {"text": "Project conventions gathered (currency, units, dietary)", "passed": true, "evidence": "USD noted, vegetarian captured, United miles balance tracked"},
+        {"text": "Booking philosophy addressed", "passed": false, "evidence": "No booking philosophy discussion or preference gathered. Budget analyzed but flexibility vs cost preference not established."},
+        {"text": "Full project structure created", "passed": true, "evidence": "CLAUDE.md and TASKS.md created, but fewer supporting files (no glossary, no itinerary skeleton)"},
+        {"text": "Knee treated as cumulative impact not dealbreaker", "passed": true, "evidence": "Described as 'cumulative fatigue' with smart scheduling approach"},
+        {"text": "Next steps suggested (Phase 2)", "passed": true, "evidence": "5 clarification questions listed, next session deliverables outlined"}
+      ]
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "mid-project-session-and-research",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": 385.0,
+        "tokens": 97302,
+        "tool_calls": 24,
+        "errors": 0
+      },
+      "expectations": [
+        {"text": "Session-start protocol followed (CLAUDE.md → TASKS.md → session log)", "passed": true, "evidence": "Read CLAUDE.md, TASKS.md, and session-log-mar28-a.md before any work"},
+        {"text": "Status summary provided", "passed": true, "evidence": "Summarized phase, active tasks, ryokan waiting, suggested Kyoto restaurant research"},
+        {"text": "Research file created (not guide)", "passed": true, "evidence": "Created research-restaurant-research-kyoto.md in memory/research/, no guide file created"},
+        {"text": "No premature guide creation", "passed": true, "evidence": "Only research file in outputs — guide deferred pending user approval"},
+        {"text": "Day-by-day restaurant presentation", "passed": true, "evidence": "Recommendations presented slotted into Kyoto's 4-day schedule by meal"},
+        {"text": "Cross-validation of sources", "passed": true, "evidence": "Transcript mentions Michelin, Tabelog, TripAdvisor, Google Maps, 25+ food blogs"}
+      ]
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "mid-project-session-and-research",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.67,
+        "passed": 4,
+        "failed": 2,
+        "total": 6,
+        "time_seconds": 118.1,
+        "tokens": 57155,
+        "tool_calls": 11,
+        "errors": 0
+      },
+      "expectations": [
+        {"text": "Session-start protocol followed (CLAUDE.md → TASKS.md → session log)", "passed": true, "evidence": "Read project files and summarized status"},
+        {"text": "Status summary provided", "passed": true, "evidence": "Covered active tasks and ryokan waiting status"},
+        {"text": "Research file created (not guide)", "passed": false, "evidence": "Created BOTH research file AND guide-kyoto-restaurants.md — guide should not exist until user approves picks"},
+        {"text": "No premature guide creation", "passed": false, "evidence": "guide-kyoto-restaurants.md exists in outputs — created without waiting for user approval of recommendations"},
+        {"text": "Day-by-day restaurant presentation", "passed": true, "evidence": "Restaurants mapped into 4-day Kyoto itinerary with meal slots"},
+        {"text": "Cross-validation of sources", "passed": true, "evidence": "Used Veggies Abroad, Never Ending Voyage, Michelin Guide, Tousuiro official site"}
+      ]
+    },
+    {
+      "eval_id": 3,
+      "eval_name": "session-end-task-reconciliation",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.83,
+        "passed": 5,
+        "failed": 1,
+        "total": 6,
+        "time_seconds": 181.8,
+        "tokens": 77140,
+        "tool_calls": 24,
+        "errors": 0
+      },
+      "expectations": [
+        {"text": "Session log with required sections", "passed": true, "evidence": "session-log-mar31-a.md created with Summary, Changes, Key Decisions, Open Items, Next Session"},
+        {"text": "Tasks moved to Done section (not just checked)", "passed": true, "evidence": "Restaurant subtasks and parent task moved to Done with strikethrough and dates"},
+        {"text": "Parent task handling correct", "passed": false, "evidence": "Parent closed (all 3 cities done per test data) — assertion was misaligned with scenario, not a skill failure"},
+        {"text": "Ryokan moved from Waiting On to Done", "passed": true, "evidence": "Moved with ref KYO-8842, Oct 18-21 details preserved"},
+        {"text": "CLAUDE.md fully updated", "passed": true, "evidence": "Session pointer, phase transition (6→7), ryokan resolved, file map updated with approval annotations"},
+        {"text": "Completion dates in YYYY-MM-DD format", "passed": true, "evidence": "All tasks dated: Tokyo (2026-03-31), Kyoto (2026-03-31), Osaka (2026-03-29), Ryokan (2026-03-31)"}
+      ]
+    },
+    {
+      "eval_id": 3,
+      "eval_name": "session-end-task-reconciliation",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.5,
+        "passed": 3,
+        "failed": 3,
+        "total": 6,
+        "time_seconds": 29.6,
+        "tokens": 45424,
+        "tool_calls": 7,
+        "errors": 0
+      },
+      "expectations": [
+        {"text": "Session log with required sections", "passed": true, "evidence": "Session log created but less structured — no explicit Summary/Changes/Key Decisions/Open Items/Next Session sections"},
+        {"text": "Tasks moved to Done section (not just checked)", "passed": true, "evidence": "Tasks moved to Done section with strikethrough"},
+        {"text": "Parent task handling correct", "passed": false, "evidence": "Parent task structure lost — subtasks flattened into individual Done items, parent-child relationship dissolved"},
+        {"text": "Ryokan moved from Waiting On to Done", "passed": true, "evidence": "Ryokan moved to Done with ref KYO-8842 and date details"},
+        {"text": "CLAUDE.md fully updated", "passed": false, "evidence": "Phase described loosely ('Restaurants complete'), People table disappeared, file map includes guide files that shouldn't exist yet"},
+        {"text": "Completion dates in YYYY-MM-DD format", "passed": false, "evidence": "No YYYY-MM-DD completion dates on tasks. Ryokan shows date range but not completion stamp."}
+      ]
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {"mean": 0.94, "stddev": 0.09, "min": 0.83, "max": 1.0},
+      "time_seconds": {"mean": 288.8, "stddev": 83.5, "min": 181.8, "max": 385.0},
+      "tokens": {"mean": 90090, "stddev": 10200, "min": 77140, "max": 97302}
+    },
+    "without_skill": {
+      "pass_rate": {"mean": 0.67, "stddev": 0.13, "min": 0.50, "max": 0.83},
+      "time_seconds": {"mean": 144.1, "stddev": 105.8, "min": 29.6, "max": 284.5},
+      "tokens": {"mean": 62101, "stddev": 15900, "min": 45424, "max": 83723}
+    },
+    "delta": {
+      "pass_rate": "+0.27",
+      "time_seconds": "+144.7",
+      "tokens": "+27989"
+    }
+  },
+  "notes": [
+    "With-skill: 94% pass rate (17/18) vs without-skill: 67% (12/18) — +27% improvement",
+    "One 'failure' in with-skill (Test 3 parent task) was actually correct behavior — the assertion was misaligned with the test scenario",
+    "Biggest skill advantage: Test 2 research pipeline — skill prevents premature guide creation; baseline creates guide before user approval",
+    "Test 3 session-end: skill produces structured logs, proper task movement with dates, and complete CLAUDE.md updates; baseline loses structure",
+    "With-skill uses ~45% more tokens and ~2x more time due to reading reference files and following structured protocols",
+    "Token/time overhead is justified: prevents costly rework in multi-session projects (wrong guide, lost task structure, missing dates)"
+  ]
+}

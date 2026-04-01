@@ -1,0 +1,43 @@
+{
+  "eval_id": 1,
+  "eval_name": "new-trip-scaffolding",
+  "configuration": "with_skill",
+  "expectations": [
+    {
+      "text": "traveler-profiles-created",
+      "passed": true,
+      "evidence": "Separate profiles created: memory/people/tanisha.md and memory/people/alex.md. Alex's knee documented as cumulative impact ('not an immediate problem, but several hours of stair climbing can add up'). Jordan's strict vegetarian diet (no meat/poultry/fish) clearly captured with implications. Language anxiety documented as main anxiety trigger."
+    },
+    {
+      "text": "conventions-gathered",
+      "passed": true,
+      "evidence": "Conventions section in CLAUDE.md (lines 66-82) explicitly establishes: USD currency (assume/confirm), Fahrenheit temps, miles, dietary specifics (Tanisha vegetarian, Alex omnivore), United 85,000 miles. Booking philosophy explicitly NOT hardcoded\u2014marked 'NOT YET ESTABLISHED' with options presented for early Phase 2 discussion."
+    },
+    {
+      "text": "booking-philosophy-addressed",
+      "passed": true,
+      "evidence": "Conventions section (lines 77-82) explicitly addresses booking philosophy as TBD, presenting three options: Flexibility-first, Cost-optimized, Balanced. States 'This choice shapes every booking decision. Ask early.' Also listed as Open Question #2."
+    },
+    {
+      "text": "project-structure-complete",
+      "passed": true,
+      "evidence": "All required files created: CLAUDE.md, TASKS.md (with Active/Waiting/Up Next/Done sections), traveler profiles (tanisha.md, alex.md), memory/projects/japan-trip.md (referenced), memory/glossary.md, memory/itinerary.md skeleton, memory/sessions/session-log-apr01-a.md"
+    },
+    {
+      "text": "knee-not-dealbreaker",
+      "passed": true,
+      "evidence": "Alex profile (memory/people/alex.md, lines 7-18) explicitly states: 'This is not a dealbreaker \u2014 it's a comfort consideration. Plan around it naturally (location selection, activity pacing) rather than treating Alex as having limited mobility.' Implications focus on natural planning strategies, not accessibility restrictions."
+    },
+    {
+      "text": "next-steps-suggested",
+      "passed": true,
+      "evidence": "CLAUDE.md lines 162-190 explicitly outline Phase 2 (Route research) as next phase with clear subtasks: city research, weather, food scenes, crowd assessment, route decision. TASKS.md Active section lists 'Confirm trip dates with Alex' as next immediate task, followed by detailed Phase 2 subtasks."
+    }
+  ],
+  "summary": {
+    "passed": 6,
+    "failed": 0,
+    "total": 6,
+    "pass_rate": 1.0
+  }
+}

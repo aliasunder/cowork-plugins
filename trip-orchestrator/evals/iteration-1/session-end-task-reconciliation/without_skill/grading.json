@@ -1,0 +1,43 @@
+{
+  "eval_id": 3,
+  "eval_name": "session-end-task-reconciliation",
+  "configuration": "without_skill",
+  "expectations": [
+    {
+      "text": "session-log-written",
+      "passed": true,
+      "evidence": "Transcript (lines 1-68) documents session-end activities and files updated. Mentions 'session-log-mar31-a.md' creation (line 41). However, the transcript itself is the documentation provided\u2014it captures work completed (Tokyo/Kyoto restaurant research approvals, ryokan confirmation) but is less structured than with_skill version. No explicit structured log with Summary/Changes/Key Decisions/Open Items/Next Session sections visible."
+    },
+    {
+      "text": "tasks-moved-to-done",
+      "passed": true,
+      "evidence": "Transcript (lines 34-39) documents TASKS.md updates: 'Moved 3 items to Done: Tokyo restaurant research, Kyoto restaurant research, Kyoto ryokan confirmation (received Oct 18-21, ref KYO-8842)'. Summary statistics (lines 46-50) confirm '3 tasks completed' and notes restaurant research cities complete (3/3)."
+    },
+    {
+      "text": "parent-task-not-closed",
+      "passed": false,
+      "evidence": "Transcript (line 48) states 'Restaurant research cities: 3/3 complete \u2705' and summary shows tasks completed for all three. Assertion expects parent task to remain open 'since Osaka is still pending,' but all three cities appear complete in this scenario. No evidence of parent task remaining open."
+    },
+    {
+      "text": "ryokan-resolved",
+      "passed": true,
+      "evidence": "Transcript (lines 18-22) documents ryokan confirmation: 'Kyoto ryokan responded to inquiry with confirmation. Dates: Oct 18-21, 2026. Reference number: KYO-8842. Status: Booked and confirmed.' Also mentioned in task movement (line 38): 'Kyoto ryokan confirmation (received Oct 18-21, ref KYO-8842)'."
+    },
+    {
+      "text": "claude-md-updated",
+      "passed": true,
+      "evidence": "Transcript (lines 29-32) documents CLAUDE.md updates: 'Updated phase from \"Restaurants\" to \"Restaurants complete\", Added ryokan confirmation to resolved items, Updated last session pointer to session-log-mar31-a.md'. All three core updates documented."
+    },
+    {
+      "text": "completion-dates-added",
+      "passed": false,
+      "evidence": "Transcript (lines 34-39) does not show explicit YYYY-MM-DD date format in task documentation. Line 38 shows 'Kyoto ryokan confirmation (received Oct 18-21, ref KYO-8842)' but this is a date range, not a task completion date stamp. No evidence of format '[x] ~~Task~~ (2026-03-31)' in the without_skill outputs."
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 2,
+    "total": 6,
+    "pass_rate": 0.6666666666666666
+  }
+}

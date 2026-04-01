@@ -1,0 +1,80 @@
+{
+  "eval_id": 1,
+  "eval_name": "new-trip-scaffolding",
+  "configuration": "with_skill",
+  "expectations": [
+    {
+      "text": "project-structure-created",
+      "passed": true,
+      "evidence": "Full directory structure verified: CLAUDE.md, TASKS.md, memory/people/ (traveler.md, alex.md), memory/projects/ (japan-trip-2026.md), memory/sessions/ (session-log-mar31-a.md), memory/research/, memory/guides/, memory/plans/, memory/reference/, outputs/, and archive/ all present with appropriate content or .gitkeep placeholders."
+    },
+    {
+      "text": "traveler-profiles-created",
+      "passed": true,
+      "evidence": "memory/people/traveler.md includes: Dietary Needs (vegetarian strict), Interests & Priorities (food, temples, gardens), Travel Anxieties/Constraints, Communication Style, Non-Negotiables. memory/people/alex.md includes: Physical Constraints (knee injury from old soccer injury), Travel Anxieties (language barrier), Dietary Preferences (omnivorous), Interests, Communication Style, Non-Negotiables."
+    },
+    {
+      "text": "conventions-gathered",
+      "passed": true,
+      "evidence": "TASKS.md line 7: 'Confirm home currency and temperature unit preference'; memory/projects/japan-trip-2026.md lines 56-57: 'Home currency (USD assumed, confirm)' and 'Temperature unit preference (Celsius assumed, confirm)'; lines 58: 'Other loyalty programs (Hilton, Marriott, ANA, JAL, credit card points)?'; memory/glossary.md lines 31-47 documents loyalty programs and budget model. All conventions flagged as open questions."
+    },
+    {
+      "text": "phase-2-suggested",
+      "passed": true,
+      "evidence": "TASKS.md lines 20-21: 'Phase 2: Route — Research destination options, city combinations, compare routes.' memory/sessions/session-log-mar31-a.md lines 32-38: 'Phase 2: Route — Research destination options and city combinations' with detailed research scope listed."
+    },
+    {
+      "text": "knee-framed-as-comfort",
+      "passed": true,
+      "evidence": "memory/people/alex.md line 11: 'Do NOT medicalize this in conversations — Alex is fine'; lines 9-10: 'Stairs are manageable in the moment but cumulative over a day causes fatigue'; line 13: 'Planning implication: Choose hotels with elevators or low-floor rooms. Prioritize attractions with good access'; CLAUDE.md line 18: 'Knee constraint | Stairs manageable but cumulative impact over day matters' — framed as planning consideration, not disability."
+    },
+    {
+      "text": "booking-philosophy-flagged",
+      "passed": false,
+      "evidence": "memory/projects/japan-trip-2026.md Open Questions section (lines 50-77) does not include explicit question about booking philosophy (flexibility vs cost vs balance). TASKS.md Phase 1 active tasks (lines 5-12) also do not flag booking philosophy as an open question. This is a gap in the open questions list."
+    },
+    {
+      "text": "no-methodology-in-claude-md",
+      "passed": true,
+      "evidence": "CLAUDE.md contains only: project index, people summary table, terms glossary, projects summary, trip planning status, preferences, and file map. No session protocol steps, research pipeline explanation, phase methodology, or session log format instructions present. File map describes 'what' files are for, not 'how to plan'."
+    },
+    {
+      "text": "no-inline-traveler-details",
+      "passed": false,
+      "evidence": "CLAUDE.md People table (lines 9-10) contains inline health and anxiety details: Line 9: 'Vegetarian; comfortable with logistics'; Line 10: 'Omnivorous; old knee injury from soccer (stairs difficult after long days); anxious about language barrier'. These violate the requirement that CLAUDE.md should NOT contain dietary strictness, health specifics, or anxiety details inline — only pointers to memory/people/ files should be in the summary table."
+    },
+    {
+      "text": "no-meta-files",
+      "passed": true,
+      "evidence": "File listing shows only expected project files: CLAUDE.md, TASKS.md, memory/ subdirectories, archive/, outputs/. No INDEX.md, MANIFEST.txt, README.md, EXECUTION_SUMMARY.md, or other meta files detected outside the defined project structure."
+    },
+    {
+      "text": "no-hardcoded-assumptions",
+      "passed": true,
+      "evidence": "CLAUDE.md lines 52-53: 'Currency: USD (assumed — confirm home currency)' and 'Units: Celsius and metric assumed (confirm)'. memory/projects/japan-trip-2026.md lines 56-57 repeat these as open questions. Assumptions explicitly flagged for confirmation rather than silently applied."
+    },
+    {
+      "text": "project-file-not-claude-md-duplicate",
+      "passed": true,
+      "evidence": "memory/projects/japan-trip-2026.md contains distinct operational content: Trip Goals (lines 13-16), Key Constraints (lines 19-25), City Combination Candidates (lines 27-33), Booking Status (lines 35-40), Payment tracking (lines 41-48), Comprehensive Open Questions (lines 50-77). CLAUDE.md contains only summary snapshots, index, and file map. Project file provides strategic and operational detail; CLAUDE.md provides overview only."
+    }
+  ],
+  "summary": {
+    "passed": 9,
+    "failed": 2,
+    "total": 11,
+    "pass_rate": 0.82
+  },
+  "failures": [
+    {
+      "assertion": "booking-philosophy-flagged",
+      "severity": "medium",
+      "description": "Booking philosophy (flexibility vs cost vs balance) was not explicitly flagged as an open question, though related context about planning confidence exists."
+    },
+    {
+      "assertion": "no-inline-traveler-details",
+      "severity": "medium",
+      "description": "CLAUDE.md People table contains inline health specifics (knee injury), dietary details (vegetarian/omnivorous), and anxiety (language barrier). Per convention, these details should only appear in memory/people/ profile files, with just a summary line and pointer in CLAUDE.md."
+    }
+  ]
+}

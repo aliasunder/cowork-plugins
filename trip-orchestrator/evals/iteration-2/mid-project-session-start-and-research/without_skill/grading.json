@@ -1,0 +1,58 @@
+{
+  "eval_id": 2,
+  "eval_name": "mid-project-session-start-and-research",
+  "configuration": "without_skill",
+  "expectations": [
+    {
+      "text": "session-start-protocol",
+      "passed": true,
+      "evidence": "SESSION_REPORT.md documents reading CLAUDE.md, TASKS.md, and last session log (Mar 28A) before starting work."
+    },
+    {
+      "text": "status-summary",
+      "passed": true,
+      "evidence": "SESSION_REPORT.md provides status summary with current phase, route status, active blockers, and work completed."
+    },
+    {
+      "text": "research-file-created",
+      "passed": true,
+      "evidence": "memory/research/restaurant-kyoto.md created with 24 candidates, comparison table, shortlist categories, ruled-out rationale, and validation sources."
+    },
+    {
+      "text": "no-premature-guide",
+      "passed": true,
+      "evidence": "No restaurant guide file exists in memory/guides/. Only kyoto-activities.md present. Guide creation explicitly deferred pending user approval."
+    },
+    {
+      "text": "day-by-day-presentation",
+      "passed": true,
+      "evidence": "SESSION_REPORT.md organizes recommendations by day (Oct 18-21) with time slots and activity context, not just category groupings."
+    },
+    {
+      "text": "cross-validation",
+      "passed": true,
+      "evidence": "RESEARCH_METHODOLOGY.md documents validation strategy with minimum 2 sources. Michelin Guide, Google Maps, Tabelog, local blogs consulted."
+    },
+    {
+      "text": "no-research-prefix-duplication",
+      "passed": true,
+      "evidence": "Research file correctly named restaurant-kyoto.md, not research-restaurant-kyoto.md."
+    },
+    {
+      "text": "no-restaurants-in-activity-guides",
+      "passed": true,
+      "evidence": "kyoto-activities.md contains only activity schedule with no restaurant picks embedded."
+    },
+    {
+      "text": "no-guide-before-approval",
+      "passed": true,
+      "evidence": "No file matching *restaurant* exists in memory/guides/. Guide creation conditional on user approval."
+    }
+  ],
+  "summary": {
+    "passed": 9,
+    "failed": 0,
+    "total": 9,
+    "pass_rate": 1.0
+  }
+}

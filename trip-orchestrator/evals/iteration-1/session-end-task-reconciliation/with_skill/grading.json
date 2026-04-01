@@ -1,0 +1,43 @@
+{
+  "eval_id": 3,
+  "eval_name": "session-end-task-reconciliation",
+  "configuration": "with_skill",
+  "expectations": [
+    {
+      "text": "session-log-written",
+      "passed": true,
+      "evidence": "CHANGE_DETAILS.md (lines 190-221) documents creation of memory/sessions/session-log-mar31-a.md with all required sections: Summary (2-3 sentences about restaurant approvals + ryokan confirmation + Phase 6\u21927 transition), Changes Made (bullet list), Key Decisions (detailed rationale), Open Items (none blocking), Next Session (explicit Phase 7 priorities: packing lists, itinerary guide, daily cards)."
+    },
+    {
+      "text": "tasks-moved-to-done",
+      "passed": true,
+      "evidence": "CHANGE_DETAILS.md (lines 85-104) documents Task 2.1: 'Move Restaurant Research Parent Task to Done' with strikethrough format and date: '[x] ~~**Restaurant research \u2014 all cities**~~ (2026-03-31)' with three subtasks moved to Done section (Tokyo, Kyoto, Osaka each dated). Moved FROM Active/PENDING sections TO Done section, not just checkbox marked."
+    },
+    {
+      "text": "parent-task-not-closed",
+      "passed": false,
+      "evidence": "Parent task 'Restaurant research \u2014 all cities' WAS closed and moved to Done. However, assertions state it should remain open 'since Osaka is still pending' \u2014 but the transcript shows Osaka was completed on Mar 29 (different date from parent 03-31), so all subtasks were complete. Per the skill protocol: 'When the last subtask of a parent task is done, close the parent task immediately,' which was correctly executed. The assertion itself appears misaligned with the test scenario\u2014all three cities were complete."
+    },
+    {
+      "text": "ryokan-resolved",
+      "passed": true,
+      "evidence": "CHANGE_DETAILS.md (lines 108-121) documents Task 2.2: 'Move Ryokan Confirmation to Done'. Moved from 'Waiting On' to Done section with format: '[x] ~~**Ryokan confirmation for Kyoto**~~ (2026-03-31) \u2014 ref KYO-8842, Oct 18\u201321'. Confirmation details (ref, dates) included. CLAUDE.md updated with new 'Resolved (Recent)' section documenting ryokan confirmation."
+    },
+    {
+      "text": "claude-md-updated",
+      "passed": true,
+      "evidence": "CHANGE_DETAILS.md (lines 8-79) documents four CLAUDE.md updates: (1) Last session pointer updated from session-log-mar29-a.md \u2192 session-log-mar31-a.md (line 16-20); (2) Phase advanced from Phase 6 \u2192 Phase 7 (lines 27-40); (3) Open Questions replaced with 'Resolved (Recent)' section including ryokan confirmation (lines 43-59); (4) File Map updated to add session log entry and note approval status on restaurant research files."
+    },
+    {
+      "text": "completion-dates-added",
+      "passed": true,
+      "evidence": "Task 2.1 shows format: '[x] ~~Tokyo restaurants~~ (2026-03-31)' with completion dates in YYYY-MM-DD format. Task 2.2 shows: '[x] ~~**Ryokan confirmation for Kyoto**~~ (2026-03-31) \u2014 ref KYO-8842, Oct 18\u201321'. All moved tasks include dates. Transcript also confirms (lines 35-50) all moved tasks are dated: Tokyo, Kyoto (both 03-31), Osaka (03-29), Ryokan (03-31)."
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 1,
+    "total": 6,
+    "pass_rate": 0.8333333333333334
+  }
+}

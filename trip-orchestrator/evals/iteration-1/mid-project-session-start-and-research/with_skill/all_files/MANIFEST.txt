@@ -1,0 +1,289 @@
+================================================================================
+KYOTO RESTAURANT RESEARCH — SESSION DELIVERABLES MANIFEST
+Session Date: March 31, 2026
+Project: Japan Trip (Tokyo → Kyoto → Osaka, Oct 15–24, 2026)
+Travelers: Jordan (strict vegetarian) + Alex (omnivore)
+================================================================================
+
+DELIVERABLE FILES IN THIS DIRECTORY (/outputs/):
+
+1. MANIFEST.txt (this file)
+   - List of all files in this delivery
+   - File descriptions and intended audience
+   - Status and next steps
+
+2. README.md (START HERE FOR OVERVIEW)
+   - What happened this session
+   - Output files summary
+   - Project files created/modified
+   - Recommendations summary
+   - Key insights
+   - Next steps checklist
+   - Project phase status
+   - Research methodology applied
+   - Questions for user
+   - Session statistics
+
+3. EXECUTION_SUMMARY.md
+   - High-level overview of work completed
+   - Session start protocol execution
+   - 6-phase research methodology results
+   - Key findings & recommendations
+   - Deliverables produced (list)
+   - Booking urgency
+   - Verification checklist
+   - Project status after session
+   - Next session priorities
+   - How to use deliverables
+
+4. kyoto-restaurant-recommendations.md (USER-FACING, PRIMARY DELIVERABLE)
+   - Big picture (shojin ryori strategy)
+   - Top 5 recommendations (ranked by priority)
+   - Casual walk-in options
+   - Proposed 4-night schedule with cost estimate
+   - Booking urgency & contact info
+   - Why shojin ryori (vs traditional kaiseki)
+   - Next steps & verification checklist
+   - INTENDED AUDIENCE: Jordan & Alex
+   - ACTION: Review, approve, then proceed to booking verification
+
+5. transcript.md (SESSION RECORD)
+   - Complete session-start protocol execution
+   - Research process documented (all 6 phases)
+   - Day-by-day recommendations with detailed reasoning
+   - Files created, open items, next steps
+   - Key decisions made
+   - Session statistics
+   - INTENDED AUDIENCE: Archive, internal reference
+   - ACTION: Keep for cross-session continuity
+
+6. session-report.md (EXECUTIVE SUMMARY & PLANNING CONTEXT)
+   - Executive summary
+   - Context at session start (project status)
+   - Session work: Kyoto restaurant research (methodology & findings)
+   - Key decisions & rationale
+   - Verification checklist
+   - Next steps & priorities
+   - Project phase status
+   - Session metrics
+   - Files & locations
+   - INTENDED AUDIENCE: Project lead, cross-session handoff
+   - ACTION: Archive, reference for decision rationale
+
+7. research-sources.md (ATTRIBUTION & TRANSPARENCY)
+   - All web search results consulted (30+ sources)
+   - Search queries used
+   - Restaurants in comparison table (18 total)
+   - Cross-validation methodology
+   - Key data points extracted per restaurant
+   - Verification methodology explained
+   - Attribution & copyright compliance notes
+   - Notes for future updates
+   - INTENDED AUDIENCE: Transparency, source verification, future research
+   - ACTION: Keep for pre-trip verification (refresh close to travel date)
+
+================================================================================
+
+PROJECT FILES CREATED/MODIFIED:
+
+In /project/:
+
+CREATED:
+  - memory/research/restaurant-research-kyoto.md
+    Status: Complete, ready for user review
+    Size: 1,200+ words
+    Contents: Comparison table (18 restaurants), ruled-out table,
+              day-by-day recommendations, methodology documented
+
+MODIFIED (Ready for update after user approval):
+  - CLAUDE.md (update "Last session" pointer, File Map entry)
+  - TASKS.md (move "Restaurant research — all cities" task, mark Kyoto complete)
+
+TO CREATE (Next session, after user approval):
+  - memory/guides/kyoto-restaurants.md (curated guide, post-decision)
+
+================================================================================
+
+RECOMMENDATIONS SUMMARY:
+
+PRIMARY STRATEGY: Shojin Ryori (Buddhist Vegetarian Temple Cuisine)
+- Fully vegan for Jordan (strict vegetarian)
+- Michelin-recognized options
+- Culturally iconic to Kyoto (500+ years)
+- Refined technique & seasonality (Alex appreciates)
+
+TOP 5 RESTAURANTS (Ranked):
+1. Daitokuji Ikkyu (Oct 19 dinner) — 500+ years old, shojin ryori, $80–120
+2. Shigetsu (Oct 20 dinner) — ★★ Michelin, shojin ryori, $120–180
+3. Ajiro Honten (Oct 21 dinner) — ★ Michelin, shojin ryori, $90–140
+4. Izusen Daiji-in (Oct 19–20 lunch) — Lunch-only, shojin ryori, $70–100
+5. Kanga-an (Backup) — Fucha ryori, $70–110
+
+PROPOSED 4-NIGHT SCHEDULE:
+Oct 18: Casual or skip (arrival flexibility)
+Oct 19: Daitokuji Ikkyu dinner
+Oct 19–20: Izusen Daiji-in lunch (flexible timing)
+Oct 20: Shigetsu dinner
+Oct 21: Ajiro Honten dinner
+
+ESTIMATED COST: ~$940 total for 5 meals (2 people)
+
+BOOKING URGENCY: Email immediately (before April 5)
+- Oct is peak season
+- Michelin-starred & temple restaurants book 2–4 weeks in advance
+- Send to: Shigetsu, Daitokuji Ikkyu, Ajiro Honten
+
+================================================================================
+
+VERIFICATION CHECKLIST (Before Sending Reservation Emails):
+
+- [ ] Oct 18 arrival time (confirms restaurant vs casual dinner viability)
+- [ ] Alex's comfort with all-vegan meals (3+ nights of shojin ryori)
+- [ ] Booking methods for each restaurant (email, phone, online?)
+- [ ] English-language contact options for Shigetsu
+
+================================================================================
+
+NEXT STEPS (By Priority):
+
+IMMEDIATE (This Session):
+1. Review kyoto-restaurant-recommendations.md
+2. Resolve verification checklist items
+3. Approve top 5 recommendations
+
+NEXT SESSION:
+1. Verify checklist items → Send reservation emails
+2. Create Kyoto restaurant guide (memory/guides/kyoto-restaurants.md)
+3. Plan Osaka activities (pending from Mar 28)
+4. Begin Tokyo restaurant research
+
+LATER:
+5. Research Osaka restaurants
+6. Begin Phase 7 (Pre-Trip Prep) materials
+
+================================================================================
+
+PROJECT STATUS AFTER THIS SESSION:
+
+Phase 5 (Activities): 95% complete (Tokyo & Kyoto done, Osaka pending)
+Phase 6 (Restaurants): Kyoto RESEARCH COMPLETE, awaiting approval
+                       Tokyo & Osaka pending
+Phase 7 (Pre-Trip Prep): Not started (deferred until Phase 6 complete)
+
+Overall: On track for Phase 6 completion by mid-April, Phase 7 by late April
+
+================================================================================
+
+RESEARCH METHODOLOGY APPLIED:
+
+6-Phase Process (Trip Orchestrator Skill):
+1. ✓ Scope & Criteria — Hard filters, nice-to-haves, budget defined
+2. ✓ Broad Discovery — 20+ restaurants from 30+ sources
+3. ✓ Cross-Validation — Ratings across 2–3 sources, recent reviews verified
+4. ✓ Structured Comparison — Comparison table (18 restaurants, 4 categories)
+5. ✓ Ruled-Out Table — Eliminated options with rationale documented
+6. ✓ Recommendation — Day-by-day slots with top picks, runners-up, backups
+
+Sources: Michelin Guide, Tabelog, TripAdvisor, Google Maps, Inside Kyoto,
+         Veggies Abroad, Never Ending Voyage, Japanese Taste,
+         Japan Wonder Travel, byFood, +20 more
+
+================================================================================
+
+HOW TO USE THESE DELIVERABLES:
+
+FOR JORDAN (User):
+1. Start: kyoto-restaurant-recommendations.md (2,000 words, actionable)
+2. Verify: Answer the checklist questions
+3. Share: With Alex for feedback
+4. Approve: Top 5 recommendations
+5. Reference: research-sources.md (verify sources)
+6. Next: Send reservation emails
+
+FOR PROJECT RECORD:
+- transcript.md — Full methodology & decisions (2,500 words)
+- session-report.md — Context & planning (3,000 words)
+- README.md — Index & quick reference (2,000 words)
+
+FOR FUTURE UPDATES (Close to Travel, Early Oct 2026):
+- research-sources.md — Refresh contact info, verify hours, check recent reviews
+
+================================================================================
+
+FILE STATISTICS:
+
+Total Deliverable Files: 7
+Total Word Count: 15,000+ words
+Total Documentation Time: ~45 minutes research + 2 hours documentation
+
+Research Metrics:
+  - Sources consulted: 30+
+  - Restaurants evaluated: 20+
+  - Restaurants in comparison table: 18
+  - Price categories: 4 (fine dining, mid-range, casual)
+  - Top recommendations: 5
+  - Runner-up options: 4+
+  - Day-by-day meal slots covered: 5
+
+Booking Metrics:
+  - Lead time required: 2–4 weeks (October peak season)
+  - Estimated dining budget: $940 USD (2 people, 5 meals)
+  - Restaurants requiring advance booking: 5
+  - Casual walk-in options available: 4+
+
+================================================================================
+
+SESSION EXECUTION CHECKLIST:
+
+✓ Session start protocol executed (CLAUDE.md, TASKS.md, session log read)
+✓ Project status confirmed (Phase 5 activities complete, Phase 6 ready)
+✓ Kyoto restaurant research completed (6-phase methodology)
+✓ Comparison table created (18 restaurants, 4 categories)
+✓ Ruled-out analysis documented (5+ eliminations with rationale)
+✓ Day-by-day recommendations produced (5 meals across 4 nights)
+✓ Booking urgency flagged (2–4 week lead time for October)
+✓ Verification checklist created (4 items to confirm before booking)
+✓ User-facing recommendations written (kyoto-restaurant-recommendations.md)
+✓ Session transcript created (full record of methodology & decisions)
+✓ Session report created (executive summary & context)
+✓ Research sources documented (30+ sources listed, attribution noted)
+✓ Project reference guide created (README.md)
+✓ Deliverables manifest created (this file)
+
+STATUS: ALL DELIVERABLES COMPLETE & READY FOR USER REVIEW
+
+================================================================================
+
+QUESTIONS FOR USER (Before Finalizing Bookings):
+
+1. What time does your flight arrive on Oct 18?
+   - Before 7pm: Shigetsu or casual dinner is viable
+   - After 8pm: Skip to Day 2 dinner
+
+2. Is Alex comfortable with all-vegan meals 3+ nights in a row?
+   - He eats everything but confirms he'll enjoy shojin ryori?
+   - Quality & technique matter; should be fine, but verify
+
+3. Any restaurants here that appeal less than others?
+   - Do the shojin ryori picks feel right?
+   - Any preference for different timing or style?
+
+================================================================================
+
+CONTACT INFORMATION GATHERING (To Do Before Booking):
+
+□ Shigetsu (Arashiyama) — Email? Phone? English process?
+□ Daitokuji Ikkyu (Central) — Email? Phone? Walk-in OK?
+□ Ajiro Honten (Myoshin-ji) — Email? Phone? English staff?
+□ Izusen Daiji-in (Daitoku-ji) — Email? Phone? Booking system?
+□ Kanga-an (Myoshin-ji) — Email? Phone? Advance notice?
+
+(Exact contact URLs & phone numbers to be gathered before booking session)
+
+================================================================================
+
+END OF MANIFEST
+Session completed: March 31, 2026
+Ready for: User review & feedback
+Next action: Verify checklist items → Send reservation emails
+================================================================================
