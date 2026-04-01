@@ -1,0 +1,10 @@
+{
+  "name": "aliasunder-plugins",
+  "description": "Cowork plugins by aliasunder — task-specific skills for Claude Cowork sessions.",
+  "plugins": [
+    {
+      "id": "trip-orchestrator",
+      "path": "trip-orchestrator"
+    }
+  ]
+}
