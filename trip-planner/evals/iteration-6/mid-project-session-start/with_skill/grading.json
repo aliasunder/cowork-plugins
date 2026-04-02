@@ -1,0 +1,61 @@
+{
+  "expectations": [
+    {
+      "text": "session-start-protocol: Follows session-start protocol — reads CLAUDE.md, TASKS.md, and last session log before starting work",
+      "passed": true,
+      "evidence": "Transcript explicitly documents: 'Phase 1: Read Core Files' showing CLAUDE.md Summary (lines 7-13), 'TASKS.md Summary' (lines 15-29), and 'Last Session Log (Mar 28A)' (lines 31-38). All three files read and summarized before research work begins."
+    },
+    {
+      "text": "status-summary: Provides a concise status summary — current phase, active tasks, blockers, suggested focus",
+      "passed": true,
+      "evidence": "Transcript 'Current Project Status' section (lines 40-56) provides: current phase (Phase 5, Activities), active tasks (Osaka activities in progress), blockers (Ryokan confirmation waiting), and suggested focus (Kyoto restaurant research). Comprehensive status summary provided."
+    },
+    {
+      "text": "research-file-created: Creates a research file in memory/research/ with broad discovery, comparison table, and ruled-out rationale",
+      "passed": true,
+      "evidence": "Transcript states: 'Created `/memory/research/restaurant-kyoto.md` with: 25 candidate restaurants evaluated, Structured comparison table, Cross-validation across multiple sources, Day-by-day recommendations, Ruled-out table, Key decision points' (lines 157-162). File verified to exist in outputs/memory/research/restaurant-kyoto.md."
+    },
+    {
+      "text": "no-premature-guide: Does NOT create a guide file in memory/guides/ — research only, guide comes after user approval",
+      "passed": true,
+      "evidence": "No guide files created. memory/guides/ directory does not exist in with_skill outputs. Transcript explicitly states: 'Wait for your approval before creating the guide' (line 55) and 'Await user feedback on day-by-day plan and decision points. Once approved, will create curated guide' (line 165). Research-only approach confirmed."
+    },
+    {
+      "text": "day-by-day-presentation: Presents restaurant recommendations slotted into the daily schedule context, not just by category",
+      "passed": true,
+      "evidence": "Transcript 'Phase 6: Day-by-Day Recommendations' section (lines 127-145) presents structured recommendations tied to specific days: 'Oct 20 (Arrival evening) — Casual ramen', 'Oct 21 (Full activity day) — Lunch + special dinner', 'Oct 22 (Gion day)', 'Oct 23 (Departure)'. Each day includes activity context and meal timing, not category-based presentation."
+    },
+    {
+      "text": "cross-validation: Cross-validates restaurant information across multiple sources, doesn't trust a single source",
+      "passed": true,
+      "evidence": "Transcript 'Phase 3: Cross-Validation' section (lines 91-103) explicitly documents: 'Verified ratings across multiple sources: Buddhist temple restaurants (Shigetsu, Izusen, Ajiro): 4.7–4.8/5 across TripAdvisor, Google, Tabelog' and 'Consistent mention across blogs and guides'. Dietary verification confirmed across sources. Multiple sources (TripAdvisor, Google, Tabelog, blogs, guides) referenced throughout."
+    },
+    {
+      "text": "NEGATIVE: no-restaurants-in-activity-guides: Should NOT modify or embed restaurant picks into existing activity guide files",
+      "passed": true,
+      "evidence": "No activity guide files were accessed or modified. Transcript shows only restaurant research file created. No mention of modifying existing memory/guides/ activity files. Clean separation of research (memory/research/) from guides (memory/guides/) maintained."
+    },
+    {
+      "text": "NEGATIVE: no-guide-before-approval: Should NOT create any file in memory/guides/ with 'restaurant' in the name during this session",
+      "passed": true,
+      "evidence": "No restaurant guide created. memory/guides/ directory does not exist in outputs. Transcript explicitly states decision points for user and waits for approval before creating guide. Only memory/research/restaurant-kyoto.md created (research, not guide)."
+    }
+  ],
+  "summary": {
+    "passed": 8,
+    "failed": 0,
+    "total": 8,
+    "pass_rate": 1.0
+  },
+  "eval_feedback": {
+    "suggestions": [
+      {
+        "reason": "The 'cross-validation' assertion passes and is well-demonstrated, but the assertion itself is somewhat weak: it passes if ANY multiple sources are mentioned. However, the actual execution is quite strong — validation includes rating consistency checks, recent reviews, dietary accommodation verification, and operational detail confirmation. The assertion could be stronger by requiring verification of specific claims (e.g., 'Confirmed Shigetsu requires 3-day advance booking via site notes and restaurant sites'). Current assertion structure doesn't distinguish between mentioning multiple sources vs. actually verifying consistency across them."
+      },
+      {
+        "reason": "The 'session-start-protocol' assertion is satisfied but could be more rigorous. The transcript documents reading files and summarizing them, but doesn't verify that the summary is *accurate* to what was in the files. For instance, the 'Last Session Log' summary should be verified against the actual log content to ensure accurate information retention across sessions."
+      }
+    ],
+    "overall": "Perfect execution on Eval 2. All 8 assertions pass. The with_skill run demonstrates clean separation of research from guides, proper day-by-day context, multi-source validation, and appropriate decision-point presentation for user approval. Strong protocol adherence and research methodology execution."
+  }
+}

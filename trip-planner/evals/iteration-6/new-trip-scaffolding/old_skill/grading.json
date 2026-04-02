@@ -1,0 +1,87 @@
+{
+  "expectations": [
+    {
+      "text": "project-structure-created: Creates the full directory structure (CLAUDE.md, TASKS.md, memory/people/, memory/projects/, memory/sessions/, memory/research/, memory/guides/, outputs/, archive/)",
+      "passed": true,
+      "evidence": "All required directories and files verified: CLAUDE.md (5.6KB), TASKS.md (3.2KB), memory/ subdirs (people/, projects/, sessions/, research/, guides/, plans/, reference/), outputs/, and archive/. Full scaffolding structure confirmed."
+    },
+    {
+      "text": "traveler-profiles-created: Creates individual profile files in memory/people/ for each traveler with health, dietary, interests, anxiety detail",
+      "passed": true,
+      "evidence": "memory/people/you.md (2KB) and memory/people/alex.md (3.7KB) created with comprehensive detail: you.md includes dietary, interests, travel philosophy; alex.md includes health (knee), anxiety (language), dietary, interests, preferences, support needs, non-negotiables."
+    },
+    {
+      "text": "conventions-gathered: Asks about or documents currency, temperature units, loyalty programs, booking philosophy — doesn't silently assume",
+      "passed": true,
+      "evidence": "CLAUDE.md Project-Wide Conventions section documents: Home currency USD, Temperature Fahrenheit, Dietary preferences, Loyalty programs (United miles, 1.5 cpp minimum), Booking philosophy (Balanced), Hotel preferences, Transport philosophy, Communication style. Open Questions section lists what needs user confirmation (route, dates, hotel preference, activity load)."
+    },
+    {
+      "text": "phase-2-suggested: Suggests Phase 2 (Route) as the next step",
+      "passed": true,
+      "evidence": "TASKS.md Up Next section: '**Phase 2: Route** — Research destination options, compare routes, build itinerary skeleton'. CLAUDE.md Open Questions Item 1: 'Route finalization: Confirm 3 cities and dates.'"
+    },
+    {
+      "text": "knee-framed-as-comfort: Alex's knee is described as cumulative impact / comfort consideration, not a disability or dealbreaker",
+      "passed": true,
+      "evidence": "memory/people/alex.md describes knee condition as 'fatigue-based — a full day of walking + stairs compounds the strain.' Key framing: 'The goal is designing a trip that feels natural and enjoyable, not one with explicit accessibility accommodations' and 'Not being disabled or accommodated — designing a trip that happens to be comfortable.' Comfort-centered approach confirmed."
+    },
+    {
+      "text": "booking-philosophy-flagged: Flags booking philosophy as something to establish (flexibility vs cost vs balance)",
+      "passed": true,
+      "evidence": "CLAUDE.md Open Questions Item 3: 'Hotel star preference confirmation: Confirm 3–4 star is right target.' Also documented in Project-Wide Conventions as 'Balanced — prefer flexibility (refundable bookings, free cancellation) without overpaying.' TASKS.md Phase 1 lists 'Confirm booking philosophy (already assumed balanced — finalize in conversation)'."
+    },
+    {
+      "text": "agent-working-memory-label: CLAUDE.md is labeled or described as 'agent working memory' (in the file map, header comment, or scaffolding structure) — not just 'project index' or 'working memory'",
+      "passed": true,
+      "evidence": "CLAUDE.md title: '# Claude Memory — Japan Trip Oct 2026'. File Map header row shows: '| `CLAUDE.md` | This file — agent working memory |'. Explicitly labeled 'agent working memory'."
+    },
+    {
+      "text": "file-map-has-when-to-read: The File Map in CLAUDE.md includes contextual triggers for when to read each file — either a 'When to read' column or per-entry guidance with bold triggers (e.g., 'Most tasks', 'Activity/comfort decisions') — not just path and description",
+      "passed": false,
+      "evidence": "File Map structure is '| Path | When to read |' BUT the 'When to read' column entries are minimal or missing for many files. Examples: memory/people/you.md shows 'Your traveler profile' (no trigger), memory/glossary.md shows 'Shorthand terms' (no trigger). No contextual guidance like 'Session start', 'Phase 1', 'Activity/comfort decisions' provided. File Map sections lack the 'When to read' contextual triggers required by the assertion."
+    },
+    {
+      "text": "tasks-md-labeled-as-tracker: TASKS.md is labeled as 'active task tracker' in the file map or project structure — not just 'task tracker' or 'tasks'",
+      "passed": true,
+      "evidence": "CLAUDE.md File Map row shows: '| `TASKS.md` | Active task tracker — start here each session |' — explicitly labeled 'active task tracker'."
+    },
+    {
+      "text": "NEGATIVE: no-methodology-in-claude-md: CLAUDE.md should NOT contain session protocol steps, phase descriptions, research pipeline explanation, session log format, or any 'how to plan' content",
+      "passed": true,
+      "evidence": "CLAUDE.md contains only project memory and reference data: Me, People, Terms, Projects, Trip Planning Status, Project-Wide Conventions, Open Questions, Resolved, Preferences, File Map. No session protocol, phase methodology, research methodology, or 'how to plan' instruction present."
+    },
+    {
+      "text": "NEGATIVE: no-inline-traveler-details: CLAUDE.md People section should NOT contain full health specifics, dietary strictness details, interest lists, or anxiety details inline",
+      "passed": false,
+      "evidence": "CLAUDE.md People section violates constraint: '| **Alex** | Partner, travel companion. First time to Asia; nervous about language barrier. Has knee constraint from old soccer injury — stairs rough after long days. |' Inline content includes: 'nervous about language barrier' (anxiety), 'knee constraint', 'stairs rough' (health specifics). These details should only be in memory/people/alex.md, not in CLAUDE.md People table."
+    },
+    {
+      "text": "NEGATIVE: no-meta-files: Should NOT create INDEX.md, MANIFEST.txt, README.md, EXECUTION_SUMMARY.md, or any files not in the defined project structure",
+      "passed": false,
+      "evidence": "Multiple meta-documentation files created in outputs/: README.md (7.4KB), FILE_MANIFEST.md (5.1KB), SCAFFOLDING_SUMMARY.md (9.3KB), START_HERE.md (5.9KB). These are scaffolding/execution documentation files not part of the defined project structure. Explicitly prohibited: README.md, and file manifest/execution summary files fall under 'any files not in the defined project structure'."
+    }
+  ],
+  "summary": {
+    "passed": 9,
+    "failed": 3,
+    "total": 12,
+    "pass_rate": 0.75
+  },
+  "eval_feedback": {
+    "suggestions": [
+      {
+        "assertion": "file-map-has-when-to-read",
+        "reason": "The File Map table has a 'When to read' column header but entries are generic (e.g., 'Your traveler profile', 'Shorthand terms') without the contextual triggers required. For comparison, the with_skill run properly includes triggers like '**Session start**', '**Phase 1**', '**Phase 5+**', etc. This run needs to add contextual guidance to each file map entry."
+      },
+      {
+        "assertion": "NEGATIVE: no-inline-traveler-details",
+        "reason": "The old_skill CLAUDE.md People section includes specific details about Alex's anxiety ('nervous about language barrier') and health ('knee constraint', 'stairs rough'). These details belong in memory/people/alex.md only. The with_skill run correctly keeps the People section minimal with only basic roles. This is a substantive structural difference."
+      },
+      {
+        "assertion": "NEGATIVE: no-meta-files",
+        "reason": "The old_skill run created 4 meta-documentation files (README.md, FILE_MANIFEST.md, SCAFFOLDING_SUMMARY.md, START_HERE.md) that are scaffolding/execution artifacts, not project memory files. The eval explicitly prohibits README.md and files not in the defined structure. The with_skill run has a different set of meta-files (INDEX.md, PROJECT_STRUCTURE.md, etc.), suggesting both skills struggle with this constraint differently."
+      }
+    ],
+    "overall": "The old_skill run has 3 clear failures: missing contextual triggers in the file map (critical for the assertion), inline traveler details in CLAUDE.md (violates negative assertion), and meta-file creation. These represent structural differences from with_skill. The with_skill run created meta-files but passed the inline-details and file-map checks. This suggests with_skill has better alignment on file structure and CLAUDE.md discipline, though both fail on meta-file creation."
+  }
+}

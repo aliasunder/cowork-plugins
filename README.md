@@ -8,7 +8,7 @@ Install this marketplace via **Settings > Plugins > Add marketplace** using `ali
 
 | Plugin | Description |
 |--------|-------------|
-| [trip-orchestrator](trip-orchestrator/) | Plan a multi-week trip across 15+ sessions without losing context. Cross-validated research, budget tracking, printable daily cards, and a phase-based workflow from first idea to departure day. |
+| [trip-planner](trip-planner/) | Plan a multi-week trip across 15+ sessions without losing context. Cross-validated research, budget tracking, printable daily cards, and a phase-based workflow from first idea to departure day. |
 
 ## Installing
 

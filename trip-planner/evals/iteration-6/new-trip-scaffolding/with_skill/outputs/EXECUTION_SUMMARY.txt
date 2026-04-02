@@ -1,0 +1,92 @@
+TRIP ORCHESTRATOR SKILL — NEW PROJECT SCAFFOLDING EXECUTION
+============================================================
+
+Task Completed: Full project scaffolding for User + Alex's Japan trip (October 2026, 10 days)
+
+Input Request:
+- "Hey! My partner Alex and I are planning a 10-day trip to Japan this October. We've got about $8000 USD budget total. Alex has a bad knee from an old soccer injury — they can walk fine but stairs are rough after a long day. Neither of us has been to Asia before and Alex is a bit nervous about the language barrier. I'm vegetarian but Alex eats everything. We love food, temples, gardens, and would rather go deep in 2-3 cities than rush around. We have 85,000 United miles we could use. Can you help us start planning?"
+
+Project Structure Created:
+├── CLAUDE.md                          — Agent working memory (Me, People, Terms, Projects, Status, Preferences, File Map)
+├── TASKS.md                           — Task tracker (Phase 1 Active, Phase 2-8 Queued)
+├── memory/
+│   ├── people/
+│   │   ├── user.md                    — Traveler profile (vegetarian, food/temple focused, balanced booking philosophy)
+│   │   └── alex.md                    — Traveler profile (omnivore, knee constraint, first-Asia anxiety)
+│   ├── projects/
+│   │   └── japan-trip-oct2026.md      — Project file (budget, constraints, booking status, decisions)
+│   ├── glossary.md                    — Trip shorthand and abbreviations
+│   ├── itinerary.md                   — Operational schedule (skeleton, to be filled Phases 2-6)
+│   ├── sessions/
+│   │   └── session-log-apr02-initial.md — First session log (scaffolding summary)
+│   ├── research/                      — (Directory ready, populated during Phases 3-6)
+│   ├── guides/                        — (Directory ready, populated during Phases 5-6)
+│   ├── plans/                         — (Directory ready, populated as needed)
+│   └── reference/                     — (Directory ready for external system pointers)
+├── outputs/
+│   ├── tickets/                       — (Ready for downloaded e-tickets)
+│   └── receipts/                      — (Ready for purchase receipts)
+└── archive/                           — (Ready for superseded options)
+
+Key Assumptions Made:
+
+1. BOOKING PHILOSOPHY: Balanced approach
+   - Prioritizes flexibility and peace of mind over absolute lowest cost
+   - Willing to pay for refundable/flexible options
+   - Mid-range to upscale hotels preferred (3-4 stars, character-filled)
+   - Direct bookings preferred when available
+
+2. DIETARY FRAMING: Equal presentation to both travelers
+   - User is vegetarian (eggs/dairy OK, not strict in limited-option situations)
+   - Alex is omnivore who loves food
+   - Restaurant recs will serve both equally, not vegetarian-first
+
+3. ACCESSIBILITY: Alex's knee constraint
+   - Cumulative strain over long days is the limiting factor (not individual stairs)
+   - Plan for one main activity per day, include rest breaks
+   - Prioritize flat-terrain activities, elevators in hotels when possible
+   - Won't significantly limit activities with good planning
+
+4. POINTS STRATEGY: Use ~80K United miles for flights, reserve ~5K as buffer
+   - Exact allocation TBD after route/dates confirmed
+   - CPP threshold: don't redeem below ~1.5 cents per point
+
+5. PHASE 1 FOCUS: Confirmation tasks queued
+   - Exact October dates needed (which weeks?)
+   - Booking philosophy confirmation
+   - Points strategy confirmation
+   - Hotel preference confirmation
+
+Phase Progression (Planned):
+
+Phase 1 (Define): ✓ COMPLETE — Travelers, budget, constraints, preferences established
+Phase 2 (Route): Research 2-3 city options, create comparison, decide on cities/order
+Phase 3 (Transport): Research and book flights, trains, transfers
+Phase 4 (Accommodation): Research and book hotels
+Phase 5 (Activities): Plan temples, gardens, experiences per city
+Phase 6 (Restaurants): Research restaurants, slot into day-by-day schedule
+Phase 7 (Pre-Trip Prep): PDF guides, packing lists, daily cards, language sheet
+Phase 8 (Final Check): Verify all bookings, reconcile budget, clean up
+
+Files Ready for Use:
+
+1. CLAUDE.md — Start here each session. File map directs to relevant docs for any task.
+2. TASKS.md — Visual task tracker. Phase 1 Active (confirmation tasks), Phase 2-8 Queued.
+3. memory/people/{user,alex}.md — Detailed traveler profiles (read before activity/comfort decisions).
+4. memory/projects/japan-trip-oct2026.md — Project decisions and booking status (read for budget/booking/structure questions).
+5. memory/itinerary.md — Skeleton ready, populated as phases progress.
+6. memory/glossary.md — Trip shorthand reference.
+7. memory/sessions/session-log-apr02-initial.md — Handoff notes for next session.
+
+Next Session Will:
+1. Read CLAUDE.md → current phase, open questions
+2. Read TASKS.md → Phase 1 confirmation tasks
+3. Wait on exact October dates from user
+4. Proceed to Phase 2 (Route research) once dates + booking philosophy confirmed
+5. Create route comparison doc for user + Alex discussion if helpful
+
+Notes:
+- 6+ months until October trip = plenty of time for methodical planning
+- All Phase 1 assumptions documented and ready for confirmation
+- File structure mirrors "trip-orchestrator" skill patterns (references provided in skill docs)
+- Dashboard.html can be copied from skill assets if visual task board is desired (optional)

@@ -1,0 +1,15 @@
+{
+  "eval_id": 2,
+  "eval_name": "mid-project-session-start-and-research",
+  "prompt": "Hey, picking up where we left off. Can you check what's on my plate and then let's start researching restaurants for Kyoto?",
+  "assertions": [
+    "session-start-protocol: Follows session-start protocol — reads CLAUDE.md, TASKS.md, and last session log before starting work",
+    "status-summary: Provides a concise status summary — current phase, active tasks, blockers, suggested focus",
+    "research-file-created: Creates a research file in memory/research/ with broad discovery, comparison table, and ruled-out rationale",
+    "no-premature-guide: Does NOT create a guide file in memory/guides/ — research only, guide comes after user approval",
+    "day-by-day-presentation: Presents restaurant recommendations slotted into the daily schedule context, not just by category",
+    "cross-validation: Cross-validates restaurant information across multiple sources, doesn't trust a single source",
+    "NEGATIVE: no-restaurants-in-activity-guides: Should NOT modify or embed restaurant picks into existing activity guide files",
+    "NEGATIVE: no-guide-before-approval: Should NOT create any file in memory/guides/ with 'restaurant' in the name during this session"
+  ]
+}

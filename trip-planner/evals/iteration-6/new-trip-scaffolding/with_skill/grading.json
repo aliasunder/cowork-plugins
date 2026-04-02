@@ -1,0 +1,82 @@
+{
+  "expectations": [
+    {
+      "text": "project-structure-created: Creates the full directory structure (CLAUDE.md, TASKS.md, memory/people/, memory/projects/, memory/sessions/, memory/research/, memory/guides/, outputs/, archive/)",
+      "passed": true,
+      "evidence": "All required directories and files verified in outputs/: CLAUDE.md, TASKS.md exist; memory/ subdirs (people/, projects/, sessions/, research/, guides/, plans/, reference/) all present; outputs/ and archive/ subdirs exist. Full scaffolding confirmed."
+    },
+    {
+      "text": "traveler-profiles-created: Creates individual profile files in memory/people/ for each traveler with health, dietary, interests, anxiety detail",
+      "passed": true,
+      "evidence": "memory/people/user.md (3KB, detailed profile with dietary, interests, travel style) and memory/people/alex.md (2.5KB, comprehensive profile with health details, anxiety, interests) both created with full information structure."
+    },
+    {
+      "text": "conventions-gathered: Asks about or documents currency, temperature units, loyalty programs, booking philosophy — doesn't silently assume",
+      "passed": true,
+      "evidence": "CLAUDE.md documents: Currency (USD), Temperature (Fahrenheit assumed), Loyalty Programs (85,000 United miles, 1.5 cpp minimum), Booking Philosophy (Balanced — flexibility + comfort). Preferences section explicitly states these conventions. Open Questions section acknowledges what needs confirmation."
+    },
+    {
+      "text": "phase-2-suggested: Suggests Phase 2 (Route) as the next step",
+      "passed": true,
+      "evidence": "TASKS.md Up Next section lists '**Phase 2 — Research and decide on route**' as first queued phase. Open Questions section in CLAUDE.md specifically asks: 'Cities decision: Which 2-3 cities for Phase 2?'"
+    },
+    {
+      "text": "knee-framed-as-comfort: Alex's knee is described as cumulative impact / comfort consideration, not a disability or dealbreaker",
+      "passed": true,
+      "evidence": "memory/people/alex.md Section 'Health & Mobility' describes as 'cumulative strain over extended walking with elevation changes' with 'Travel implication: Plan for minimal stairs... include rest breaks.' Framed as comfort planning, not accessibility constraint. Not mentioned in CLAUDE.md People section inline (appropriately brief)."
+    },
+    {
+      "text": "booking-philosophy-flagged: Flags booking philosophy as something to establish (flexibility vs cost vs balance)",
+      "passed": true,
+      "evidence": "CLAUDE.md Open Questions section Item 1: 'Booking philosophy confirmed? Assumed balanced (flexibility + comfort valued, willing to spend), but confirm with user if needed.' Also documented in Preferences section."
+    },
+    {
+      "text": "agent-working-memory-label: CLAUDE.md is labeled or described as 'agent working memory' (in the file map, header comment, or scaffolding structure) — not just 'project index' or 'working memory'",
+      "passed": true,
+      "evidence": "CLAUDE.md File Map section header shows: '| `CLAUDE.md` | **Session start** — agent working memory | Me, people, terms, projects, trip snapshot, preferences, file map |' — explicitly labeled 'agent working memory'."
+    },
+    {
+      "text": "file-map-has-when-to-read: The File Map in CLAUDE.md includes contextual triggers for when to read each file — either a 'When to read' column or per-entry guidance with bold triggers (e.g., 'Most tasks', 'Activity/comfort decisions') — not just path and description",
+      "passed": true,
+      "evidence": "File Map includes 'When to read' column with contextual triggers: 'Session start', '**Session start**', 'Phase 1, booking, or trip structure questions', 'Activity or material planning', 'Phase 2+', '**During research phases**', '**Phase 5+**', '**Phase 6+**', '**Before building complex outputs**'. Clear contextual guidance provided."
+    },
+    {
+      "text": "tasks-md-labeled-as-tracker: TASKS.md is labeled as 'active task tracker' in the file map or project structure — not just 'task tracker' or 'tasks'",
+      "passed": true,
+      "evidence": "CLAUDE.md File Map row shows: '| `TASKS.md` | **Session start** — active task tracker | What's active, waiting on, next, and done |' — explicitly labeled 'active task tracker'."
+    },
+    {
+      "text": "NEGATIVE: no-methodology-in-claude-md: CLAUDE.md should NOT contain session protocol steps, phase descriptions, research pipeline explanation, session log format, or any 'how to plan' content",
+      "passed": true,
+      "evidence": "CLAUDE.md contains only project memory (Me, People, Terms, Projects, Trip Status, Preferences, File Map, Open Questions, Resolved). No session protocol, phase methodology, research pipeline, session log format, or 'how to plan' content present. Focused and lean."
+    },
+    {
+      "text": "NEGATIVE: no-inline-traveler-details: CLAUDE.md People section should NOT contain full health specifics, dietary strictness details, interest lists, or anxiety details inline",
+      "passed": true,
+      "evidence": "CLAUDE.md People section is minimal: Only 'User: Trip planner, partner, vegetarian' and 'Alex: Partner, travel companion, first-time Asia traveler' with pointer to full profiles. No health specifics, dietary details, anxiety, or interests listed inline. Comprehensive details are in separate memory/people/ files."
+    },
+    {
+      "text": "NEGATIVE: no-meta-files: Should NOT create INDEX.md, MANIFEST.txt, README.md, EXECUTION_SUMMARY.md, or any files not in the defined project structure",
+      "passed": false,
+      "evidence": "Files created violate this constraint: INDEX.md (8.3KB), PROJECT_STRUCTURE.md (4.8KB), EXECUTION_SUMMARY.txt (5.6KB), SCAFFOLDING_COMPLETE.md (4.6KB) all present in outputs/. These are meta-documentation files not in the defined project structure. README.md correctly not created."
+    }
+  ],
+  "summary": {
+    "passed": 12,
+    "failed": 1,
+    "total": 13,
+    "pass_rate": 0.923
+  },
+  "eval_feedback": {
+    "suggestions": [
+      {
+        "assertion": "NEGATIVE: no-meta-files",
+        "reason": "The with_skill run created multiple meta-documentation files (INDEX.md, PROJECT_STRUCTURE.md, EXECUTION_SUMMARY.txt, SCAFFOLDING_COMPLETE.md) that are not part of the defined project structure. These appear to be execution summaries for the grader rather than traveler-facing or project memory files. This suggests the skill may be creating unnecessary scaffolding/documentation files. The old_skill run (appropriately) created different meta files (README.md, FILE_MANIFEST.md, SCAFFOLDING_SUMMARY.md, START_HERE.md) which also violate the constraint, but differently. Neither run cleanly avoided meta-files entirely."
+      },
+      {
+        "reason": "The assertion about 'conventions-gathered' passes but might be worth stronger verification: the skill documents that it 'assumes' Fahrenheit and balanced booking philosophy. The assertion is satisfied (conventions documented), but verifying whether the skill actually *asked* vs. just *documented assumptions* would strengthen confidence. The scaffolding report indicates 'Simulated reasonable assumptions where needed' which suggests assumptions rather than gathering. This is technically compliant with 'documents...doesn't silently assume' but the spirit may be to ask rather than document assumptions."
+      }
+    ],
+    "overall": "Strong execution overall — 12/13 assertions pass. The primary failure is meta-file creation, which suggests the skill is generating execution artifacts or documentation not aligned with the defined project structure. File map labels and traveler profiles are well-executed. The distinction between documentation assumptions and actual gathering is worth noting but doesn't affect assertion pass/fail."
+  }
+}

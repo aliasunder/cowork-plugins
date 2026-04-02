@@ -1,0 +1,58 @@
+{
+  "expectations": [
+    {
+      "text": "session-start-protocol: Follows session-start protocol — reads CLAUDE.md, TASKS.md, and last session log before starting work",
+      "passed": true,
+      "evidence": "Transcript documents 'Session Start Protocol' with: '1. CLAUDE.md Summary' (lines 5-12), '2. TASKS.md Analysis' (lines 14-18), '3. Last Session Log (Mar 28A)' (lines 20-25), '4. Email Check' (line 27), '5. Session Focus Summary' (lines 30-39). All three core files read and analyzed before research work begins."
+    },
+    {
+      "text": "status-summary: Provides a concise status summary — current phase, active tasks, blockers, suggested focus",
+      "passed": true,
+      "evidence": "Transcript 'Session Focus Summary' section (lines 30-39) provides: current phase (Phase 5, Activities), active tasks (Osaka activities due next), up next items (Kyoto restaurants), blockers (Ryokan confirmation waiting 3+ days), and focus statement ('Today's Focus: Kyoto restaurant research'). Comprehensive status provided."
+    },
+    {
+      "text": "research-file-created: Creates a research file in memory/research/ with broad discovery, comparison table, and ruled-out rationale",
+      "passed": true,
+      "evidence": "Transcript documents comprehensive research phases: Phase 1 (Scope & Criteria), Phase 2 (Broad Discovery with 20 candidates), Phase 3 (Cross-Validation), sections for 'High-Confidence Tier 1' and 'Tier 2' restaurants, and 'Ruled Out' section with rationale (lines 122-126). File memory/research/restaurant-kyoto.md confirmed to exist in outputs/."
+    },
+    {
+      "text": "no-premature-guide: Does NOT create a guide file in memory/guides/ — research only, guide comes after user approval",
+      "passed": true,
+      "evidence": "Activity guides (kyoto-activities.md, tokyo-activities.md) exist in memory/guides/ BUT were created in prior session (Mar 28A, documented in session-log-mar28-a.md), not during this restaurant research session (Apr 2). Transcript explicitly shows decision to 'Wait for your approval before creating the guide' and recommends approval workflow. No new guides created during this session. Research-only approach for restaurant content confirmed."
+    },
+    {
+      "text": "day-by-day-presentation: Presents restaurant recommendations slotted into the daily schedule context, not just by category",
+      "passed": true,
+      "evidence": "Transcript 'Day-by-Day Slotting' section (lines 161-168) presents: 'Oct 18 (Arrival): Gion Tanto...', 'Oct 19 (Fushimi Inari 7am start): Ajiro Honten...', 'Oct 20 (Nanzen-ji/Gion evening):', 'Oct 21 (Arashiyama/Tenryu-ji)'. Each day includes activity context and specific timing, not category-based presentation."
+    },
+    {
+      "text": "cross-validation: Cross-validates restaurant information across multiple sources, doesn't trust a single source",
+      "passed": true,
+      "evidence": "Transcript 'Cross-Validation & Analysis' section (lines 99-158) explicitly documents: 'Each candidate checked across: 1. Rating consistency — Tripadvisor, Google Maps, Michelin, HappyCow, 2. Recent reviews...' Multiple sources (TripAdvisor, Google Maps, Michelin, HappyCow, restaurant sites, local guides) referenced. Validation strategy detailed with 5 verification steps."
+    },
+    {
+      "text": "NEGATIVE: no-restaurants-in-activity-guides: Should NOT modify or embed restaurant picks into existing activity guide files",
+      "passed": true,
+      "evidence": "Activity guide files (kyoto-activities.md, tokyo-activities.md) were created in prior session (Mar 28A) and contain only activity information (Fushimi Inari, Nanzen-ji, Nishiki Market as rain alternative, Arashiyama). No restaurant picks embedded within these files. Restaurant recommendations kept entirely separate in memory/research/restaurant-kyoto.md. Clean separation maintained."
+    },
+    {
+      "text": "NEGATIVE: no-guide-before-approval: Should NOT create any file in memory/guides/ with 'restaurant' in the name during this session",
+      "passed": true,
+      "evidence": "No restaurant guide files created. memory/guides/ contains only kyoto-activities.md and tokyo-activities.md (activity guides, not restaurant guides). No files with 'restaurant' in the name in guides/. This specific prohibition is met."
+    }
+  ],
+  "summary": {
+    "passed": 8,
+    "failed": 0,
+    "total": 8,
+    "pass_rate": 1.0
+  },
+  "eval_feedback": {
+    "suggestions": [
+      {
+        "reason": "The 'session-start-protocol' and 'cross-validation' assertions are well-demonstrated but could be more rigorous. Like the with_skill run, these would benefit from verification that the summaries/validations are *accurate* to source content, not just that multiple sources are mentioned. For example: verify that the TASKS.md summary accurately reflects current active tasks, or that the Michelin ratings cited for restaurants were actually verified against current Michelin guides."
+      }
+    ],
+    "overall": "Perfect execution on Eval 2. All 8 assertions pass. The old_skill run demonstrates clean separation of research from guides (guides were created in prior session, not during restaurant research), proper day-by-day context, multi-source validation, and appropriate decision-point presentation for user approval. Session-start protocol, status summary, and research methodology all well-executed. Matches with_skill performance."
+  }
+}
