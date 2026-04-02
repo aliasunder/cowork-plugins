@@ -27,6 +27,7 @@ This skill contains the planning lifecycle and session management logic directly
 - `references/budget-tracking.md` — Budget table conventions, points/cash tracking. Read when updating the budget.
 - `references/phase-guide.md` — Detailed per-phase guidance, pitfalls, transitions. Read when entering or unsure about a phase.
 - `references/tasks-and-dashboard.md` — TASKS.md format, dashboard setup, task lifecycle. Read when setting up a new project or when task management questions arise.
+- `references/known-issues.md` — Compatibility pitfalls with companion tools (e.g., productivity dashboard). Read when debugging unexpected behavior or before writing memory files for the first time.
 
 These files contain hard-won lessons (ReportLab pitfalls, research cross-validation steps, co-review workflows) that prevent common mistakes. Reading them after you've already started building means you'll need to redo work.
 
