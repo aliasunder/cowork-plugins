@@ -8,7 +8,7 @@ Install this marketplace via **Settings > Plugins > Add marketplace** using `ali
 
 | Plugin | Description |
 |--------|-------------|
-| [trip-orchestrator](trip-orchestrator/) | End-to-end trip planning project manager. Opinionated orchestrator-style skill — encodes a complete workflow (8 planning phases, session protocols, file conventions) rather than a set of independent tools. See its README for the design rationale. |
+| [trip-orchestrator](trip-orchestrator/) | Plan a multi-week trip across 15+ sessions without losing context. Cross-validated research, budget tracking, printable daily cards, and a phase-based workflow from first idea to departure day. |
 
 ## Installing
 

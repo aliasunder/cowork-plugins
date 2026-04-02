@@ -1,39 +1,26 @@
 # trip-orchestrator
 
-A Cowork skill that acts as an end-to-end trip planning project manager. It guides multi-session travel planning from first idea through departure day — tracking planning phases, managing dependencies between tasks, running session start/end protocols, and providing phase-appropriate methodology via reference files.
+Plan a multi-week trip with Claude that actually remembers everything between sessions. The skill acts as a project manager for your trip — tracking what's been decided, what's next, and producing real deliverables you can print and travel with.
 
-## Why this exists
+## What you get
 
-Planning a multi-week international trip across 15+ Cowork sessions requires consistent structure: where does booking info go, when should restaurants be researched vs activities, how do you hand off context between sessions, and how do you make sure completed tasks actually get tracked. Without a skill, every session starts from scratch and the agent reinvents the wheel on file structure, task management, and research methodology.
+**Session memory.** Every session picks up exactly where the last one left off. Claude reads your project state, checks for new booking confirmations in email, and gives you a status summary before asking what to work on.
 
-Rather than splitting this across multiple independent skills, it uses a single orchestrator that loads specialized reference files on demand — keeping the full workflow context available in every session.
+**Systematic research.** Hotels, restaurants, activities, and transport all go through a 6-phase research process: broad discovery, cross-validation across multiple sources, structured comparison tables, and a shortlist presented for your input before anything gets decided.
 
-## Structure
+**Budget tracking.** One running ledger across all bookings — cash, points, multi-currency — with payment status, refundability, and a buffer estimate that updates as you go.
 
-```
-.claude-plugin/plugin.json            # Plugin manifest
-skills/trip-orchestrator/
-  SKILL.md                            # Core skill — phases, session protocol, file conventions
-  references/
-    research-methodology.md           # 6-phase research process
-    materials-guide.md                # How to produce traveler-facing deliverables
-    budget-tracking.md                # Budget table conventions
-    phase-guide.md                    # Detailed per-phase guidance
-    tasks-and-dashboard.md            # TASKS.md format and dashboard setup
-commands/
-  new-trip.md                         # Scaffold a new trip project
-  session-start.md                    # Load context and summarize status
-  session-end.md                      # Write session log and reconcile tasks
-assets/
-  dashboard.html                      # Standalone kanban board for TASKS.md
-evals/                                # Test scenarios and results (see evals/README.md)
-```
+**Printable travel materials.** The skill produces real deliverables: day-by-day itinerary guides, printable daily cards (one page per travel day with schedules, restaurants, alternatives, and emergency info), language cheat sheets, and packing lists.
 
-## How the skill works
+**Phase-based workflow.** Eight planning phases with dependency rules prevent premature decisions — you won't be researching restaurants before cities are chosen, or building packing lists before activities are set.
 
-The skill defines 8 planning phases with dependency rules:
+**Visual task dashboard.** A standalone kanban board that reads your task file, so you can see what's active, waiting, and done at a glance.
 
-1. **Define** — who, when, budget, constraints, booking philosophy
+## How it works
+
+The skill defines 8 planning phases:
+
+1. **Define** — who's traveling, when, budget, constraints, booking philosophy
 2. **Route** — destination research, city selection, night allocation
 3. **Transport** — flights, trains, transfers
 4. **Accommodation** — hotels/B&Bs per city
@@ -42,11 +29,36 @@ The skill defines 8 planning phases with dependency rules:
 7. **Pre-Trip Prep** — itinerary guides, daily cards, packing lists, language sheets
 8. **Final Check** — verify everything, reconcile budget
 
-Each session follows a rhythm: **orient** (read CLAUDE.md, TASKS.md, last session log, summarize) → **work** → **close** (write session log, update CLAUDE.md, reconcile tasks).
+Each session follows a rhythm: **orient** (read project state, last session log, check email, summarize) → **work** → **close** (write session log, update project index, reconcile tasks).
 
-The skill keeps SKILL.md lean (~320 lines) by deferring detailed methodology to `references/` files that get loaded on demand — only when the agent enters a research task, creates a deliverable, or updates the budget.
+Detailed methodology lives in `references/` files that get loaded on demand — only when the agent enters a research task, creates a deliverable, or updates the budget. This keeps the core skill lean (~320 lines) while having deep guidance available when needed.
 
-## Why a single orchestrator, not multiple skills
+## Getting started
+
+Install as a Cowork plugin:
+
+1. Open **Settings > Plugins** in the Claude desktop app
+2. Click **Add marketplace** and enter `aliasunder/cowork-plugins`
+3. Enable **trip-orchestrator**
+
+To start planning: just tell Claude you want to plan a trip, or use the `/new-trip` command to scaffold a project from scratch. The skill auto-triggers whenever it detects a trip planning project in your working directory.
+
+## Without vs. with the plugin
+
+| Without | With trip-orchestrator |
+|---------|----------------------|
+| Every session you re-explain what's been decided and what's next | Claude reads your project state and picks up where you left off |
+| Research is ad-hoc — Claude might check one source and call it done | 6-phase research process with cross-validation across multiple sources |
+| Budget lives in scattered notes or your head | One structured ledger with payment status, refundability, and running totals |
+| No deliverables — just conversation | Printable daily cards, itinerary PDFs, packing lists, language sheets |
+| You manage the process (what to plan next, what depends on what) | Phase dependencies handle sequencing automatically |
+| Tasks get checked off but context about decisions is lost | Session logs preserve the *why* behind every decision for future sessions |
+| File organization is improvised each time | Consistent structure so nothing gets lost across 15+ sessions |
+
+## Design rationale
+
+<details>
+<summary>Why a single orchestrator, not multiple skills</summary>
 
 Most Cowork plugins use a **toolkit pattern** — a collection of independent skills where each handles one task (review code, run incident response, research hotels). That works well when skills are genuinely independent.
 
@@ -63,18 +75,39 @@ The orchestrator pattern solves this by putting the full workflow context — ph
 - **Toolkit (multiple skills):** Independent capabilities that don't depend on each other. Good for: engineering plugins (code-review, incident-response), productivity tools.
 - **Orchestrator (single skill + references):** Sequential workflows with phase dependencies and multi-session state. Good for: project management, trip planning, any multi-week planning process.
 
-## Other key design decisions
+</details>
+
+<details>
+<summary>Other key design decisions</summary>
 
 - **File boundary rules.** CLAUDE.md is a lean index (~200-300 lines), not a knowledge base. People details live in `memory/people/`, booking details in `memory/projects/`, methodology in the skill. This prevents the common failure mode where CLAUDE.md becomes a 500-line dump of everything.
 - **Research → Guide pipeline.** Research files are broad comparisons. Guides are curated picks created *after* the user approves recommendations. This prevents premature commitment and gives the user a decision point.
 - **Booking philosophy gathered early.** Flexibility vs cost, hotel star preference, refundability appetite — gathered in Phase 1 because it shapes every downstream booking decision.
 - **Task completion = physical move.** Completed tasks must be moved to the Done section with strikethrough and date, not just checkbox-checked in Active. This is the most common failure mode without the skill.
 
-## Using the skill
+</details>
 
-Install as a Cowork plugin or load the SKILL.md directly. The skill auto-triggers when it detects a trip planning project (CLAUDE.md with traveler profiles, memory/ directory) or when the user says anything like "plan a trip", "start a session", "research hotels", etc.
+## Structure
 
-To start a new trip: use the `new-trip` command or just tell the agent you want to plan a trip.
+```
+.claude-plugin/plugin.json            # Plugin manifest
+skills/trip-orchestrator/
+  SKILL.md                            # Core skill — phases, session protocol, file conventions
+  references/
+    research-methodology.md           # 6-phase research process
+    materials-guide.md                # How to produce traveler-facing deliverables
+    budget-tracking.md                # Budget table conventions
+    phase-guide.md                    # Detailed per-phase guidance
+    tasks-and-dashboard.md            # TASKS.md format and dashboard setup
+    known-issues.md                   # Compatibility pitfalls
+commands/
+  new-trip.md                         # Scaffold a new trip project
+  session-start.md                    # Load context and summarize status
+  session-end.md                      # Write session log and reconcile tasks
+assets/
+  dashboard.html                      # Standalone kanban board for TASKS.md
+evals/                                # Test scenarios and results (see evals/README.md)
+```
 
 ## Evals
 
