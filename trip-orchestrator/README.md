@@ -41,7 +41,7 @@ Install as a Cowork plugin:
 2. Click **Add marketplace** and enter `aliasunder/cowork-plugins`
 3. Enable **trip-orchestrator**
 
-To start planning: just tell Claude you want to plan a trip, or use the `/new-trip` command to scaffold a project from scratch. The skill auto-triggers whenever it detects a trip planning project in your working directory.
+To start planning: just tell Claude you want to plan a trip. The skill auto-triggers whenever it detects a trip planning project in your working directory, or when you mention anything related to travel planning.
 
 ## Without vs. with the plugin
 
@@ -100,10 +100,6 @@ skills/trip-orchestrator/
     phase-guide.md                    # Detailed per-phase guidance
     tasks-and-dashboard.md            # TASKS.md format and dashboard setup
     known-issues.md                   # Compatibility pitfalls
-commands/
-  new-trip.md                         # Scaffold a new trip project
-  session-start.md                    # Load context and summarize status
-  session-end.md                      # Write session log and reconcile tasks
 assets/
   dashboard.html                      # Standalone kanban board for TASKS.md
 evals/                                # Test scenarios and results (see evals/README.md)
