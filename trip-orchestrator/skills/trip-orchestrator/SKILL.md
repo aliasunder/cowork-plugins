@@ -240,8 +240,8 @@ If no CLAUDE.md exists:
 
 2. **Create the project structure:**
    ```
-   CLAUDE.md          — Working memory
-   TASKS.md           — Task tracker (see references/tasks-and-dashboard.md for format)
+   CLAUDE.md          — Agent working memory
+   TASKS.md           — Active task tracker (see references/tasks-and-dashboard.md for format)
    dashboard.html     — Visual task/memory dashboard (copy from Productivity plugin if available)
    memory/
      people/          — Traveler profiles
@@ -264,7 +264,7 @@ If no CLAUDE.md exists:
 4. **Create files following the file boundary rules** (see "File Conventions → What Goes Where" below):
    - **Traveler profiles** in `memory/people/` — full detail on each person
    - **Project file** in `memory/projects/` — trip overview, budget, constraints
-   - **CLAUDE.md** — lean project index only. Summary table for people (with pointers), project-wide preferences, file map. Do NOT duplicate traveler details from profiles or planning methodology from this skill.
+   - **CLAUDE.md** — agent working memory. Lean project index with summary tables, preferences, and a file map that tells you *when* to read each file, not just what's in it. See "File Conventions" below for the full structure. Do NOT duplicate traveler details from profiles or planning methodology from this skill.
    - **First session log** in `memory/sessions/`
 
 5. **Suggest an email label** for trip-related emails if email tools are available.
@@ -293,8 +293,8 @@ These are lessons from real multi-session trip planning:
 
 Each file type has a distinct role. Avoid duplicating information across files — put it in one place and point to it from elsewhere.
 
-**CLAUDE.md — Project index and current state (~200-300 lines max)**
-This is a quick-reference dashboard, not a knowledge base. It contains:
+**CLAUDE.md — Agent working memory (~200-300 lines max)**
+This is the project's working memory — a quick-reference index, not a knowledge base. It contains:
 - **Me**: One-line trip summary (who, where, when)
 - **People**: Summary table with one row per traveler (name, role, one-line note). Link to full profiles. Do NOT inline dietary details, health specifics, travel anxieties, or interest lists — those live in `memory/people/`.
 
@@ -314,7 +314,18 @@ This is a quick-reference dashboard, not a knowledge base. It contains:
 - **Projects**: One-line project summary with link to full project file.
 - **Trip Planning Status**: Current phase, last session pointer, trip snapshot table (dates, cities, budget booked/total), open questions, recently resolved items.
 - **Preferences**: Project-wide conventions (currency, units, booking philosophy). NOT per-traveler preferences — those go in people profiles.
-- **File Map**: What exists and when to read it.
+- **File Map**: What exists and *when to read it*. The file map is the most important navigational tool in the project. Each entry should tell you not just what a file contains, but when you'd reach for it. Use a "When to read" column with bold triggers.
+
+  **Example — effective file map entry:**
+  ```
+  | Path | When to read | What |
+  |------|-------------|------|
+  | `memory/itinerary.md` | **Most tasks** — the operational single source of truth | Day-by-day schedule, accommodation, transport, budget |
+  | `memory/people/alex.md` | **Activity/comfort decisions** | Health, preferences, anxieties, mobility constraints |
+  ```
+  The bold triggers ("Most tasks", "Activity/comfort decisions") make it obvious at a glance which files matter for the current task. This is what makes session handoffs work across 15+ sessions — the file map tells the next session exactly where to look.
+
+  Label CLAUDE.md itself as "This file — agent working memory" and TASKS.md as "Active task tracker" in the file map so their roles are immediately clear.
 
 CLAUDE.md should NOT contain: session protocols (the skill provides these), planning methodology, phase descriptions, research guidelines, task management rules, or any "how to plan" content. The skill provides all of that. CLAUDE.md is purely project state.
 

@@ -1,6 +1,6 @@
 # trip-orchestrator
 
-Plan a multi-week trip with Claude that actually remembers everything between sessions. The skill acts as a project manager for your trip — tracking what's been decided, what's next, and producing real deliverables you can print and travel with.
+Plan a multi-week trip with Claude that actually remembers everything between sessions. The skill acts as a project manager for your trip — tracking what's been decided, what's next, and producing real deliverables you can print and travel with. Built and refined across 25+ sessions of planning a real two-week Europe trip.
 
 ## What you get
 
@@ -41,19 +41,15 @@ Install as a Cowork plugin:
 2. Click **Add marketplace** and enter `aliasunder/cowork-plugins`
 3. Enable **trip-orchestrator**
 
-To start planning: just tell Claude you want to plan a trip. The skill auto-triggers whenever it detects a trip planning project in your working directory, or when you mention anything related to travel planning.
+To start planning: just tell Claude you want to plan a trip. The skill auto-triggers whenever it detects a trip planning project in your working directory, or when you mention anything related to travel planning. The first time, Claude will ask about who's traveling, when, where, and your budget. Everything else flows from there.
 
-## Without vs. with the plugin
+## Why a plugin?
 
-| Without | With trip-orchestrator |
-|---------|----------------------|
-| Every session you re-explain what's been decided and what's next | Claude reads your project state and picks up where you left off |
-| Research is ad-hoc — Claude might check one source and call it done | 6-phase research process with cross-validation across multiple sources |
-| Budget lives in scattered notes or your head | One structured ledger with payment status, refundability, and running totals |
-| No deliverables — just conversation | Printable daily cards, itinerary PDFs, packing lists, language sheets |
-| You manage the process (what to plan next, what depends on what) | Phase dependencies handle sequencing automatically |
-| Tasks get checked off but context about decisions is lost | Session logs preserve the *why* behind every decision for future sessions |
-| File organization is improvised each time | Consistent structure so nothing gets lost across 15+ sessions |
+Multi-week trips can run across 10-20 planning sessions. The plugin encodes 700+ lines of planning methodology — research cross-validation, budget conventions, session handoffs, deliverable production, phase sequencing — refined over 25+ sessions of planning a real two-week trip.
+
+Your project files stay focused on your trip. The planning process stays in the plugin, out of your way. Install, say "plan a trip," and the whole system is there.
+
+The project the plugin creates — CLAUDE.md, TASKS.md, memory structure, file conventions — stands on its own. CLAUDE.md acts as **agent working memory** with file maps, traveler profiles, preferences, and session pointers. TASKS.md tracks what's active, blocked, and done. If you open the folder in Claude Code or a future session without the plugin, the project context still works. The plugin adds the methodology layer on top.
 
 ## Design rationale
 
@@ -83,7 +79,7 @@ The orchestrator pattern solves this by putting the full workflow context — ph
 - **File boundary rules.** CLAUDE.md is a lean index (~200-300 lines), not a knowledge base. People details live in `memory/people/`, booking details in `memory/projects/`, methodology in the skill. This prevents the common failure mode where CLAUDE.md becomes a 500-line dump of everything.
 - **Research → Guide pipeline.** Research files are broad comparisons. Guides are curated picks created *after* the user approves recommendations. This prevents premature commitment and gives the user a decision point.
 - **Booking philosophy gathered early.** Flexibility vs cost, hotel star preference, refundability appetite — gathered in Phase 1 because it shapes every downstream booking decision.
-- **Task completion = physical move.** Completed tasks must be moved to the Done section with strikethrough and date, not just checkbox-checked in Active. This is the most common failure mode without the skill.
+- **Project stands alone.** The CLAUDE.md, TASKS.md, and memory structure the plugin creates work independently of the plugin. Open the folder in Claude Code or any future session and the project context is there — the plugin adds methodology, not lock-in.
 
 </details>
 
