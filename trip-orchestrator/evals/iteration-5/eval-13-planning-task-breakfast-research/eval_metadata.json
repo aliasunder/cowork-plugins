@@ -1,0 +1,13 @@
+{
+  "eval_id": 5,
+  "eval_name": "breakfast-research-task",
+  "prompt": "Let's research some breakfast spots near our hotel in Avignon — mom loves pastries and I'd want somewhere with good veggie options. Maybe 3-4 places we could rotate through during our 5 nights there.",
+  "assertions": [
+    "The response reads CLAUDE.md or project files for context",
+    "The response reads mom's traveler profile or references her preferences",
+    "The response reads existing Avignon restaurant research or guides for context on what's already been decided",
+    "The response presents multiple breakfast options (3+) with specific names and details",
+    "The response addresses both dietary needs (vegetarian for Tanisha, pastries/non-vegetarian for mom)",
+    "The response includes practical details (addresses, approximate prices, or proximity to hotel)"
+  ]
+}

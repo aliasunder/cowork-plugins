@@ -1,0 +1,11 @@
+{
+  "eval_id": 3,
+  "eval_name": "budget-buffer-check",
+  "prompt": "How much budget buffer do we have left?",
+  "assertions": [
+    "The response includes approximate budget buffer figures (cash and/or points)",
+    "The response does NOT include a multi-line session status summary or phase update before answering",
+    "The response does NOT read TASKS.md or session logs before answering the question",
+    "The total tool calls are 5 or fewer"
+  ]
+}

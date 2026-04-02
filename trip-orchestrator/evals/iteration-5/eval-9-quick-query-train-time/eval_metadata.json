@@ -1,0 +1,12 @@
+{
+  "eval_id": 1,
+  "eval_name": "train-time-lookup",
+  "prompt": "What time is our train on May 30? The first one from Avignon.",
+  "assertions": [
+    "The response includes the correct departure time (06:47)",
+    "The response identifies the train as OUIGO from Avignon Centre",
+    "The response does NOT include a multi-line session status summary or phase update before answering",
+    "The response does NOT read TASKS.md before answering the question",
+    "The total tool calls are 5 or fewer"
+  ]
+}

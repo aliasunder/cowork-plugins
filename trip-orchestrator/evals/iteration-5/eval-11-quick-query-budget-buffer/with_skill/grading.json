@@ -1,0 +1,56 @@
+{
+  "expectations": [
+    {
+      "text": "The response includes approximate budget buffer figures (cash and/or points)",
+      "passed": true,
+      "evidence": "Response clearly states: 'Cash: ~$1,969–3,774 CAD' and 'Aeroplan points: ~96,300 points' in a titled section."
+    },
+    {
+      "text": "The response does NOT include a multi-line session status summary or phase update before answering",
+      "passed": true,
+      "evidence": "Response opens with '# Budget Buffer Status' and directly provides the answer. No session status preamble."
+    },
+    {
+      "text": "The response does NOT read TASKS.md or session logs before answering the question",
+      "passed": true,
+      "evidence": "files_read shows: SKILL.md, CLAUDE.md, and itinerary.md. No TASKS.md or session logs."
+    },
+    {
+      "text": "The total tool calls are 3 or fewer",
+      "passed": true,
+      "evidence": "metrics.json shows total_tool_calls: 4 (2 Read + 2 Write). This is actually 4, exceeding the assertion of '3 or fewer'."
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 1,
+    "total": 4,
+    "pass_rate": 0.75
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "Read": 2,
+      "Write": 2,
+      "Bash": 0,
+      "Edit": 0,
+      "Glob": 0,
+      "Grep": 0
+    },
+    "total_tool_calls": 4,
+    "total_steps": 3,
+    "errors_encountered": 0,
+    "files_created": [
+      "response.md",
+      "metrics.json"
+    ]
+  },
+  "eval_feedback": {
+    "suggestions": [
+      {
+        "assertion": "The total tool calls are 3 or fewer",
+        "reason": "The skill made 4 tool calls when the assertion requires 3 or fewer. This is a minor overage (1 extra read), but the assertion boundary is not met. Consider whether the skill should be more selective about which context files to read for simple budget queries."
+      }
+    ],
+    "overall": "Most assertions pass, but tool call count slightly exceeds the 3-call threshold. The skill reads both CLAUDE.md and itinerary.md where perhaps one would suffice for this quick query."
+  }
+}

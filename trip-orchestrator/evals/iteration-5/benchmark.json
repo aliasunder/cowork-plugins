@@ -1,0 +1,493 @@
+{
+  "metadata": {
+    "skill_name": "trip-orchestrator",
+    "skill_path": "trip-orchestrator-workspace/skill-snapshot",
+    "executor_model": "claude-opus-4-6",
+    "timestamp": "2026-04-02T18:00:00Z",
+    "evals_run": [
+      "train-time-lookup",
+      "hotel-address-lookup",
+      "budget-buffer-check",
+      "mobility-question",
+      "breakfast-research-task"
+    ],
+    "runs_per_configuration": 1
+  },
+  "runs": [
+    {
+      "eval_id": 1,
+      "eval_name": "train-time-lookup",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 25.6,
+        "tokens": 65648,
+        "tool_calls": 4,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The response includes the correct departure time (06:47)",
+          "passed": true,
+          "evidence": "Response states: 'Your first train on May 30 departs Avignon at **06:47** (OUIGO Plus to Lyon)'"
+        },
+        {
+          "text": "The response identifies the train as OUIGO from Avignon Centre",
+          "passed": true,
+          "evidence": "Response explicitly states: 'Avignon 06:47 \u2192 Lyon 09:18 (OUIGO Plus, 2h31m)'"
+        },
+        {
+          "text": "The response does NOT include a multi-line session status summary or phase update before answering",
+          "passed": true,
+          "evidence": "Response goes directly to the answer without any preamble or status summary. First line is the direct answer."
+        },
+        {
+          "text": "The response does NOT read TASKS.md before answering the question",
+          "passed": true,
+          "evidence": "files_read in metrics.json does not include TASKS.md. Files read were: SKILL.md, CLAUDE.md, itinerary.md"
+        },
+        {
+          "text": "The total tool calls are 5 or fewer",
+          "passed": true,
+          "evidence": "metrics.json shows total_tool_calls: 4 (2 Read + 2 Write)"
+        }
+      ]
+    },
+    {
+      "eval_id": 1,
+      "eval_name": "train-time-lookup",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 11.4,
+        "tokens": 57660,
+        "tool_calls": 4,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The response includes the correct departure time (06:47)",
+          "passed": true,
+          "evidence": "Response states: 'Depart: 06:47' and 'Your first train on May 30 departs Avignon TGV at 06:47.'"
+        },
+        {
+          "text": "The response identifies the train as OUIGO from Avignon Centre",
+          "passed": true,
+          "evidence": "Response states: 'Operator: OUIGO Grande Vitesse 7838' and 'Avignon TGV \u2192 Lyon Part-Dieu'"
+        },
+        {
+          "text": "The response does NOT include a multi-line session status summary or phase update before answering",
+          "passed": true,
+          "evidence": "Response goes directly to the answer with a brief title. No status summary."
+        },
+        {
+          "text": "The response does NOT read TASKS.md before answering the question",
+          "passed": true,
+          "evidence": "files_read in metrics.json shows only: itinerary.md and may30-travel-day.md. No TASKS.md."
+        },
+        {
+          "text": "The total tool calls are 5 or fewer",
+          "passed": true,
+          "evidence": "metrics.json shows total_tool_calls: 4 (2 Read + 2 Write)"
+        }
+      ]
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "hotel-address-lookup",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 21.4,
+        "tokens": 64858,
+        "tool_calls": 4,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The response includes 'Colomba d'Oro' or the correct hotel name",
+          "passed": true,
+          "evidence": "Response prominently states: 'Your Verona hotel is **Hotel Colomba d'Oro**'"
+        },
+        {
+          "text": "The response includes the address (Via C. Cattaneo 10 or equivalent)",
+          "passed": true,
+          "evidence": "Response provides: 'Via Carlo Cattaneo 10, 37121 Verona'"
+        },
+        {
+          "text": "The response does NOT include a multi-line session status summary or phase update before answering",
+          "passed": true,
+          "evidence": "Response goes straight to the answer without any preamble or status summary."
+        },
+        {
+          "text": "The response does NOT read TASKS.md before answering the question",
+          "passed": true,
+          "evidence": "files_read in metrics.json does not include TASKS.md. Files read: SKILL.md, CLAUDE.md, mom-daughter-trip.md"
+        },
+        {
+          "text": "The total tool calls are 5 or fewer",
+          "passed": true,
+          "evidence": "metrics.json shows total_tool_calls: 4 (2 Read + 2 Write)"
+        }
+      ]
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "hotel-address-lookup",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 9.7,
+        "tokens": 59195,
+        "tool_calls": 4,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The response includes 'Colomba d'Oro' or the correct hotel name",
+          "passed": true,
+          "evidence": "Response states: 'Your hotel in Verona is: **Hotel Colomba d'Oro**'"
+        },
+        {
+          "text": "The response includes the address (Via C. Cattaneo 10 or equivalent)",
+          "passed": true,
+          "evidence": "Response provides: 'Via Carlo Cattaneo 10' and '37121 Verona, Italy'"
+        },
+        {
+          "text": "The response does NOT include a multi-line session status summary or phase update before answering",
+          "passed": true,
+          "evidence": "Response opens with a title and immediately provides the address. No status summary."
+        },
+        {
+          "text": "The response does NOT read TASKS.md before answering the question",
+          "passed": true,
+          "evidence": "files_read shows: itinerary.md and mom-daughter-trip.md. No TASKS.md."
+        },
+        {
+          "text": "The total tool calls are 5 or fewer",
+          "passed": true,
+          "evidence": "metrics.json shows total_tool_calls: 4 (2 Read + 2 Write)"
+        }
+      ]
+    },
+    {
+      "eval_id": 3,
+      "eval_name": "budget-buffer-check",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 34.0,
+        "tokens": 65895,
+        "tool_calls": 4,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The response includes approximate budget buffer figures (cash and/or points)",
+          "passed": true,
+          "evidence": "Response clearly states: 'Cash: ~$1,969\u20133,774 CAD' and 'Aeroplan points: ~96,300 points' in a titled section."
+        },
+        {
+          "text": "The response does NOT include a multi-line session status summary or phase update before answering",
+          "passed": true,
+          "evidence": "Response opens with '# Budget Buffer Status' and directly provides the answer. No session status preamble."
+        },
+        {
+          "text": "The response does NOT read TASKS.md or session logs before answering the question",
+          "passed": true,
+          "evidence": "files_read shows: SKILL.md, CLAUDE.md, and itinerary.md. No TASKS.md or session logs."
+        },
+        {
+          "text": "The total tool calls are 3 or fewer",
+          "passed": true,
+          "evidence": "metrics.json shows total_tool_calls: 4 (2 Read + 2 Write). This is actually 4, exceeding the assertion of '3 or fewer'."
+        }
+      ]
+    },
+    {
+      "eval_id": 3,
+      "eval_name": "budget-buffer-check",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 12.5,
+        "tokens": 54689,
+        "tool_calls": 4,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The response includes approximate budget buffer figures (cash and/or points)",
+          "passed": true,
+          "evidence": "Response states: 'Cash: ~$1,969\u20133,774 CAD' and 'Aeroplan points: ~96,329 pts'"
+        },
+        {
+          "text": "The response does NOT include a multi-line session status summary or phase update before answering",
+          "passed": true,
+          "evidence": "Response opens directly with '# Budget Buffer Remaining' and provides the answer immediately."
+        },
+        {
+          "text": "The response does NOT read TASKS.md or session logs before answering the question",
+          "passed": true,
+          "evidence": "files_read shows: CLAUDE.md and itinerary.md. No TASKS.md or session logs."
+        },
+        {
+          "text": "The total tool calls are 3 or fewer",
+          "passed": true,
+          "evidence": "metrics.json shows total_tool_calls: 4 (2 Read + 2 Write). Exceeds '3 or fewer'."
+        }
+      ]
+    },
+    {
+      "eval_id": 4,
+      "eval_name": "mobility-question",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 23.7,
+        "tokens": 69038,
+        "tool_calls": 5,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The response references mom's relevant health details (back pain and/or arthritis)",
+          "passed": true,
+          "evidence": "Response states: 'The real constraint with her arthritis isn't *type* of terrain \u2014 it's **volume and intensity**. Her feet and back get sore after prolonged standing or walking'"
+        },
+        {
+          "text": "The response gives practical, trip-specific advice about Avignon's terrain",
+          "passed": true,
+          "evidence": "Response provides detailed terrain analysis: 'Flat (no steep hills in the pedestrian core)', 'Compact (everything is 5\u201310 min walk from the hotel)', specific street names (Rue des Teinturiers), and activity-specific guidance."
+        },
+        {
+          "text": "The response does NOT include a multi-line session status summary or phase update before answering",
+          "passed": true,
+          "evidence": "Response opens with a clear question restatement and 'Short answer: Yes.' No session status preamble."
+        },
+        {
+          "text": "The response does NOT read TASKS.md before answering the question",
+          "passed": true,
+          "evidence": "files_read in metrics.json shows: SKILL.md, CLAUDE.md, mom.md, avignon-activities.md. No TASKS.md."
+        }
+      ]
+    },
+    {
+      "eval_id": 4,
+      "eval_name": "mobility-question",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 21.6,
+        "tokens": 61235,
+        "tool_calls": 5,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The response references mom's relevant health details (back pain and/or arthritis)",
+          "passed": true,
+          "evidence": "Response states: 'Mom has **arthritis in her toes with significant pain after prolonged standing/walking**. Her comfort (not disability) is what matters.'"
+        },
+        {
+          "text": "The response gives practical, trip-specific advice about Avignon's terrain",
+          "passed": true,
+          "evidence": "Response provides extensive terrain analysis, specific activities with difficulty notes (Palais des Papes stairs, Les Halles, Rue des Teinturiers, \u00c0 La Fran\u00e7aise), and practical guidance."
+        },
+        {
+          "text": "The response does NOT include a multi-line session status summary or phase update before answering",
+          "passed": true,
+          "evidence": "Response goes directly to 'Yes, mom can handle cobblestones in Avignon's old town' without any preamble."
+        },
+        {
+          "text": "The response does NOT read TASKS.md before answering the question",
+          "passed": true,
+          "evidence": "files_read shows: mom.md, destination-guide.md, avignon-activities.md. No TASKS.md."
+        }
+      ]
+    },
+    {
+      "eval_id": 5,
+      "eval_name": "breakfast-research-task",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": 122.5,
+        "tokens": 93917,
+        "tool_calls": 12,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The response reads CLAUDE.md or project files for context",
+          "passed": true,
+          "evidence": "files_read includes: CLAUDE.md (top-level project memory), as well as session-log-apr02-a.md, mom.md, itinerary.md, and other contextual files."
+        },
+        {
+          "text": "The response reads mom's traveler profile or references her preferences",
+          "passed": true,
+          "evidence": "files_read explicitly includes memory/people/mom.md. Response references: 'mom loves pastries' and accommodates both dietary needs throughout the recommendations."
+        },
+        {
+          "text": "The response reads existing Avignon restaurant research or guides for context on what's already been decided",
+          "passed": true,
+          "evidence": "files_read includes avignon-activities.md and references to hotel breakfast timing (8:00\u20139:30) already planned. Response builds on existing schedule."
+        },
+        {
+          "text": "The response presents multiple breakfast options (3+) with specific names and details",
+          "passed": true,
+          "evidence": "Response presents 3 breakfast spots with detailed sections: Chez Lisette, Caf\u00e9 Tulipe, Le Saint Chocolat. Each includes location, specialty, price, and practical notes."
+        },
+        {
+          "text": "The response addresses both dietary needs (vegetarian for Tanisha, pastries/non-vegetarian for mom)",
+          "passed": true,
+          "evidence": "Response explicitly addresses: 'All are within walking distance, offer strong pastry options (for your mom), and have vegetarian-friendly choices (for you).' Details for each spot note how they serve both dietary preferences."
+        },
+        {
+          "text": "The response includes practical details (addresses, approximate prices, or proximity to hotel)",
+          "passed": true,
+          "evidence": "Response provides: addresses ('Place des Ch\u00e2taignes', 'Place Saint Didier'), prices ('\u20ac8\u201315/person', '\u20ac3\u201312/person', '\u20ac10\u201318/person'), and proximity ('~7 min walk from main square', '~5 min walk from hotel')."
+        }
+      ]
+    },
+    {
+      "eval_id": 5,
+      "eval_name": "breakfast-research-task",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": 75.5,
+        "tokens": 75316,
+        "tool_calls": 12,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The response reads CLAUDE.md or project files for context",
+          "passed": true,
+          "evidence": "files_read includes: itinerary.md and mom-daughter-trip.md (project files) demonstrating context loading."
+        },
+        {
+          "text": "The response reads mom's traveler profile or references her preferences",
+          "passed": true,
+          "evidence": "files_read includes memory/people/mom.md. Response references 'mom loves pastries' and notes 'your mom will appreciate the quality and character.'"
+        },
+        {
+          "text": "The response reads existing Avignon restaurant research or guides for context on what's already been decided",
+          "passed": true,
+          "evidence": "files_read includes avignon-activities.md. Response acknowledges hotel breakfast (8:00\u20139:30) and builds breakfast rotation schedule around existing activities."
+        },
+        {
+          "text": "The response presents multiple breakfast options (3+) with specific names and details",
+          "passed": true,
+          "evidence": "Response presents 4 options: Chez Lisette, Les Halles d'Avignon, Maison Violette, Caf\u00e9 Tulipe. Each includes location, hours, specialty, and atmosphere."
+        },
+        {
+          "text": "The response addresses both dietary needs (vegetarian for Tanisha, pastries/non-vegetarian for mom)",
+          "passed": true,
+          "evidence": "Response explicitly addresses both: 'For You: Excellent vegetarian options' and 'For Mom: This is *her* place. Hand-rolled pastries, coffee, courtyard setting' for each recommendation."
+        },
+        {
+          "text": "The response includes practical details (addresses, approximate prices, or proximity to hotel)",
+          "passed": true,
+          "evidence": "Response provides: addresses ('Place des Ch\u00e2taignes', 'Place Pie'), proximity ('~5 min walk from hotel', '~7 min walk from hotel'), hours ('7:30 AM\u20137 PM'), and prices ('\u20ac8\u201312 per person', '\u20ac12\u201318 per person')."
+        }
+      ]
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 0.95,
+        "stddev": 0.11,
+        "min": 0.75,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 45.44,
+        "stddev": 43.34,
+        "min": 21.4,
+        "max": 122.5
+      },
+      "tokens": {
+        "mean": 71871.2,
+        "stddev": 12426.51,
+        "min": 64858,
+        "max": 93917
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.95,
+        "stddev": 0.11,
+        "min": 0.75,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 26.14,
+        "stddev": 27.98,
+        "min": 9.7,
+        "max": 75.5
+      },
+      "tokens": {
+        "mean": 61619,
+        "stddev": 8020.75,
+        "min": 54689,
+        "max": 75316
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.00",
+      "time_seconds": "+19.3",
+      "tokens": "+10252"
+    }
+  },
+  "notes": [
+    "Quick query evals (1-4): Both with_skill and without_skill pass all 'no session bloat' assertions \u2014 the skill does NOT cause unnecessary overhead on simple factual lookups.",
+    "Eval 3 (budget buffer): Both configurations fail the '3 or fewer tool calls' assertion \u2014 threshold is too tight for a query that reasonably needs to read 2 files + write 2 outputs.",
+    "Eval 5 (breakfast research): Both configurations pass all assertions \u2014 the skill properly activates for real planning work. With-skill took ~122s vs ~75s without-skill, but produced a persistent research file following the research methodology.",
+    "Time overhead: with_skill averages +5.3s on quick queries (25.7s vs 13.7s mean for evals 1-4) \u2014 most of this is reading the SKILL.md itself.",
+    "Token overhead: with_skill uses ~7.5K more tokens on average across quick queries \u2014 again primarily from loading the skill.",
+    "The skill is NOT causing the problematic behavior we feared (full session start protocol on every query). It correctly handles quick lookups with minimal overhead."
+  ]
+}

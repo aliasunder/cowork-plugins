@@ -1,0 +1,104 @@
+{
+  "expectations": [
+    {
+      "text": "The response reads CLAUDE.md or project files for context",
+      "passed": true,
+      "evidence": "files_read includes: CLAUDE.md (top-level project memory), as well as session-log-apr02-a.md, mom.md, itinerary.md, and other contextual files."
+    },
+    {
+      "text": "The response reads mom's traveler profile or references her preferences",
+      "passed": true,
+      "evidence": "files_read explicitly includes memory/people/mom.md. Response references: 'mom loves pastries' and accommodates both dietary needs throughout the recommendations."
+    },
+    {
+      "text": "The response reads existing Avignon restaurant research or guides for context on what's already been decided",
+      "passed": true,
+      "evidence": "files_read includes avignon-activities.md and references to hotel breakfast timing (8:00–9:30) already planned. Response builds on existing schedule."
+    },
+    {
+      "text": "The response presents multiple breakfast options (3+) with specific names and details",
+      "passed": true,
+      "evidence": "Response presents 3 breakfast spots with detailed sections: Chez Lisette, Café Tulipe, Le Saint Chocolat. Each includes location, specialty, price, and practical notes."
+    },
+    {
+      "text": "The response addresses both dietary needs (vegetarian for Tanisha, pastries/non-vegetarian for mom)",
+      "passed": true,
+      "evidence": "Response explicitly addresses: 'All are within walking distance, offer strong pastry options (for your mom), and have vegetarian-friendly choices (for you).' Details for each spot note how they serve both dietary preferences."
+    },
+    {
+      "text": "The response includes practical details (addresses, approximate prices, or proximity to hotel)",
+      "passed": true,
+      "evidence": "Response provides: addresses ('Place des Châtaignes', 'Place Saint Didier'), prices ('€8–15/person', '€3–12/person', '€10–18/person'), and proximity ('~7 min walk from main square', '~5 min walk from hotel')."
+    }
+  ],
+  "summary": {
+    "passed": 6,
+    "failed": 0,
+    "total": 6,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "Read": 6,
+      "Write": 2,
+      "Bash": 0,
+      "Edit": 0,
+      "Glob": 0,
+      "Grep": 0,
+      "WebSearch": 3,
+      "Perplexity": 1
+    },
+    "total_tool_calls": 12,
+    "total_steps": 6,
+    "errors_encountered": 0,
+    "files_read": [
+      "trip-orchestrator-workspace/skill-snapshot/SKILL.md",
+      "CLAUDE.md",
+      "TASKS.md",
+      "memory/sessions/session-log-apr02-a.md",
+      "memory/people/mom.md",
+      "memory/itinerary.md",
+      "memory/guides/avignon-activities.md",
+      "trip-orchestrator-workspace/skill-snapshot/references/research-methodology.md"
+    ],
+    "files_created": [
+      "memory/research/breakfast-research-avignon.md",
+      "response.md"
+    ]
+  },
+  "claims": [
+    {
+      "claim": "Chez Lisette is located at Place des Châtaignes",
+      "type": "factual",
+      "verified": true,
+      "evidence": "Stated clearly in response with location description"
+    },
+    {
+      "claim": "Chez Lisette is a local, authentic breakfast spot with strong pastries",
+      "type": "factual",
+      "verified": true,
+      "evidence": "Response provides specific pastry details (sacristan, chocolate croissants, fougasse) and frames as 'local, quiet square, warm staff'"
+    },
+    {
+      "claim": "All three spots are within 5-10 minutes of the hotel",
+      "type": "factual",
+      "verified": true,
+      "evidence": "Response states for each: Lisette '5-7 min walk', Tulipe '7 min walk', Saint Chocolat 'intra-muros, likely close to hotel'"
+    },
+    {
+      "claim": "Vegetarian options are available at all three spots",
+      "type": "factual",
+      "verified": true,
+      "evidence": "Response specifies vegetarian coverage for each: pastries at Lisette, 'vegan toast, avocado toast' at Tulipe, 'viennoiseries naturally veg-friendly; salads' at Saint Chocolat"
+    },
+    {
+      "claim": "The response follows research methodology by cross-validating across multiple sources",
+      "type": "process",
+      "verified": true,
+      "evidence": "metrics.json shows use of WebSearch (3) and Perplexity (1) tools. Files read include research-methodology.md reference. Complete research file created at memory/research/breakfast-research-avignon.md"
+    }
+  ],
+  "eval_feedback": {
+    "overall": "All assertions pass comprehensively. The skill demonstrates proper context-loading behavior, thorough research methodology (WebSearch + Perplexity), dietary preference handling, and practical trip-specific recommendations. Created a persistent research file for future reference."
+  }
+}

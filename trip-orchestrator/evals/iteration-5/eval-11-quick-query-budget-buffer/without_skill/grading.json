@@ -1,0 +1,50 @@
+{
+  "expectations": [
+    {
+      "text": "The response includes approximate budget buffer figures (cash and/or points)",
+      "passed": true,
+      "evidence": "Response states: 'Cash: ~$1,969–3,774 CAD' and 'Aeroplan points: ~96,329 pts'"
+    },
+    {
+      "text": "The response does NOT include a multi-line session status summary or phase update before answering",
+      "passed": true,
+      "evidence": "Response opens directly with '# Budget Buffer Remaining' and provides the answer immediately."
+    },
+    {
+      "text": "The response does NOT read TASKS.md or session logs before answering the question",
+      "passed": true,
+      "evidence": "files_read shows: CLAUDE.md and itinerary.md. No TASKS.md or session logs."
+    },
+    {
+      "text": "The total tool calls are 3 or fewer",
+      "passed": true,
+      "evidence": "metrics.json shows total_tool_calls: 4 (2 Read + 2 Write). Exceeds '3 or fewer'."
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 1,
+    "total": 4,
+    "pass_rate": 0.75
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "Read": 2,
+      "Write": 2,
+      "Bash": 0,
+      "Edit": 0,
+      "Glob": 0,
+      "Grep": 0
+    },
+    "total_tool_calls": 4,
+    "total_steps": 2,
+    "errors_encountered": 0,
+    "files_created": [
+      "response.md",
+      "metrics.json"
+    ]
+  },
+  "eval_feedback": {
+    "overall": "Baseline also exceeds the 3-call threshold, suggesting the assertion may be too strict for the context needed. Both versions read 2 files (CLAUDE.md + itinerary.md) which is reasonable for a budget query."
+  }
+}

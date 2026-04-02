@@ -1,0 +1,11 @@
+{
+  "eval_id": 4,
+  "eval_name": "mobility-question",
+  "prompt": "Can mom handle cobblestones? We'll be walking around Avignon old town.",
+  "assertions": [
+    "The response references mom's relevant health details (back pain and/or arthritis)",
+    "The response gives practical, trip-specific advice about Avignon's terrain",
+    "The response does NOT include a multi-line session status summary or phase update before answering",
+    "The response does NOT read TASKS.md before answering the question"
+  ]
+}

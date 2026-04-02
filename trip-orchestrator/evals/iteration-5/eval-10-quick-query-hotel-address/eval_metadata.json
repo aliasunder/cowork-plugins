@@ -1,0 +1,12 @@
+{
+  "eval_id": 2,
+  "eval_name": "hotel-address-lookup",
+  "prompt": "What's the address of our hotel in Verona?",
+  "assertions": [
+    "The response includes 'Colomba d'Oro' or the correct hotel name",
+    "The response includes the address (Via C. Cattaneo 10 or equivalent)",
+    "The response does NOT include a multi-line session status summary or phase update before answering",
+    "The response does NOT read TASKS.md before answering the question",
+    "The total tool calls are 5 or fewer"
+  ]
+}

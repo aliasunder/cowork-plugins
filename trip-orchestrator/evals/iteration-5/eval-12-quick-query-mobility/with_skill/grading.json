@@ -1,0 +1,50 @@
+{
+  "expectations": [
+    {
+      "text": "The response references mom's relevant health details (back pain and/or arthritis)",
+      "passed": true,
+      "evidence": "Response states: 'The real constraint with her arthritis isn't *type* of terrain — it's **volume and intensity**. Her feet and back get sore after prolonged standing or walking'"
+    },
+    {
+      "text": "The response gives practical, trip-specific advice about Avignon's terrain",
+      "passed": true,
+      "evidence": "Response provides detailed terrain analysis: 'Flat (no steep hills in the pedestrian core)', 'Compact (everything is 5–10 min walk from the hotel)', specific street names (Rue des Teinturiers), and activity-specific guidance."
+    },
+    {
+      "text": "The response does NOT include a multi-line session status summary or phase update before answering",
+      "passed": true,
+      "evidence": "Response opens with a clear question restatement and 'Short answer: Yes.' No session status preamble."
+    },
+    {
+      "text": "The response does NOT read TASKS.md before answering the question",
+      "passed": true,
+      "evidence": "files_read in metrics.json shows: SKILL.md, CLAUDE.md, mom.md, avignon-activities.md. No TASKS.md."
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 0,
+    "total": 4,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "Read": 3,
+      "Write": 2,
+      "Bash": 0,
+      "Edit": 0,
+      "Glob": 0,
+      "Grep": 0
+    },
+    "total_tool_calls": 5,
+    "total_steps": 3,
+    "errors_encountered": 0,
+    "files_created": [
+      "response.md",
+      "metrics.json"
+    ]
+  },
+  "eval_feedback": {
+    "overall": "All assertions pass clearly. The skill effectively reads context about mom's health and provides well-grounded, trip-specific advice."
+  }
+}

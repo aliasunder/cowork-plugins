@@ -1,0 +1,55 @@
+{
+  "expectations": [
+    {
+      "text": "The response includes 'Colomba d'Oro' or the correct hotel name",
+      "passed": true,
+      "evidence": "Response states: 'Your hotel in Verona is: **Hotel Colomba d'Oro**'"
+    },
+    {
+      "text": "The response includes the address (Via C. Cattaneo 10 or equivalent)",
+      "passed": true,
+      "evidence": "Response provides: 'Via Carlo Cattaneo 10' and '37121 Verona, Italy'"
+    },
+    {
+      "text": "The response does NOT include a multi-line session status summary or phase update before answering",
+      "passed": true,
+      "evidence": "Response opens with a title and immediately provides the address. No status summary."
+    },
+    {
+      "text": "The response does NOT read TASKS.md before answering the question",
+      "passed": true,
+      "evidence": "files_read shows: itinerary.md and mom-daughter-trip.md. No TASKS.md."
+    },
+    {
+      "text": "The total tool calls are 5 or fewer",
+      "passed": true,
+      "evidence": "metrics.json shows total_tool_calls: 4 (2 Read + 2 Write)"
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  },
+  "execution_metrics": {
+    "tool_calls": {
+      "Read": 2,
+      "Write": 2,
+      "Bash": 0,
+      "Edit": 0,
+      "Glob": 0,
+      "Grep": 0
+    },
+    "total_tool_calls": 4,
+    "total_steps": 2,
+    "errors_encountered": 0,
+    "files_created": [
+      "response.md",
+      "metrics.json"
+    ]
+  },
+  "eval_feedback": {
+    "overall": "All assertions pass. Baseline is clean and direct."
+  }
+}
