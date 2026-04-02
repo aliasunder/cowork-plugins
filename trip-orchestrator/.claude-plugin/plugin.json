@@ -1,6 +1,6 @@
 {
   "name": "trip-orchestrator",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "End-to-end trip planning project manager. Guides multi-session travel planning from first idea to departure day with 8 planning phases, session protocols, research methodology, budget tracking, and material production.",
   "author": {
     "name": "aliasunder"
