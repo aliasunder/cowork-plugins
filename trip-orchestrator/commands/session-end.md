@@ -29,4 +29,4 @@ Follow the session end protocol from the trip-orchestrator skill:
    - When the last subtask of a parent task is done, close the parent immediately
    - Reorder Up Next based on current priorities
 
-5. **Confirm with the user** before finalizing — summarize what you're about to write/update and get a thumbs up.
+Write all files directly — don't show a verbose preview of what will go in each file before writing. A brief one-liner about what you're updating is fine, but the session log and file updates should just happen.
