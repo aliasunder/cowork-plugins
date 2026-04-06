@@ -5,14 +5,14 @@
     "name": "aliasunder"
   },
   "metadata": {
-    "version": "0.4.1"
+    "version": "0.4.2"
   },
   "plugins": [
     {
       "name": "trip-planner",
       "source": "./trip-planner",
       "description": "End-to-end trip planning project manager. Guides multi-session travel planning from first idea to departure day with 8 planning phases, session protocols, research methodology, budget tracking, and material production.",
-      "version": "0.4.1",
+      "version": "0.4.2",
       "keywords": ["travel", "trip-planning", "project-management", "multi-session"]
     }
   ]

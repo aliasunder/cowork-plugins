@@ -42,7 +42,7 @@ When a session begins (or when this skill first activates):
 1. **Read CLAUDE.md** — current phase, last session pointer, open questions, preferences.
 2. **Read TASKS.md** — what's active, blocked, next, and done. The top active task is usually today's focus unless the user says otherwise.
 3. **Read the last session log** — follow the pointer in CLAUDE.md to `memory/sessions/session-log-*.md` for handoff context.
-4. **Check for new trip-related emails** — if email tools are available, search for booking confirmations, cancellations, or schedule changes since the last session. Use the trip's email label if one exists. Extract confirmation details (reference numbers, dates, seat assignments) and flag anything that needs attention.
+4. **Check for new trip-related emails** — search for booking confirmations, cancellations, or schedule changes since the last session. Use the trip's email label if one exists (check `memory/reference/` for the label name). Extract confirmation details (reference numbers, dates, seat assignments) and flag anything that needs attention. If no email MCP is connected, note it in the summary and move on — but never skip this step when email tools are available.
 5. **Summarize briefly** — 10-15 lines: current phase, top active tasks, blockers or deadlines, anything surfaced from email, and your suggested focus. Ask the user if they want to go with that or redirect.
 
 Keep the summary conversational — a quick refresh, not a briefing document.
@@ -187,11 +187,14 @@ Plans change. Tour operators discontinue services, schedules shift, better optio
 
 ### Email Integration
 
-If email tools are available (Gmail, Outlook):
-- **Session start:** Search for trip-related emails since the last session. Use the trip's email label if one has been set up (record the label in `memory/reference/`).
+Email is a core part of trip planning — booking confirmations, schedule changes, and cancellation notices all arrive by email. When an email MCP is connected (Gmail, Outlook, etc.), treat email checking as a standard part of the workflow, not an optional extra:
+
+- **Session start:** Search for trip-related emails since the last session. Use the trip's email label if one has been set up (record the label in `memory/reference/`). This is part of the session start protocol — do it before presenting the session summary.
 - **After booking:** Search for the confirmation email. Extract reference numbers, dates, amounts, seat assignments, cancellation policies. Update the project file.
 - **Periodic checks:** When the user asks for a status update, check email for any changes (schedule modifications, cancellation notices, payment receipts).
 - **Suggest a trip email label** early in planning if one doesn't exist. Having all trip emails tagged makes search much easier.
+
+If no email MCP is connected, skip email steps gracefully — but never skip them just because the task at hand doesn't seem email-related. Booking confirmations and schedule changes can arrive at any time.
 
 ### Browser Tools
 
@@ -264,10 +267,32 @@ If no CLAUDE.md exists:
 4. **Create files following the file boundary rules** (see "File Conventions → What Goes Where" below):
    - **Traveler profiles** in `memory/people/` — full detail on each person
    - **Project file** in `memory/projects/` — trip overview, budget, constraints
-   - **CLAUDE.md** — agent working memory. Lean project index with summary tables, preferences, and a file map that tells you *when* to read each file, not just what's in it. See "File Conventions" below for the full structure. Do NOT duplicate traveler details from profiles or planning methodology from this skill.
+   - **CLAUDE.md** — agent working memory. Lean project index with summary tables, preferences, and a file map that tells you *when* to read each file, not just what's in it. See "File Conventions" below for the full structure. Do NOT duplicate traveler details from profiles or planning methodology from this skill. **Include a skill invocation callout** near the top of CLAUDE.md (before any content sections) so the skill is triggered every session:
+     ```
+     > ⚠️ **This project uses the trip-planner skill.** Invoke `trip-planner:trip-planner`
+     > at the start of every session. It contains session protocols, research methodology,
+     > and file management rules that this project depends on.
+     ```
+     This callout is a reliability measure — CLAUDE.md is always read at session start, so embedding the invocation instruction here ensures the skill activates even if the agent wouldn't otherwise reach for it.
    - **First session log** in `memory/sessions/`
 
 5. **Suggest an email label** for trip-related emails if email tools are available.
+
+6. **Recommend project instructions** — if the platform supports project-level instructions (e.g., Cowork project settings, CLAUDE.md in repo root), suggest the user add session protocol instructions. A good starting point:
+   ```
+   ## SESSION START
+   Always invoke the trip-planner:trip-planner skill before starting any work.
+   Then read CLAUDE.md and TASKS.md before responding.
+   Also check the last session file(s) for cross-session context.
+
+   ## SESSION END
+   When wrapping up, follow the trip-planner skill's session end protocol.
+   If the skill was not invoked this session, at minimum:
+   - Write a session log to memory/sessions/
+   - Update CLAUDE.md (last session pointer, file map, resolved items)
+   - Reconcile TASKS.md (move completed tasks to Done with date + strikethrough)
+   ```
+   Project instructions are loaded into every session regardless of skill activation — they act as a safety net for session discipline.
 
 **Only create the files listed above.** Do not create meta files about the scaffolding process itself — no INDEX.md, MANIFEST.txt, README.md, EXECUTION_SUMMARY.md, or similar. The project structure IS the documentation.
 
@@ -295,6 +320,7 @@ Each file type has a distinct role. Avoid duplicating information across files �
 
 **CLAUDE.md — Agent working memory (~200-300 lines max)**
 This is the project's working memory — a quick-reference index, not a knowledge base. It contains:
+- **Skill invocation callout** (at the very top, before any content sections): A blockquote instructing the agent to invoke `trip-planner:trip-planner` at session start. This is the most reliable triggering mechanism — CLAUDE.md is always read, so the callout ensures the skill activates regardless of how the agent interprets the task. See "Starting a New Trip" step 4 for the exact template.
 - **Me**: One-line trip summary (who, where, when)
 - **People**: Summary table with one row per traveler (name, role, one-line note). Link to full profiles. Do NOT inline dietary details, health specifics, travel anxieties, or interest lists — those live in `memory/people/`.
 
