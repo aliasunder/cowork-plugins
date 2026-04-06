@@ -2,3 +2,5 @@
 node_modules/
 *.pyc
 __pycache__/
+CLAUDE.local.md
+.llms-local/
