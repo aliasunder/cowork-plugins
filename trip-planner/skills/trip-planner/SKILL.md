@@ -1,10 +1,12 @@
 ---
 name: trip-planner
 description: >
-  End-to-end trip planning project manager that guides multi-session travel planning from first idea to departure day.
-  Tracks planning phases, manages dependencies between tasks, runs session start/end protocols, validates bookings
-  against email confirmations, navigates unfamiliar booking sites via browser, and provides phase-appropriate
-  methodology (research, booking, material production) via reference files.
+  Plan a real trip. Use for: hotel/flight/train/restaurant research for specific destinations and dates,
+  creating travel documents (daily cards, itineraries, packing lists, offline guides), managing booking changes
+  or cancellations, and resuming a trip project with CLAUDE.md/TASKS.md/memory/ files. Handles the full travel
+  planning lifecycle — transport routes, accommodation search, activity planning, restaurant scouting, budget
+  tracking, and printable traveler materials. NOT for: presentations, file conversions, sending emails,
+  building apps, or hypothetical travel questions.
 
   ALWAYS use this skill when working in a trip planning project — detected by the presence of CLAUDE.md with
   traveler profiles, an itinerary phase marker, or a memory/ directory with trip planning files. Also trigger
