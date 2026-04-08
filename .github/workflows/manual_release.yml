@@ -1,0 +1,86 @@
+name: Manual Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      bump:
+        description: 'Version bump type'
+        required: true
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Calculate next version
+        id: next
+        env:
+          BUMP: ${{ inputs.bump }}
+        run: |
+          CURRENT=$(jq -r '.metadata.version' .claude-plugin/marketplace.json)
+          IFS='.' read -r MAJOR MINOR PATCH <<< "$CURRENT"
+
+          case "$BUMP" in
+            major) MAJOR=$((MAJOR + 1)); MINOR=0; PATCH=0 ;;
+            minor) MINOR=$((MINOR + 1)); PATCH=0 ;;
+            patch) PATCH=$((PATCH + 1)) ;;
+          esac
+
+          NEXT="${MAJOR}.${MINOR}.${PATCH}"
+          echo "version=$NEXT" >> "$GITHUB_OUTPUT"
+          echo "Bumping $CURRENT → $NEXT ($BUMP)"
+
+      - name: Update version files
+        env:
+          NEXT: ${{ steps.next.outputs.version }}
+        run: |
+          # Update marketplace.json
+          jq --arg v "$NEXT" '
+            .metadata.version = $v |
+            .plugins[].version = $v
+          ' .claude-plugin/marketplace.json > tmp.json && mv tmp.json .claude-plugin/marketplace.json
+
+          # Update each plugin's plugin.json
+          while IFS= read -r PLUGIN_JSON; do
+            jq --arg v "$NEXT" '.version = $v' "$PLUGIN_JSON" > tmp.json && mv tmp.json "$PLUGIN_JSON"
+            echo "Updated $PLUGIN_JSON → $NEXT"
+          done < <(find . -path '*/.claude-plugin/plugin.json' -not -path './.claude-plugin/*')
+
+      - name: Commit, tag, and push
+        env:
+          NEXT: ${{ steps.next.outputs.version }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "release: v${NEXT}"
+          git tag "v${NEXT}"
+          git push origin HEAD --tags
+
+      - name: Build .skill artifacts
+        run: |
+          while IFS= read -r PLUGIN_JSON; do
+            PLUGIN_DIR=$(dirname "$(dirname "$PLUGIN_JSON")")
+            PLUGIN_NAME=$(basename "$PLUGIN_DIR")
+            echo "Building $PLUGIN_NAME.skill..."
+            (cd "$PLUGIN_DIR/skills" && zip -r "../../${PLUGIN_NAME}.skill" "$PLUGIN_NAME/")
+          done < <(find . -path '*/.claude-plugin/plugin.json' -not -path './.claude-plugin/*')
+
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          NEXT: ${{ steps.next.outputs.version }}
+        run: |
+          SKILL_FILES=$(find . -maxdepth 1 -name '*.skill' -print)
+          gh release create "v${NEXT}" $SKILL_FILES \
+            --title "v${NEXT}" \
+            --generate-notes
