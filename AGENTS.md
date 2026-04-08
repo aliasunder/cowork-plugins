@@ -13,7 +13,12 @@ This is a public marketplace installed via **Settings > Plugins > Add marketplac
 ```
 cowork-plugins/
   README.md                             # Project overview and install instructions
+  CONTRIBUTING.md                       # Release process and CI docs
   LICENSE                               # MIT license
+  .claude-plugin/marketplace.json       # Marketplace config (version, plugin list)
+  .github/workflows/
+    auto_release.yml                    # Tag-triggered build + GitHub release
+    manual_release.yml                  # UI-triggered version bump + release
   <plugin-name>/
     .claude-plugin/plugin.json          # Required: name, version, description
     skills/<skill-name>/SKILL.md        # Skill definition files
@@ -57,11 +62,28 @@ Slash commands are workflow files invoked explicitly by the user.
 - Use the `trip-planner/` plugin as a reference implementation
 - `.claude-plugin/plugin.json` is required for Cowork discovery
 
+## Releasing
+
+All plugins share a single version. Two CI workflows handle releases:
+
+- **Manual Release** (`manual_release.yml`): Triggered from Actions UI. Pick patch/minor/major → bumps all version files → commits → tags → builds `.skill` artifacts → creates GitHub release.
+- **Auto Release** (`auto_release.yml`): Triggered by `v*` tag push. Validates version files match the tag → builds artifacts → creates GitHub release.
+
+### Version files (must stay in sync)
+
+- `.claude-plugin/marketplace.json` → `metadata.version` + each `plugins[].version`
+- `<plugin>/.claude-plugin/plugin.json` → `version`
+
+See `CONTRIBUTING.md` for full details.
+
 ## Adding a New Plugin
 
 1. Create a top-level directory: `my-plugin/`
-2. Add `.claude-plugin/plugin.json` with name, version, description
+2. Add `.claude-plugin/plugin.json` with name, version, and description matching the current marketplace version
 3. Add skills under `skills/<skill-name>/SKILL.md`
-4. Add commands under `commands/`
-5. Add static assets under `assets/` if needed
-6. Document the plugin in the root `README.md` plugins table
+4. Add the plugin entry to `.claude-plugin/marketplace.json`
+5. Add commands under `commands/` if needed
+6. Add static assets under `assets/` if needed
+7. Document the plugin in the root `README.md` plugins table
+
+CI auto-discovers plugins via `*/.claude-plugin/plugin.json` — no workflow edits needed.
