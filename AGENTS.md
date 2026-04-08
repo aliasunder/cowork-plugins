@@ -66,6 +66,7 @@ Slash commands are workflow files invoked explicitly by the user.
 
 All plugins share a single version. Two CI workflows handle releases:
 
+- **`/release [patch|minor|major]`** (`.claude/commands/release.md`): Bumps version across all config files, commits, tags, and pushes. The Auto Release workflow then handles the build + GitHub release.
 - **Manual Release** (`manual_release.yml`): Triggered from Actions UI. Pick patch/minor/major → bumps all version files → commits → tags → builds `.skill` artifacts → creates GitHub release.
 - **Auto Release** (`auto_release.yml`): Triggered by `v*` tag push. Validates version files match the tag → builds artifacts → creates GitHub release.
 
