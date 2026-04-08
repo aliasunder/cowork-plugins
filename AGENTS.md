@@ -86,5 +86,3 @@ See `CONTRIBUTING.md` for full details.
 5. Add commands under `commands/` if needed
 6. Add static assets under `assets/` if needed
 7. Document the plugin in the root `README.md` plugins table
-
-CI auto-discovers plugins via `*/.claude-plugin/plugin.json` — no workflow edits needed.
