@@ -1,5 +1,10 @@
 {
   "name": "obsidian-vault",
   "version": "0.4.3",
-  "description": "Always-on Obsidian conventions and best practices for working inside an Obsidian vault."
+  "description": "Obsidian Flavored Markdown conventions applied automatically when creating or editing notes in a vault. Keeps wikilinks, frontmatter types, callouts, and plugin-compatible syntax correct so every .md file Claude produces renders properly in Obsidian.",
+  "author": {
+    "name": "aliasunder"
+  },
+  "repository": "https://github.com/aliasunder/cowork-plugins",
+  "keywords": ["obsidian", "markdown", "note-taking", "pkm", "vault"]
 }

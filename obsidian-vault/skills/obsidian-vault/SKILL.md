@@ -1,21 +1,29 @@
 ---
 name: obsidian-vault
 description: >
-  Work inside an Obsidian vault. Use for: creating or editing notes, writing or
-  repairing frontmatter/properties, writing wikilinks, embeds, callouts, tasks,
-  block references, tags, Mermaid diagrams, or any Obsidian Flavored Markdown.
-  Also use for plugin-aware tasks: writing Dataview queries, Tasks plugin syntax,
-  Templater templates, Bases property schemas, or Canvas JSON.
+  Edit notes in an Obsidian vault. Use for: creating or editing .md files that
+  will render in Obsidian, writing or repairing frontmatter/properties, writing
+  wikilinks, embeds, callouts, tasks, block references, tags, Mermaid diagrams,
+  or any Obsidian Flavored Markdown. Also use for plugin-aware tasks: writing
+  Dataview queries, Tasks plugin syntax, Templater templates, Bases property
+  schemas, or Canvas JSON.
+
+  NOT for: .md files outside an Obsidian vault (READMEs in code repos, GitHub
+  issue bodies, static-site content like Hugo or Jekyll, project documentation
+  in non-vault repos), generic markdown linting unrelated to Obsidian rendering,
+  or Obsidian plugin development (that is a separate TypeScript skill).
 
   ALWAYS use this skill when working in an Obsidian vault — detected by the
-  presence of a .obsidian/ directory, a CLAUDE.md that identifies this as a
-  vault project, or any request involving .md files with Obsidian conventions
-  (wikilinks, frontmatter, callouts, embeds). Also trigger when the user mentions
-  anything like "create a note", "update frontmatter", "write a Dataview query",
-  "fix this callout", "add a task", or any note-editing task.
+  presence of a .obsidian/ directory in the working directory or any ancestor
+  (Cowork projects often live inside a vault as a subdirectory), a CLAUDE.md
+  that identifies the project as living inside a vault, or any request involving
+  .md files where Obsidian will be the renderer (wikilinks, frontmatter,
+  callouts, embeds). Also trigger when the user mentions anything like "create
+  a note", "update frontmatter", "write a Dataview query", "fix this callout",
+  "add a task", or any note-editing task.
 
-  If a vault project exists in the working directory, this skill should be
-  active — period.
+  If a vault-embedded Cowork project exists in the working directory, this skill
+  should be active — period.
 ---
 
 # Obsidian Vault Skill
@@ -168,20 +176,22 @@ before writing Tasks plugin syntax.
 
 ---
 
-## Safe Editing Rules
+## Safe Output Rules
 
-Before returning any edited note, verify:
+Before returning any `.md` file you wrote — whether new or edited — verify:
 
+- [ ] New note opens with a fenced frontmatter block (match the vault's existing note schema — read a nearby note first if the schema isn't obvious)
 - [ ] Frontmatter is at the very top, properly fenced with `---`
-- [ ] No new frontmatter keys added unless requested
-- [ ] No existing frontmatter keys removed or renamed
-- [ ] Existing wikilinks are intact — not converted to markdown links
-- [ ] Block IDs (`^id`) are preserved if present
+- [ ] Frontmatter property types consistent with other notes (no silent string ↔ number ↔ list drift — this is the specific failure mode that breaks Dataview and Bases queries later)
+- [ ] No new frontmatter keys added unless requested (when editing an existing note)
+- [ ] No existing frontmatter keys removed or renamed (when editing an existing note)
+- [ ] Existing wikilinks are intact — not converted to markdown links (when editing an existing note)
+- [ ] Block IDs (`^id`) are preserved if present (when editing an existing note)
 - [ ] Callout syntax is valid (`> [!type]`)
 - [ ] Task syntax is consistent with the vault's convention
 - [ ] Tags use correct format (no spaces, nested with `/`)
-- [ ] Inline comments (`%% ... %%`) preserved if present
-- [ ] No accidental section duplication
+- [ ] Inline comments (`%% ... %%`) preserved if present (when editing an existing note)
+- [ ] No accidental section duplication (when editing an existing note)
 
 ---
 
@@ -202,25 +212,34 @@ the file — only report unless told to fix.
 
 ---
 
-## Setting Up a New Vault Project
+## Setting Up a New Vault-Embedded Cowork Project
 
-If no vault project exists in the working directory:
+If a Cowork project has been created in (or alongside) a vault and doesn't
+yet have an Obsidian-aware CLAUDE.md:
 
-1. **Check for `.obsidian/`** to confirm this is a real Obsidian vault
-2. **Read any existing notes** to understand the vault's current conventions
-   before writing anything new
+1. **Check for `.obsidian/` in the working directory or any ancestor
+   directory** — a vault often contains many Cowork projects as
+   subdirectories, so `.obsidian/` may live one or more levels above the
+   Cowork project root
+2. **Read any existing notes** in the vault to understand the vault's
+   current conventions before writing anything new
 3. **Recommend a project CLAUDE.md** — suggest the user add this to their
    Cowork project settings:
 
    ```
-   This project is an Obsidian vault.
+   This project lives inside an Obsidian vault (parent directory).
 
-   Use the obsidian-vault skill for all note creation and editing.
-   Preserve existing links, frontmatter, and note structure unless asked otherwise.
-   Ask before renaming notes, moving files, or making vault-wide structural changes.
+   Use the obsidian-vault skill for all .md file creation and editing in
+   this project — notes, session logs, CLAUDE.md/TASKS.md, and any
+   operational docs (they all render in Obsidian since the project lives
+   in the vault).
+   Preserve existing links, frontmatter, and note structure unless asked
+   otherwise.
+   Ask before renaming notes, moving files, or making vault-wide
+   structural changes.
    ```
 
-4. **Note what plugins appear active** based on vault files (.obsidian/plugins/
+4. **Note what plugins appear active** based on vault files (`.obsidian/plugins/`
    or existing note syntax) and flag which reference files will be relevant
 
 ---
@@ -229,7 +248,7 @@ If no vault project exists in the working directory:
 
 - Rename or move files — always ask the user to use Obsidian's rename function
   to preserve link integrity
-- Modify `.canvas` files as plain text — see `references/plugins.md` for Canvas
+- Treat `.canvas` files as plain text — use the Canvas JSON rules in `references/plugins.md`
 - Add Templater syntax to non-template notes
 - Reformat an entire vault or batch-rename notes without explicit confirmation
 - Change existing frontmatter property types without confirmation

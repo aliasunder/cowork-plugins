@@ -18,7 +18,7 @@
     {
       "name": "obsidian-vault",
       "source": "./obsidian-vault",
-      "description": "Always-on Obsidian conventions and best practices for working inside an Obsidian vault. Covers Obsidian Flavored Markdown, frontmatter/properties, wikilinks, callouts, embeds, and plugin-aware syntax for Dataview, Tasks, Templater, Bases, and Canvas.",
+      "description": "Obsidian Flavored Markdown conventions applied automatically when creating or editing notes in a vault. Keeps wikilinks, frontmatter types, callouts, and plugin-compatible syntax correct so every .md file Claude produces renders properly in Obsidian. Includes plugin-aware guidance for Dataview, Tasks, Templater, Bases, and Canvas.",
       "version": "0.4.3",
       "keywords": ["obsidian", "markdown", "note-taking", "pkm", "vault"]
     }
