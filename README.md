@@ -9,7 +9,7 @@ Install this marketplace via **Settings > Plugins > Add marketplace** using `ali
 | Plugin | Description |
 |--------|-------------|
 | [trip-planner](trip-planner/) | Plan a multi-week trip across 15+ sessions without losing context. Cross-validated research, budget tracking, printable daily cards, and a phase-based workflow from first idea to departure day. |
-| [obsidian-vault](obsidian-vault/) | Obsidian conventions applied automatically when Claude creates or edits notes in your vault. Keeps wikilinks, frontmatter types, callouts, and plugin-aware syntax (Dataview, Tasks, Templater, Bases, Canvas) correct so every `.md` file renders properly in Obsidian. |
+| [obsidian-vault](obsidian-vault/) | Let Claude edit your Obsidian vault without breaking it. Wikilinks stay linked, frontmatter stays queryable, callouts render — and Claude speaks Dataview, Tasks, Templater, Bases, and Canvas fluently. |
 
 ## Installing
 

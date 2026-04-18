@@ -1,7 +1,7 @@
 {
   "name": "obsidian-vault",
   "version": "0.4.3",
-  "description": "Obsidian Flavored Markdown conventions applied automatically when creating or editing notes in a vault. Keeps wikilinks, frontmatter types, callouts, and plugin-compatible syntax correct so every .md file Claude produces renders properly in Obsidian.",
+  "description": "Let Claude edit your Obsidian vault without breaking it. Wikilinks stay linked, frontmatter stays queryable, callouts render — and Claude speaks Dataview, Tasks, Templater, Bases, and Canvas fluently.",
   "author": {
     "name": "aliasunder"
   },
