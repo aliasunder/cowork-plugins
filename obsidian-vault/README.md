@@ -1,26 +1,27 @@
 # obsidian-vault
 
-Let Claude work in your Obsidian vault without breaking it. Links stay linked, frontmatter stays queryable, callouts render, and Claude speaks Dataview, Tasks, Kanban, Meta Bind, Templater, Bases, and Canvas fluently. Built for power users with opinionated setups — the plugin detects your vault's conventions and follows them, rather than assuming defaults.
+Claude that works *with* Obsidian, not just in it. This plugin teaches Claude how Obsidian works — frontmatter, link conventions, plugin syntax, and the interactions between them — so notes it creates or edits are connected, queryable, and structured the way your vault expects.
+
+Without it, Claude writes markdown that looks fine but doesn't show up in your queries, breaks your boards, or uses the wrong link style.
 
 ## What you get
 
-**Convention-aware editing.** Every vault is different — link style, frontmatter schemas, task formats, tag conventions. The plugin detects your vault's patterns on first use, confirms them with you, and persists the choices so future sessions stay consistent. No more fighting Claude to stop converting your markdown links to wikilinks (or vice versa).
+**Convention detection.** Every vault is different. On first use, the plugin reads your plugin configs and existing notes to detect link style, task format, frontmatter schemas, and tag conventions. It confirms what it finds and persists your conventions so Claude follows them consistently. No more re-explaining your setup every session.
 
-**Frontmatter that stays queryable.** Dataview, Bases, and the Properties pane silently break when property types drift — a date becomes a string, a list becomes a single item, a boolean gets capitalized. The plugin enforces type consistency, ISO 8601 dates, lowercase booleans, and proper list syntax so your queries keep working.
+**Vault-aware note design.** Claude considers how a note will be found and used in Obsidian: the right properties for your Dataview queries, links that connect in the graph, schemas that match sibling notes so Bases can display them. A note missing `status` doesn't show as "no status" in a query — it's just absent from results.
 
-**Deep plugin fluency.** Not just syntax — the plugin understands how plugins interact. Dataview TASK queries vs Tasks plugin queries. Kanban board structure that Tasks can still parse. Meta Bind inputs that modify frontmatter Dataview reads. Templater templates that produce Tasks-compatible output. Each plugin has its own reference file with interaction gotchas documented.
+**Fluent in Obsidian's plugin ecosystem.** Dataview queries (with inline fields and the right date functions), Tasks plugin emoji syntax, Kanban board structure, Meta Bind inputs, Templater template delimiters, Bases property schemas, and Canvas JSON — all covered, including the non-obvious ways these plugins interact with each other. Detailed reference material loads on demand when the task calls for it.
 
-**Safe output rules.** Before returning any note, the skill runs a checklist: frontmatter fenced at top, existing keys preserved, block IDs intact, links in the vault's convention, tags correctly formatted, Kanban board structure intact, no silent type drift. You get the edit you asked for, not an accidentally restructured file.
-
-**Works with the setup most people have.** Your vault is usually a parent folder containing many Cowork projects, not a folder Claude created from scratch. The plugin's activation signals understand this — ancestor `.obsidian/` detection, a vault-aware CLAUDE.md pointer, Obsidian-specific phrasing in your request — so it activates correctly in projects that live inside an existing vault.
+**Safe output rules.** Before returning any note, the skill runs a checklist: frontmatter fenced and typed correctly, existing keys preserved, links in your vault's convention, block IDs intact, no silent type drift. You get the edit you asked for, not an accidentally restructured file.
 
 ## How it works
 
-The plugin activates whenever Claude sees vault-related work — creating a note, editing frontmatter, writing a Dataview query, editing a Kanban board — inside a Cowork project that lives in (or is) an Obsidian vault.
+The skill triggers when Claude is working with `.md` files in a project that lives inside an Obsidian vault.
 
-When active, core Obsidian Flavored Markdown conventions and safe-output rules stay loaded in Claude's working context. Deeper reference material — plugin-specific guidance, full OFM syntax, the property type catalog — lives in separate files that Claude pulls on demand. This keeps the core skill lean (~2,500 words) while having comprehensive guidance available when a task calls for it.
-
-On first use in a new vault, the skill proactively detects conventions: link style (from `app.json` and existing notes), task format (from Tasks plugin config), tag patterns, frontmatter schemas, template setup, and Kanban usage. It confirms findings with you and persists them in your project's CLAUDE.md or auto-memory so they carry across sessions.
+1. **Detect** — reads your vault's plugin configs and existing notes to identify conventions: link style, task format, frontmatter schemas, tag patterns
+2. **Confirm** — surfaces what it found and checks with you before assuming anything
+3. **Persist** — documents confirmed conventions in your project's CLAUDE.md so future sessions stay consistent
+4. **Apply** — core conventions stay loaded for every interaction; plugin-specific references (Dataview syntax, Kanban structure, Templater functions) load on demand when needed
 
 ## Getting started
 
@@ -30,40 +31,51 @@ Install as a Cowork plugin:
 2. Click **Add marketplace** and enter `aliasunder/cowork-plugins`
 3. Enable **obsidian-vault**
 
-Then add this to your Cowork project settings (strongly recommended for vault-embedded projects):
+To start using it: just work with notes in your vault. The skill triggers whenever it detects an Obsidian vault in your project. The first time, Claude will read your plugin configs and existing notes, confirm your conventions with you, and persist everything — including a CLAUDE.md callout that keeps the skill active in future sessions. From there, every note Claude creates or edits follows your vault's patterns.
+
+To skip the detection step and have the skill active from your very first interaction, add this to your project instructions:
 
 ```
 This project lives inside an Obsidian vault (parent directory).
 
-Use the obsidian-vault skill for all .md file creation and editing in
-this project — notes, session logs, CLAUDE.md/TASKS.md, and any
-operational docs (they all render in Obsidian since the project lives
-in the vault).
+Use the obsidian-vault skill for all .md file creation and editing —
+notes, session logs, CLAUDE.md/TASKS.md, and any operational docs.
 Preserve existing links, frontmatter, and note structure unless asked
 otherwise.
 Ask before renaming notes, moving files, or making vault-wide structural
 changes.
 ```
 
-The skill will also suggest this snippet — along with detected conventions — the first time it activates in a new vault-embedded project.
+## Why a plugin?
 
-## Structure
+Obsidian isn't just markdown. Between Obsidian-flavored syntax, community plugin conventions, and the non-obvious ways plugins interact with each other, there's a lot of knowledge Claude needs to get your notes right.
 
-```
-.claude-plugin/plugin.json              # Plugin manifest
-skills/obsidian-vault/
-  SKILL.md                              # Core skill — conventions, detection, safe-output rules
-  references/
-    syntax.md                           # OFM syntax (embeds, block refs, Mermaid, comments, math)
-    properties.md                       # YAML property types, reserved keys, schemas
-    core-plugins.md                     # Properties, Bases, Canvas, Daily Notes, Templates, Graph
-    dataview.md                         # Queries, inline fields, DataviewJS, implicit fields
-    tasks.md                            # Emoji format, custom statuses, dates, dependencies, queries
-    kanban.md                           # Board structure, card syntax, safe editing, interactions
-    meta-bind.md                        # INPUT/VIEW/BUTTON syntax, property binding, actions
-    templater.md                        # Template syntax, folder templates, Templater vs core Templates
-```
+Without the plugin, that knowledge either lives in every project's CLAUDE.md or it doesn't exist at all. The plugin carries it so your CLAUDE.md can focus on your project.
+
+## Plugin coverage
+
+Reference documentation for the following, loaded on demand as needed:
+
+- **Core plugins** — Properties, Bases, Canvas, Daily Notes, Templates, Graph
+- **Community plugins** — Dataview, Tasks, Kanban, Meta Bind, Templater
+- **Obsidian-flavored markdown** — embeds, block references, callouts, Mermaid, math
+- **Property types** — YAML types, reserved keys, vault-wide type consistency
 
 ## Contributing
 
-PRs welcome — especially for additional plugin conventions (Excalidraw, Obsidian Git, Periodic Notes, etc.) and cross-plugin interaction gotchas. Use `trip-planner/` as the reference implementation for structure and style.
+PRs welcome — especially for additional plugin conventions (Excalidraw, Obsidian Git, Periodic Notes, etc.) and cross-plugin interaction gotchas.
+
+```
+.claude-plugin/plugin.json
+skills/obsidian-vault/
+  SKILL.md
+  references/
+    syntax.md
+    properties.md
+    core-plugins.md
+    dataview.md
+    tasks.md
+    kanban.md
+    meta-bind.md
+    templater.md
+```

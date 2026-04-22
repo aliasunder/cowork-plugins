@@ -193,9 +193,16 @@ future sessions don't need to re-detect:
 
 **Option 1: Project CLAUDE.md (recommended for vault-wide conventions)**
 
-Add a section to the project's CLAUDE.md documenting detected conventions:
+Add a skill invocation callout and a conventions section to the project's
+CLAUDE.md. The callout should appear near the top — before any content
+sections — so the skill is triggered every session:
 
 ```markdown
+> **This project uses the obsidian-vault skill.** Invoke
+> `obsidian-vault:obsidian-vault` at the start of every session. It contains
+> Obsidian editing conventions, plugin reference docs, and safe output rules
+> that this project depends on.
+
 ## Obsidian Vault Conventions
 
 - **Links:** Markdown links with relative paths (`[text](path.md)`)
@@ -205,6 +212,10 @@ Add a section to the project's CLAUDE.md documenting detected conventions:
 - **Date format:** ISO 8601 (`YYYY-MM-DD`)
 - **Templates folder:** `Templates/`
 ```
+
+The callout is a reliability measure — CLAUDE.md is always read at session
+start, so embedding the invocation instruction ensures the skill activates
+even if the agent wouldn't otherwise reach for it.
 
 **Option 2: Auto-memory (supplemental)**
 
