@@ -36,14 +36,8 @@ To start using it: just work with notes in your vault. The skill triggers whenev
 To skip the detection step and have the skill active from your very first interaction, add this to your project instructions:
 
 ```
-This project lives inside an Obsidian vault (parent directory).
-
-Use the obsidian-vault skill for all .md file creation and editing —
-notes, session logs, CLAUDE.md/TASKS.md, and any operational docs.
-Preserve existing links, frontmatter, and note structure unless asked
-otherwise.
-Ask before renaming notes, moving files, or making vault-wide structural
-changes.
+This project lives inside an Obsidian vault. Always invoke the
+obsidian-vault:obsidian-vault skill before working with any .md files.
 ```
 
 ## Why a plugin?
