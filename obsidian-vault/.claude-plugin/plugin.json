@@ -1,7 +1,7 @@
 {
   "name": "obsidian-vault",
-  "version": "0.5.0",
-  "description": "Let Claude edit your Obsidian vault without breaking it. Wikilinks stay linked, frontmatter stays queryable, callouts render — and Claude speaks Dataview, Tasks, Templater, Bases, and Canvas fluently.",
+  "version": "0.6.0",
+  "description": "Let Claude edit your Obsidian vault without breaking it. Convention-aware editing that detects your vault's patterns. Deep fluency in Dataview, Tasks, Kanban, Meta Bind, Templater, Bases, and Canvas — with cross-plugin interaction awareness.",
   "author": {
     "name": "aliasunder"
   },
@@ -11,6 +11,11 @@
     "markdown",
     "note-taking",
     "pkm",
-    "vault"
+    "vault",
+    "dataview",
+    "kanban",
+    "tasks",
+    "templater",
+    "meta-bind"
   ]
 }
